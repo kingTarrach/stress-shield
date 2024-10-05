@@ -8,8 +8,59 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @StateObject var viewModel = RegisterViewVM()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                // Header
+                ZStack {
+                    RoundedRectangle(cornerRadius: 0)
+                        .foregroundColor(.green)
+                        .offset(y: -50)
+                    
+                    Text("Register")
+                        .font(.system(size: 50))
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .padding(.top, 20)
+                }
+                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
+                .offset(y: -100)
+                
+                // Register Form
+                Form {
+                    TextField("Full Name", text: $viewModel.name)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocorrectionDisabled()
+                    
+                    TextField("Email Address", text: $viewModel.email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled()
+                    
+                    SecureField("Password", text: $viewModel.password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Button {
+                        viewModel.register()
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.green)
+                            
+                            Text("Create Account")
+                                .foregroundColor(.white)
+                                .bold()
+                            
+                        }
+                    }
+                }
+                .padding(.bottom, 50)
+                
+                Spacer()
+            }
+        }
     }
 }
 

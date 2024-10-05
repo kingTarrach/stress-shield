@@ -20,6 +20,10 @@
 		03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF62CB0D150004095FB /* RegisterViewVM.swift */; };
 		03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF82CB0D15A004095FB /* LoginViewVM.swift */; };
 		03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BFA2CB0D171004095FB /* MainViewVM.swift */; };
+		03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4772CB1B3C900643027 /* Extensions.swift */; };
+		03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4792CB1B72000643027 /* MainMenuView.swift */; };
+		03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47B2CB1C32500643027 /* ProfileView.swift */; };
+		03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		03010BF62CB0D150004095FB /* RegisterViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewVM.swift; sourceTree = "<group>"; };
 		03010BF82CB0D15A004095FB /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
 		03010BFA2CB0D171004095FB /* MainViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewVM.swift; sourceTree = "<group>"; };
+		03E7C4772CB1B3C900643027 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		03E7C4792CB1B72000643027 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		03E7C47B2CB1C32500643027 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,8 @@
 				03010BD42CB0C5CF004095FB /* MainView.swift */,
 				03010BF22CB0D0EF004095FB /* RegisterView.swift */,
 				03010BF02CB0D0C1004095FB /* LoginView.swift */,
+				03E7C4792CB1B72000643027 /* MainMenuView.swift */,
+				03E7C47B2CB1C32500643027 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +114,7 @@
 				03010BFA2CB0D171004095FB /* MainViewVM.swift */,
 				03010BF62CB0D150004095FB /* RegisterViewVM.swift */,
 				03010BF82CB0D15A004095FB /* LoginViewVM.swift */,
+				03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -122,6 +133,7 @@
 				03010BEA2CB0C875004095FB /* GoogleService-Info.plist */,
 				03010BD22CB0C5CF004095FB /* StressShieldApp.swift */,
 				03010BD62CB0C5D0004095FB /* Assets.xcassets */,
+				03E7C4772CB1B3C900643027 /* Extensions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -204,13 +216,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */,
 				03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */,
+				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
+				03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */,
 				03010BD52CB0C5CF004095FB /* MainView.swift in Sources */,
 				03010BF52CB0D114004095FB /* User.swift in Sources */,
 				03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */,
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
+				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
