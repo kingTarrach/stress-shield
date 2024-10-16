@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA6698B62CBF9A7100BAA641 /* StressShieldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */; };
+		AA6698B82CBF9A7100BAA641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698B72CBF9A7100BAA641 /* ContentView.swift */; };
+		AA6698BA2CBF9A8800BAA641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6698B92CBF9A8800BAA641 /* Assets.xcassets */; };
+		AA6698BD2CBF9A8800BAA641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6698BC2CBF9A8800BAA641 /* Preview Assets.xcassets */; };
+		AA6698C82CBF9A8900BAA641 /* StressShieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698C72CBF9A8900BAA641 /* StressShieldTests.swift */; };
+		AA6698D32CBF9A8900BAA641 /* StressShieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698D22CBF9A8900BAA641 /* StressShieldUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA6698C42CBF9A8900BAA641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA6698AA2CBF9A7100BAA641 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6698B12CBF9A7100BAA641;
+			remoteInfo = StressShield;
+		};
+		AA6698CF2CBF9A8900BAA641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA6698AA2CBF9A7100BAA641 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA6698B12CBF9A7100BAA641;
+			remoteInfo = StressShield;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA6698B22CBF9A7100BAA641 /* StressShield.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressShield.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldApp.swift; sourceTree = "<group>"; };
+		AA6698B72CBF9A7100BAA641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA6698B92CBF9A8800BAA641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA6698BC2CBF9A8800BAA641 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA6698BE2CBF9A8800BAA641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6698C32CBF9A8900BAA641 /* StressShieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StressShieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6698C72CBF9A8900BAA641 /* StressShieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldTests.swift; sourceTree = "<group>"; };
+		AA6698C92CBF9A8900BAA641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6698CE2CBF9A8900BAA641 /* StressShieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StressShieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6698D22CBF9A8900BAA641 /* StressShieldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldUITests.swift; sourceTree = "<group>"; };
+		AA6698D42CBF9A8900BAA641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA6698AF2CBF9A7100BAA641 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698C02CBF9A8900BAA641 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698CB2CBF9A8900BAA641 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA6698A92CBF9A7100BAA641 = {
+			isa = PBXGroup;
+			children = (
+				AA6698B42CBF9A7100BAA641 /* StressShield */,
+				AA6698C62CBF9A8900BAA641 /* StressShieldTests */,
+				AA6698D12CBF9A8900BAA641 /* StressShieldUITests */,
+				AA6698B32CBF9A7100BAA641 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA6698B32CBF9A7100BAA641 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA6698B22CBF9A7100BAA641 /* StressShield.app */,
+				AA6698C32CBF9A8900BAA641 /* StressShieldTests.xctest */,
+				AA6698CE2CBF9A8900BAA641 /* StressShieldUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA6698B42CBF9A7100BAA641 /* StressShield */ = {
+			isa = PBXGroup;
+			children = (
+				AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */,
+				AA6698B72CBF9A7100BAA641 /* ContentView.swift */,
+				AA6698B92CBF9A8800BAA641 /* Assets.xcassets */,
+				AA6698BE2CBF9A8800BAA641 /* Info.plist */,
+				AA6698BB2CBF9A8800BAA641 /* Preview Content */,
+			);
+			path = StressShield;
+			sourceTree = "<group>";
+		};
+		AA6698BB2CBF9A8800BAA641 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AA6698BC2CBF9A8800BAA641 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AA6698C62CBF9A8900BAA641 /* StressShieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA6698C72CBF9A8900BAA641 /* StressShieldTests.swift */,
+				AA6698C92CBF9A8900BAA641 /* Info.plist */,
+			);
+			path = StressShieldTests;
+			sourceTree = "<group>";
+		};
+		AA6698D12CBF9A8900BAA641 /* StressShieldUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA6698D22CBF9A8900BAA641 /* StressShieldUITests.swift */,
+				AA6698D42CBF9A8900BAA641 /* Info.plist */,
+			);
+			path = StressShieldUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA6698B12CBF9A7100BAA641 /* StressShield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA6698D72CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShield" */;
+			buildPhases = (
+				AA6698AE2CBF9A7100BAA641 /* Sources */,
+				AA6698AF2CBF9A7100BAA641 /* Frameworks */,
+				AA6698B02CBF9A7100BAA641 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StressShield;
+			productName = StressShield;
+			productReference = AA6698B22CBF9A7100BAA641 /* StressShield.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA6698C22CBF9A8900BAA641 /* StressShieldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA6698DA2CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShieldTests" */;
+			buildPhases = (
+				AA6698BF2CBF9A8900BAA641 /* Sources */,
+				AA6698C02CBF9A8900BAA641 /* Frameworks */,
+				AA6698C12CBF9A8900BAA641 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA6698C52CBF9A8900BAA641 /* PBXTargetDependency */,
+			);
+			name = StressShieldTests;
+			productName = StressShieldTests;
+			productReference = AA6698C32CBF9A8900BAA641 /* StressShieldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA6698CD2CBF9A8900BAA641 /* StressShieldUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA6698DD2CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShieldUITests" */;
+			buildPhases = (
+				AA6698CA2CBF9A8900BAA641 /* Sources */,
+				AA6698CB2CBF9A8900BAA641 /* Frameworks */,
+				AA6698CC2CBF9A8900BAA641 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA6698D02CBF9A8900BAA641 /* PBXTargetDependency */,
+			);
+			name = StressShieldUITests;
+			productName = StressShieldUITests;
+			productReference = AA6698CE2CBF9A8900BAA641 /* StressShieldUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA6698AA2CBF9A7100BAA641 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					AA6698B12CBF9A7100BAA641 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					AA6698C22CBF9A8900BAA641 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AA6698B12CBF9A7100BAA641;
+					};
+					AA6698CD2CBF9A8900BAA641 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AA6698B12CBF9A7100BAA641;
+					};
+				};
+			};
+			buildConfigurationList = AA6698AD2CBF9A7100BAA641 /* Build configuration list for PBXProject "StressShield" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA6698A92CBF9A7100BAA641;
+			productRefGroup = AA6698B32CBF9A7100BAA641 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA6698B12CBF9A7100BAA641 /* StressShield */,
+				AA6698C22CBF9A8900BAA641 /* StressShieldTests */,
+				AA6698CD2CBF9A8900BAA641 /* StressShieldUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA6698B02CBF9A7100BAA641 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6698BD2CBF9A8800BAA641 /* Preview Assets.xcassets in Resources */,
+				AA6698BA2CBF9A8800BAA641 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698C12CBF9A8900BAA641 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698CC2CBF9A8900BAA641 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA6698AE2CBF9A7100BAA641 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6698B82CBF9A7100BAA641 /* ContentView.swift in Sources */,
+				AA6698B62CBF9A7100BAA641 /* StressShieldApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698BF2CBF9A8900BAA641 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6698C82CBF9A8900BAA641 /* StressShieldTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6698CA2CBF9A8900BAA641 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6698D32CBF9A8900BAA641 /* StressShieldUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA6698C52CBF9A8900BAA641 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA6698B12CBF9A7100BAA641 /* StressShield */;
+			targetProxy = AA6698C42CBF9A8900BAA641 /* PBXContainerItemProxy */;
+		};
+		AA6698D02CBF9A8900BAA641 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA6698B12CBF9A7100BAA641 /* StressShield */;
+			targetProxy = AA6698CF2CBF9A8900BAA641 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA6698D52CBF9A8900BAA641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA6698D62CBF9A8900BAA641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA6698D82CBF9A8900BAA641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"StressShield/Preview Content\"";
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StressShield/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA6698D92CBF9A8900BAA641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"StressShield/Preview Content\"";
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StressShield/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA6698DB2CBF9A8900BAA641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				INFOPLIST_FILE = StressShieldTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShieldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StressShield.app/StressShield";
+			};
+			name = Debug;
+		};
+		AA6698DC2CBF9A8900BAA641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				INFOPLIST_FILE = StressShieldTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShieldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StressShield.app/StressShield";
+			};
+			name = Release;
+		};
+		AA6698DE2CBF9A8900BAA641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				INFOPLIST_FILE = StressShieldUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShieldUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StressShield;
+			};
+			name = Debug;
+		};
+		AA6698DF2CBF9A8900BAA641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57FWQ2494C;
+				INFOPLIST_FILE = StressShieldUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.precisionedge.StressShieldUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StressShield;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA6698AD2CBF9A7100BAA641 /* Build configuration list for PBXProject "StressShield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6698D52CBF9A8900BAA641 /* Debug */,
+				AA6698D62CBF9A8900BAA641 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA6698D72CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6698D82CBF9A8900BAA641 /* Debug */,
+				AA6698D92CBF9A8900BAA641 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA6698DA2CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShieldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6698DB2CBF9A8900BAA641 /* Debug */,
+				AA6698DC2CBF9A8900BAA641 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA6698DD2CBF9A8900BAA641 /* Build configuration list for PBXNativeTarget "StressShieldUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6698DE2CBF9A8900BAA641 /* Debug */,
+				AA6698DF2CBF9A8900BAA641 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA6698AA2CBF9A7100BAA641 /* Project object */;
+}
