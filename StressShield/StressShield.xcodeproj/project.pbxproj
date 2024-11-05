@@ -20,6 +20,9 @@
 		03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF62CB0D150004095FB /* RegisterViewVM.swift */; };
 		03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF82CB0D15A004095FB /* LoginViewVM.swift */; };
 		03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BFA2CB0D171004095FB /* MainViewVM.swift */; };
+		035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */; };
+		035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C62CDAACD900FEFF1C /* LearnView.swift */; };
+		035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C82CDAACE700FEFF1C /* CalendarView.swift */; };
 		03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4772CB1B3C900643027 /* Extensions.swift */; };
 		03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4792CB1B72000643027 /* MainMenuView.swift */; };
 		03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47B2CB1C32500643027 /* ProfileView.swift */; };
@@ -40,6 +43,9 @@
 		03010BF62CB0D150004095FB /* RegisterViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewVM.swift; sourceTree = "<group>"; };
 		03010BF82CB0D15A004095FB /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
 		03010BFA2CB0D171004095FB /* MainViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewVM.swift; sourceTree = "<group>"; };
+		035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAnalyticsView.swift; sourceTree = "<group>"; };
+		035615C62CDAACD900FEFF1C /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		035615C82CDAACE700FEFF1C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		03E7C4772CB1B3C900643027 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		03E7C4792CB1B72000643027 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		03E7C47B2CB1C32500643027 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 				03010BF02CB0D0C1004095FB /* LoginView.swift */,
 				03E7C4792CB1B72000643027 /* MainMenuView.swift */,
 				03E7C47B2CB1C32500643027 /* ProfileView.swift */,
+				035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */,
+				035615C62CDAACD900FEFF1C /* LearnView.swift */,
+				035615C82CDAACE700FEFF1C /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,15 +226,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */,
+				035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */,
 				03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */,
 				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
+				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
 				03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */,
 				03010BD52CB0C5CF004095FB /* MainView.swift in Sources */,
 				03010BF52CB0D114004095FB /* User.swift in Sources */,
 				03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */,
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
+				035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */,
 				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,
 			);
@@ -373,7 +385,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cam.StressShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +422,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cam.StressShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";

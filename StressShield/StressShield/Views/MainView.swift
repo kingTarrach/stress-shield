@@ -19,6 +19,24 @@ struct MainView: View {
                         Label("Home", systemImage: "house")
                     }
                 
+                // Data Analytics Tab
+                DataAnalyticsView()
+                    .tabItem {
+                        Label("Data Analytics", systemImage: "chart.bar.fill")
+                    }
+                
+                // Learn Tab
+                LearnView()
+                    .tabItem {
+                        Label("Learn", systemImage: "book.fill")
+                    }
+                
+                // Calendar Tab
+                CalendarView()
+                    .tabItem {
+                        Label("Calendar", systemImage: "calendar")
+                    }
+
                 ProfileView()
                     .tabItem {
                         Label("Profile", systemImage: "person.circle")
