@@ -13,6 +13,10 @@
 		AA6698BD2CBF9A8800BAA641 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6698BC2CBF9A8800BAA641 /* Preview Assets.xcassets */; };
 		AA6698C82CBF9A8900BAA641 /* StressShieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698C72CBF9A8900BAA641 /* StressShieldTests.swift */; };
 		AA6698D32CBF9A8900BAA641 /* StressShieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698D22CBF9A8900BAA641 /* StressShieldUITests.swift */; };
+		AA6698E72CDAB14100BAA641 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = AA6698E62CDAB14100BAA641 /* Views */; };
+		AA6698EC2CDAB15400BAA641 /* ViewModels in Resources */ = {isa = PBXBuildFile; fileRef = AA6698EB2CDAB15400BAA641 /* ViewModels */; };
+		AA6698F12CDAB17000BAA641 /* Models in Resources */ = {isa = PBXBuildFile; fileRef = AA6698F02CDAB17000BAA641 /* Models */; };
+		AA6698F62CDAB19100BAA641 /* Other in Resources */ = {isa = PBXBuildFile; fileRef = AA6698F52CDAB19100BAA641 /* Other */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		AA6698CE2CBF9A8900BAA641 /* StressShieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StressShieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6698D22CBF9A8900BAA641 /* StressShieldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldUITests.swift; sourceTree = "<group>"; };
 		AA6698D42CBF9A8900BAA641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6698E62CDAB14100BAA641 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
+		AA6698EB2CDAB15400BAA641 /* ViewModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewModels; sourceTree = "<group>"; };
+		AA6698F02CDAB17000BAA641 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
+		AA6698F52CDAB19100BAA641 /* Other */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Other; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,10 @@
 		AA6698B42CBF9A7100BAA641 /* StressShield */ = {
 			isa = PBXGroup;
 			children = (
+				AA6698F52CDAB19100BAA641 /* Other */,
+				AA6698F02CDAB17000BAA641 /* Models */,
+				AA6698EB2CDAB15400BAA641 /* ViewModels */,
+				AA6698E62CDAB14100BAA641 /* Views */,
 				AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */,
 				AA6698B72CBF9A7100BAA641 /* ContentView.swift */,
 				AA6698B92CBF9A8800BAA641 /* Assets.xcassets */,
@@ -233,6 +245,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6698F12CDAB17000BAA641 /* Models in Resources */,
+				AA6698E72CDAB14100BAA641 /* Views in Resources */,
+				AA6698EC2CDAB15400BAA641 /* ViewModels in Resources */,
+				AA6698F62CDAB19100BAA641 /* Other in Resources */,
 				AA6698BD2CBF9A8800BAA641 /* Preview Assets.xcassets in Resources */,
 				AA6698BA2CBF9A8800BAA641 /* Assets.xcassets in Resources */,
 			);
