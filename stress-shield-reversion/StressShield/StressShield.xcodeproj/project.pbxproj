@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FC5CE822CD852A90030B692 /* data-visualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE812CD8529C0030B692 /* data-visualization.swift */; };
+		5FC5CE842CD852E50030B692 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE832CD852E50030B692 /* File.swift */; };
 		AA6698B62CBF9A7100BAA641 /* StressShieldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */; };
 		AA6698B82CBF9A7100BAA641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6698B72CBF9A7100BAA641 /* ContentView.swift */; };
 		AA6698BA2CBF9A8800BAA641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6698B92CBF9A8800BAA641 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FC5CE812CD8529C0030B692 /* data-visualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "data-visualization.swift"; sourceTree = "<group>"; };
+		5FC5CE832CD852E50030B692 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AA6698B22CBF9A7100BAA641 /* StressShield.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StressShield.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldApp.swift; sourceTree = "<group>"; };
 		AA6698B72CBF9A7100BAA641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		AA6698B42CBF9A7100BAA641 /* StressShield */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5CE812CD8529C0030B692 /* data-visualization.swift */,
+				5FC5CE832CD852E50030B692 /* File.swift */,
 				AA6698B52CBF9A7100BAA641 /* StressShieldApp.swift */,
 				AA6698B72CBF9A7100BAA641 /* ContentView.swift */,
 				AA6698B92CBF9A8800BAA641 /* Assets.xcassets */,
@@ -259,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC5CE822CD852A90030B692 /* data-visualization.swift in Sources */,
+				5FC5CE842CD852E50030B692 /* File.swift in Sources */,
 				AA6698B82CBF9A7100BAA641 /* ContentView.swift in Sources */,
 				AA6698B62CBF9A7100BAA641 /* StressShieldApp.swift in Sources */,
 			);
