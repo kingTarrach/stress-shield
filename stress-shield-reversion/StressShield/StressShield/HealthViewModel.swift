@@ -30,7 +30,7 @@ class HealthViewModel: ObservableObject {
                         return
                     }
                     // Process Sleep Data (Summing by day)
-                    self?.sleepDataPerDay = self?.summarizeSleepDuration(sleepData: sleepData ?? [:]) ?? [:]
+                    //self?.sleepDataPerDay = self?.summarizeSleepDuration(sleepData: sleepData ?? [:]) ?? [:]
                     completion(nil)
                 }
             }
@@ -59,29 +59,29 @@ class HealthViewModel: ObservableObject {
         return result
     }
 
-    // Method to summarize sleep data by day
-    func summarizeSleepDuration(sleepData: [String: String]) -> [String: Double] {
-        var sleepDurationByDate: [String: Double] = [:]
-        var currentSleepStart: Date?
+    // // Method to summarize sleep data by day
+    // func summarizeSleepDuration(sleepData: [String: String]) -> [String: Double] {
+    //     var sleepDurationByDate: [String: Double] = [:]
+    //     var currentSleepStart: Date?
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    //     let dateFormatter = DateFormatter()
+    //     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         
-        // Process the sleep data
-        for (dateTimeString, sleepStatus) in sleepData {
-            guard let dateTime = dateFormatter.date(from: dateTimeString) else { continue }
-            let dateKey = dateFormatter.string(from: dateTime).prefix(10) // Extract the date part
+    //     // Process the sleep data
+    //     for (dateTimeString, sleepStatus) in sleepData {
+    //         guard let dateTime = dateFormatter.date(from: dateTimeString) else { continue }
+    //         let dateKey = dateFormatter.string(from: dateTime).prefix(10) // Extract the date part
             
-            if sleepStatus == "Asleep" {
-                currentSleepStart = dateTime
-            } else if sleepStatus == "Not asleep", let sleepStart = currentSleepStart {
-                let duration = dateTime.timeIntervalSince(sleepStart) // Duration in seconds
-                let dateKeyString = String(dateKey) // Convert to string to use as dictionary key
-                sleepDurationByDate[dateKeyString, default: 0.0] += duration / 3600.0 // Convert seconds to hours
-                currentSleepStart = nil
-            }
-        }
+    //         if sleepStatus == "Asleep" {
+    //             currentSleepStart = dateTime
+    //         } else if sleepStatus == "Not asleep", let sleepStart = currentSleepStart {
+    //             let duration = dateTime.timeIntervalSince(sleepStart) // Duration in seconds
+    //             let dateKeyString = String(dateKey) // Convert to string to use as dictionary key
+    //             sleepDurationByDate[dateKeyString, default: 0.0] += duration / 3600.0 // Convert seconds to hours
+    //             currentSleepStart = nil
+    //         }
+    //     }
         
-        return sleepDurationByDate
-    }
+    //     return sleepDurationByDate
+    // }
 }
