@@ -33,6 +33,8 @@ class StressDataViewModel: ObservableObject {
     }
 }
 
+
+// Begin implementing Chart
 // Custom LineChart view
 struct LineChartView: View {
     var data: [UserStressData]
