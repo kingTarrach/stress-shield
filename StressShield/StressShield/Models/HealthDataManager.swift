@@ -16,102 +16,158 @@ class HealthDataManager {
     
     // Fetch heart rate variability data
     func fetchHeartRateVariability(completion: @escaping ([String: Double]?, Error?) -> Void) {
-        let hrvType = HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .day, value: -7, to: Date()), end: Date())
         
-        let query = HKSampleQuery(sampleType: hrvType, predicate: predicate, limit: 1000, sortDescriptors: [sortDescriptor]) { _, results, error in
+        //        // Dictionary with predefined HRV values for each date
+        //         let hrvData: [String: Double] = [
+        //             "2024-10-29": 50.0,
+        //             "2024-10-30": 55.2,
+        //             "2024-10-31": 60.1,
+        //             "2024-11-01": 58.7,
+        //             "2024-11-02": 63.3,
+        //             "2024-11-03": 52.9,
+        //             "2024-11-04": 59.5
+        //         ]
+        //
+        //         completion(hrvData, nil) // Return predefined dummy data without error
+        
+        guard let hrvType = HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN) else {
+            completion(nil, NSError(domain: "HealthDataManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "HRV type not available"]))
+            return
+        }
+        
+        // Define the time range (last week)
+        let calendar = Calendar.current
+        let endDate = Date()
+        let startDate = calendar.date(byAdding: .day, value: -14, to: endDate)!
+        
+        // Create a predicate to query samples within the time range
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+        
+        // Perform the query
+        let query = HKSampleQuery(sampleType: hrvType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { [weak self] _, results, error in
+            guard let self = self else { return }
+            
             if let error = error {
                 completion(nil, error)
                 return
             }
             
-            var hrvData: [String: [Double]] = [:] // Use an array to store multiple HRV samples per day
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd" // Standard date format
-            
-            for sample in results as! [HKQuantitySample] {
-                let date = sample.startDate
-                let value = sample.quantity.doubleValue(for: HKUnit.secondUnit(with: .milli))
-                let dateString = dateFormatter.string(from: date)
-                
-                // Store multiple HRV values for each date
-                hrvData[dateString, default: []].append(value)
+            guard let results = results as? [HKQuantitySample] else {
+                completion(nil, nil)
+                return
             }
             
-            // Now calculate the average for each date
-            var averagedHRVData: [String: Double] = [:]
-            for (date, values) in hrvData {
-                let average = values.reduce(0, +) / Double(values.count)
-                averagedHRVData[date] = average
+            // Process results into a dictionary of date -> average HRV
+            var hrvData: [String: Double] = [:]
+            
+            // Group samples by local calendar day
+            let groupedByDay = Dictionary(grouping: results) { sample -> String in
+                let startOfDay = calendar.startOfDay(for: sample.startDate)
+                return self.dateString(from: startOfDay)
             }
             
-            completion(averagedHRVData, nil)
+            for (dateString, samples) in groupedByDay {
+                let hrvValues = samples.map { $0.quantity.doubleValue(for: HKUnit(from: "ms")) }
+                let dailyAverage = hrvValues.reduce(0, +) / Double(hrvValues.count)
+                hrvData[dateString] = dailyAverage
+            }
+            
+            completion(hrvData, nil)
         }
         
         healthStore.execute(query)
-
-        //         // Dictionary with predefined HRV values for each date
-        // let hrvData: [String: Double] = [
-        //     "2024-10-29": 50.0,
-        //     "2024-10-30": 55.2,
-        //     "2024-10-31": 60.1,
-        //     "2024-11-01": 58.7,
-        //     "2024-11-02": 63.3,
-        //     "2024-11-03": 52.9,
-        //     "2024-11-04": 59.5
-        // ]
-        
-        // completion(hrvData, nil) // Return predefined dummy data without error
     }
     
     // Fetch sleep data
     func fetchSleepData(completion: @escaping ([String: Double]?, Error?) -> Void) {
-        let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .day, value: -7, to: Date()), end: Date())
+
+//         // Dictionary with predefined sleep duration for each date
+//         let sleepData: [String: Double] = [
+//             "2024-10-29": 7.5,
+//             "2024-10-30": 6.8,
+//             "2024-10-31": 7.2,
+//             "2024-11-01": 8.0,
+//             "2024-11-02": 5.5,
+//             "2024-11-03": 7.0,
+//             "2024-11-04": 6.2
+//         ]
+//        
+//         completion(sleepData, nil) // Return predefined dummy data without error
         
-        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: 1000, sortDescriptors: [sortDescriptor]) { _, results, error in
+        guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
+            completion(nil, NSError(domain: "HealthDataManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "Sleep Analysis type not available"]))
+            return
+        }
+
+        // Define the time range (last week)
+        let calendar = Calendar.current
+        let endDate = Date()
+        let startDate = calendar.date(byAdding: .day, value: -14, to: endDate)!
+
+        // Create a predicate to query samples within the time range
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+
+        // Perform the query
+        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { [weak self] _, results, error in
+            guard let self = self else { return }
+
             if let error = error {
                 completion(nil, error)
                 return
             }
-            
-            var sleepData: [String: Double] = [:] // Track sleep duration by day
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            
-            for sample in results as! [HKCategorySample] {
-                let date = sample.startDate
-                let status = sample.value == HKCategoryValueSleepAnalysis.asleep.rawValue ? "Asleep" : "Not asleep"
-                
-                // Only count sleep durations if the user is asleep
-                if status == "Asleep" {
-                    let sleepStart = sample.startDate
-                    let sleepEnd = sample.endDate ?? Date()
-                    let sleepDuration = sleepEnd.timeIntervalSince(sleepStart) / 3600.0 // Convert to hours
-                    
-                    let dateString = dateFormatter.string(from: sleepStart)
-                    sleepData[dateString, default: 0.0] += sleepDuration
-                }
+
+            guard let results = results as? [HKCategorySample] else {
+                completion(nil, nil)
+                return
             }
             
+            for sample in results {
+                print("Sample: start=\(sample.startDate), end=\(sample.endDate), value=\(sample.value)")
+            }
+
+            // Process results into a dictionary of date -> total sleep hours
+            var sleepData: [String: Double] = [:]
+
+            // Group samples by local calendar day
+            let groupedByDay = Dictionary(grouping: results) { sample -> String in
+                let startOfDay = calendar.startOfDay(for: sample.startDate)
+                return self.dateString(from: startOfDay)
+            }
+
+            for (dateString, samples) in groupedByDay {
+                var totalSleepDuration: Double = 0
+
+                for sample in samples {
+                        let duration = sample.endDate.timeIntervalSince(sample.startDate)
+                        totalSleepDuration += duration
+                        print(duration)
+                }
+
+                sleepData[dateString] = totalSleepDuration / 3600.0 // Convert to hours
+            }
+
             completion(sleepData, nil)
         }
-        
-        healthStore.execute(query)
 
-        // // Dictionary with predefined sleep duration for each date
-        // let sleepData: [String: Double] = [
-        //     "2024-10-29": 7.5,
-        //     "2024-10-30": 6.8,
-        //     "2024-10-31": 7.2,
-        //     "2024-11-01": 8.0,
-        //     "2024-11-02": 5.5,
-        //     "2024-11-03": 7.0,
-        //     "2024-11-04": 6.2
-        // ]
-        
-        // completion(sleepData, nil) // Return predefined dummy data without error
+        healthStore.execute(query)
+    }
+    
+    // Helper function to convert a date to a string format "yyyy-MM-dd"
+    private func dateString(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+
+    // Helper function to calculate the sleep duration in hours from start and end date
+    private func sleepDuration(from startDate: Date, to endDate: Date) -> Double {
+        let duration = endDate.timeIntervalSince(startDate)
+        return duration / 3600.0 // Convert seconds to hours
+    }
+    
+    private func calculateSampleDuration(_ sample: HKCategorySample, within range: ClosedRange<Date>) -> TimeInterval {
+        let overlapStart = max(sample.startDate, range.lowerBound)
+        let overlapEnd = min(sample.endDate, range.upperBound)
+        return max(overlapEnd.timeIntervalSince(overlapStart), 0)
     }
 }
