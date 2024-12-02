@@ -12,4 +12,12 @@ struct User: Codable {
     let name: String
     let email: String
     let joined: TimeInterval
+    
+    // Computed property to format joined date
+    var joinDateFormatted: String {
+        let date = Date(timeIntervalSince1970: joined) // Convert TimeInterval to Date
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long // e.g., "August 25, 2024"
+        return formatter.string(from: date)
+    }
 }

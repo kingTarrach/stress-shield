@@ -26,7 +26,7 @@ struct RegisterView: View {
                         .padding(.top, 20)
                 }
                 .frame(width: UIScreen.main.bounds.width * 3, height: 300)
-                .offset(y: -100)
+                .offset(y: -150)
                 
                 // Register Form
                 Form {

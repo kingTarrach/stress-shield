@@ -12,20 +12,26 @@ struct LessonView: View {
     
     var body: some View {
         VStack {
-            // Header Section
-            VStack(alignment: .leading) {
-                Text("Module 1, Lesson \(lessonNumber)")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                
-                Text("Understand the overwhelming nature of stress")
-                    .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+            ZStack {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .foregroundColor(.yellow)
+                    .frame(width: 1000, height: 200)
+                    .offset(y: -70)
+                // Header Section
+                VStack(alignment: .leading) {
+                    Text("Module 1, Lesson \(lessonNumber)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    
+                    Text("Understand the overwhelming nature of stress")
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                .offset(y: -20)
             }
+            
             .padding()
             .padding()
-            .background(Color.yellow)
-            .frame(maxWidth: .infinity)
             .offset(y: -20)
             
             Spacer().frame(height: 20)
@@ -52,6 +58,7 @@ struct LessonView: View {
                 LessonStep(icon: "trophy.fill", label: "", isLocked: true, color: .gray)
                     .offset(x: -50)
             }
+            .offset(y: -100)
             .padding(.horizontal, 40)
             
             Spacer()
