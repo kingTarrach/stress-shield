@@ -1,20 +1,19 @@
 # Sprint 3 Report (Dates from 11/5 to 12/5)
 
-## YouTube link of Sprint * Video (Make this video unlisted)
-https://youtu.be/02avuuknyg8
+## https://youtu.be/02avuuknyg8
 
 ## What's New (User Facing)
  * Redesigned profile view and added a logout button at the bottom of the screen
- * Created a calendar view to display and schedule lessons in a user-friendly list format. (deprocated)
+ * Created a a calendar view to display and schedule lessons in a user-friendly list format. (deprocated)
  * Integrated HealthKit to pull health data from Apple Watch for real-time stress tracking.
  * Refined lesson tracking functionality, simplifying navigation and enhancing the user experience.
 
 ## Work Summary (Developer Facing)
-During this sprint, our team focused on refining existing features based on client feedback and implementing new functionality. We added the profile view to display a placeholder for what the profile view might look like with a logout button at the bottom. Our client originally wanted a social media type of profile, however, they have told us they don't want that anymore. The calendar view was originally requested by the client in their prototype, but has now been deprecated. Additionally, we began integrating HealthKit, overcoming challenges with permissions and data parsing to successfully pull health data from Apple Watch. We have had troubles getting started, as only one of us had a Mac to start, however, we believe next semester we'll be ready to hit the ground running and make far greater progress we made this semester.
+During this sprint, our team focused on refining existing features based on client feedback and implementing new functionality. We added the profile view to display a placeholder for what the profile view might look like with a logout button at the bottom. Our client originally wanted a social media type of profile, however, they have told us they don't want that anymore. The calendar view was originally requested by the client in their prototype, but has now been deprocated. Additionally, we began inegrating HealthKit, overcoming challenges with permissions and data parsing to successfully pull health data from Apple Watch. We have had troubles getting started, as only one of us had a Mac to start, however, we believe next semester we'll be ready to hit the ground running and make far greater progress we made this semester.
 
 ## Unfinished Work
 We now have an AWS server set up to support backend functionalities, including lesson storage and management. While the server has been successfully configured, we were unable to fully implement lesson creation and integration with the app in this sprint. This includes functionality for saving lessons to the AWS server, retrieving them dynamically, and ensuring smooth interaction between the frontend and backend.
-This work has been added as a priority for the next sprint and will involve creating lessons, connecting the lesson tracking system to the server, and testing the backends' reliability and scalability.
+This work has been added as a priority for the next sprint and will involve creating lessons, connecting the lesson tracking system to the server, and testing the backend’s reliability and scalability.
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
