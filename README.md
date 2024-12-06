@@ -61,4 +61,4 @@ Additional Documentation can be found in the repository's root folder.
 
 ## License
 
-<https://choosealicense.com/licenses/mit/>
+License can be found in the repository's root folder.
