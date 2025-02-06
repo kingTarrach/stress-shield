@@ -8,47 +8,40 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    // Assuming MainMenuView manages its own state or fetches data internally
-    @State private var modules: [Module] = [
-        Module(title: "Stress is SO overwhelming!", progress: "15/15", buttonText: "View", isLocked: false),
-        Module(title: "Burnout’s a bummer", progress: "9/35", buttonText: "Next", isLocked: false),
-        Module(title: "Band-Aid vs. Armor", progress: "9/15", buttonText: "Next", isLocked: false),
-        Module(title: "Resilience to the rescue!", progress: "0/95", buttonText: "Start", isLocked: true)
-    ]
-    
     var body: some View {
         NavigationView {
-            VStack {
-                // Example Header
-                HStack {
-                    Text("Module 1")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    Spacer()
+            ScrollView {
+                VStack(spacing: 20) {
+                    ModuleCard(
+                        module: Module(title: "Stress is SO overwhelming!", progress: "15/15", buttonText: "View", isLocked: false),
+                        lessonNumber: 1
+                    )
+                    
+                    ModuleCard(
+                        module: Module(title: "Burnout’s a bummer", progress: "9/35", buttonText: "Next", isLocked: false),
+                        lessonNumber: 2
+                    )
+                    
+                    ModuleCard(
+                        module: Module(title: "Band-Aid vs. Armor", progress: "9/15", buttonText: "Next", isLocked: false),
+                        lessonNumber: 3
+                    )
+                    
+                    ModuleCard(
+                        module: Module(title: "Resilience to the rescue!", progress: "0/20", buttonText: "Start", isLocked: true),
+                        lessonNumber: 4
+                    )
                 }
-                .padding(.horizontal)
-                
-                ScrollView {
-                    VStack(spacing: 15) {
-                        ForEach(modules) { module in
-                            ModuleCard(module: module)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                
-                Spacer()
-                
-
+                .padding()
             }
-            .navigationTitle("Main Menu")
-            .navigationBarHidden(true)
+            .navigationTitle("Module 1")
         }
     }
 }
 
 struct ModuleCard: View {
     let module: Module
+    let lessonNumber: Int
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -59,15 +52,14 @@ struct ModuleCard: View {
                 .font(.subheadline)
                 .foregroundColor(module.isLocked ? .gray : .green)
             
-            Button(action: {
-                // Handle button action
-            }) {
+            NavigationLink(destination: LessonView(lessonNumber: lessonNumber)) {
                 Text(module.buttonText)
                     .frame(maxWidth: .infinity)
-                    .padding()
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
                     .background(module.isLocked ? Color.red : Color.green)
                     .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .cornerRadius(5)
             }
             .disabled(module.isLocked)
         }
@@ -77,20 +69,6 @@ struct ModuleCard: View {
     }
 }
 
-struct NavigationButton: View {
-    let iconName: String
-    let label: String
-    
-    var body: some View {
-        VStack {
-            Image(systemName: iconName)
-                .resizable()
-                .frame(width: 24, height: 24)
-            Text(label)
-                .font(.caption)
-        }
-    }
-}
 
 struct Module: Identifiable {
     let id = UUID()

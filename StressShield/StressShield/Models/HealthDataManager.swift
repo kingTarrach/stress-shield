@@ -17,19 +17,6 @@ class HealthDataManager {
     // Fetch heart rate variability data
     func fetchHeartRateVariability(completion: @escaping ([String: Double]?, Error?) -> Void) {
         
-        //        // Dictionary with predefined HRV values for each date
-        //         let hrvData: [String: Double] = [
-        //             "2024-10-29": 50.0,
-        //             "2024-10-30": 55.2,
-        //             "2024-10-31": 60.1,
-        //             "2024-11-01": 58.7,
-        //             "2024-11-02": 63.3,
-        //             "2024-11-03": 52.9,
-        //             "2024-11-04": 59.5
-        //         ]
-        //
-        //         completion(hrvData, nil) // Return predefined dummy data without error
-        
         guard let hrvType = HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN) else {
             completion(nil, NSError(domain: "HealthDataManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "HRV type not available"]))
             return
@@ -80,19 +67,6 @@ class HealthDataManager {
     
     // Fetch sleep data
     func fetchSleepData(completion: @escaping ([String: Double]?, Error?) -> Void) {
-
-//         // Dictionary with predefined sleep duration for each date
-//         let sleepData: [String: Double] = [
-//             "2024-10-29": 7.5,
-//             "2024-10-30": 6.8,
-//             "2024-10-31": 7.2,
-//             "2024-11-01": 8.0,
-//             "2024-11-02": 5.5,
-//             "2024-11-03": 7.0,
-//             "2024-11-04": 6.2
-//         ]
-//        
-//         completion(sleepData, nil) // Return predefined dummy data without error
         
         guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
             completion(nil, NSError(domain: "HealthDataManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "Sleep Analysis type not available"]))
