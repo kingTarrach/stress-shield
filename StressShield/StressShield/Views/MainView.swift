@@ -31,10 +31,9 @@ struct MainView: View {
                         Label("Learn", systemImage: "book.fill")
                     }
                 
-                // Calendar Tab
-                CalendarView()
+                AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
                     .tabItem {
-                        Label("Calendar", systemImage: "calendar")
+                        Label("AI Coach", systemImage: "brain.head.profile")
                     }
 
                 ProfileView()
