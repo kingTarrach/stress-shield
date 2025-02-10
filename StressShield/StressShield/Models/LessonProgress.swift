@@ -15,8 +15,21 @@ enum LessonStatus: String, Codable {
 }
 
 struct LessonProgress: Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     let userId: String  // Unique user identifier
     let lessonId: String  // Unique lesson identifier
     var status: LessonStatus  // Enum tracking progress
+    
+    init(id: UUID? = nil, userId: String, lessonId: String, status: LessonStatus) {
+        
+        if let providedId = id {
+            self.id = providedId
+        } else {
+            self.id = UUID()  // Generate a new UUID only when creating a new lesson progress
+        }
+        
+        self.userId = userId
+        self.lessonId = lessonId
+        self.status = status
+    }
 }

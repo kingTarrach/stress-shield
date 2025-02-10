@@ -27,6 +27,7 @@
 		03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47B2CB1C32500643027 /* ProfileView.swift */; };
 		03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */; };
 		5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE932D5961690030B692 /* LessonProgress.swift */; };
+		5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE972D59D9900030B692 /* LessonViewModel.swift */; };
 		D4185E5B2D507BC900D187D4 /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5A2D507BBC00D187D4 /* LessonModel.swift */; };
 		D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5C2D507CA900D187D4 /* LessonView.swift */; };
 		D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5E2D507D4000D187D4 /* LessonPageView.swift */; };
@@ -60,6 +61,7 @@
 		03E7C47B2CB1C32500643027 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVM.swift; sourceTree = "<group>"; };
 		5FC5CE932D5961690030B692 /* LessonProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgress.swift; sourceTree = "<group>"; };
+		5FC5CE972D59D9900030B692 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		D4185E5A2D507BBC00D187D4 /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
 		D4185E5C2D507CA900D187D4 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		D4185E5E2D507D4000D187D4 /* LessonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPageView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5FC5CE9A2D5AADD00030B692 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FirestoreService.swift,
+			);
+			target = 03010BCE2CB0C5CF004095FB /* StressShield */;
+		};
 		D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -84,6 +93,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		5FC5CE952D59D8780030B692 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5FC5CE9A2D5AADD00030B692 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 		D4185E602D516E7700D187D4 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -120,6 +130,7 @@
 		03010BD12CB0C5CF004095FB /* StressShield */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5CE952D59D8780030B692 /* Services */,
 				D4185E602D516E7700D187D4 /* Resources */,
 				D45E07722CED232E0088AF4C /* Info.plist */,
 				03010BEF2CB0CD0D004095FB /* Other */,
@@ -163,6 +174,7 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5CE972D59D9900030B692 /* LessonViewModel.swift */,
 				D46668282CED1073007FFD5D /* HealthViewModel.swift */,
 				03010BFA2CB0D171004095FB /* MainViewVM.swift */,
 				03010BF62CB0D150004095FB /* RegisterViewVM.swift */,
@@ -279,6 +291,7 @@
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
 				D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */,
 				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
+				5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */,
 				D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */,
 				5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */,
 				D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */,

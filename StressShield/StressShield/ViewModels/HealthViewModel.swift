@@ -3,57 +3,75 @@ import SwiftUI
 class HealthViewModel: ObservableObject {
     
     private let model = HealthDataManager()
+    private let firestoreService = FirestoreService()
         
-        @Published var isAuthorized: Bool = false
-        @Published var heartRateVariability: [String: Double] = [:]
-        @Published var sleepData: [String: Double] = [:]
-        @Published var showAuthorizationPrompt: Bool = false
+    @Published var isAuthorized: Bool = false
+    @Published var heartRateVariability: [String: Double] = [:]
+    @Published var sleepData: [String: Double] = [:]
+    @Published var showAuthorizationPrompt: Bool = false
+    
+    // Temporary userID for development purposes only
+    private let userId = "user123"
+    
+    // Check authorization and fetch data if authorized
+    func checkAuthorizationAndFetchData() {
+        model.isHealthDataAuthorized { [weak self] isAuthorized in
+            DispatchQueue.main.async {
+                self?.isAuthorized = isAuthorized
+                if isAuthorized {
+                    self?.fetchHealthData()
+                } else {
+                    self?.showAuthorizationPrompt = true
+                }
+            }
+        }
+    }
+    
+    // Fetch health data
+    private func fetchHealthData() {
+        let dispatchGroup = DispatchGroup()
         
-        // Check authorization and fetch data if authorized
-        func checkAuthorizationAndFetchData() {
-            model.isHealthDataAuthorized { [weak self] isAuthorized in
+        // Fetch heart rate variability data
+        dispatchGroup.enter()
+        model.fetchHeartRateVariability { [weak self] data, error in
+            if let data = data {
                 DispatchQueue.main.async {
-                    self?.isAuthorized = isAuthorized
-                    if isAuthorized {
-                        self?.fetchHealthData()
-                    } else {
-                        self?.showAuthorizationPrompt = true
-                    }
+                    self?.heartRateVariability = data
                 }
             }
+            dispatchGroup.leave()
         }
         
-        // Fetch health data
-        private func fetchHealthData() {
-            let dispatchGroup = DispatchGroup()
-            
-            // Fetch heart rate variability data
-            dispatchGroup.enter()
-            model.fetchHeartRateVariability { [weak self] data, error in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self?.heartRateVariability = data
-                    }
+        // Fetch sleep data
+        dispatchGroup.enter()
+        model.fetchSleepData { [weak self] data, error in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self?.sleepData = data
                 }
-                dispatchGroup.leave()
             }
-            
-            // Fetch sleep data
-            dispatchGroup.enter()
-            model.fetchSleepData { [weak self] data, error in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self?.sleepData = data
-                    }
-                }
-                dispatchGroup.leave()
-            }
-            
-            // Notify completion
-            dispatchGroup.notify(queue: .main) {
-                print("Fetched all health data.")
-            }
+            dispatchGroup.leave()
         }
+        
+        // Notify completion
+        dispatchGroup.notify(queue: .main) {
+            print("Fetched all health data.")
+        }
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.saveDataToFirestore()  // Keep optional chaining (only works if self is optional)
+        }
+    }
+    
+    // Save Data to Firestore
+    private func saveDataToFirestore() {
+        firestoreService.saveHealthData(
+            userId: userId,
+            heartRateVariability: heartRateVariability,
+            sleepData: sleepData
+        )
+    }
+    
 //    private let healthDataManager = HealthDataManager()
 //    
 //    var onHealthDataUpdated: (() -> Void)?
