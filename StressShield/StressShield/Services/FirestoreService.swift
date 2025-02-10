@@ -22,12 +22,12 @@ class FirestoreService {
             }
 
             if let document = snapshot?.documents.first {
-                // ✅ If progress exists, update it
+                // If progress exists, update it
                 document.reference.updateData(["status": status.rawValue]) { error in
                     completion(error)
                 }
             } else {
-                // ✅ If progress does not exist, create a new entry
+                // If progress does not exist, create a new entry
                 let newProgress = LessonProgress(userId: userId, lessonId: lessonId, status: status)
                 let newProgressRef = progressRef.document(newProgress.id.uuidString)
 
@@ -59,12 +59,12 @@ class FirestoreService {
                 let data = document.data()
 
                 guard let idString = data["id"] as? String,
-                      let id = UUID(uuidString: idString), // ✅ Ensure ID remains a UUID
+                      let id = UUID(uuidString: idString), // Ensure ID remains a UUID
                       let lessonId = data["lessonId"] as? String,
                       let statusRaw = data["status"] as? String,
                       let status = LessonStatus(rawValue: statusRaw) else { return nil }
 
-                return LessonProgress(id: id, userId: userId, lessonId: lessonId, status: status)
+                return LessonProgress(userId: userId, lessonId: lessonId, status: status)
             }
 
             completion(progressData)
