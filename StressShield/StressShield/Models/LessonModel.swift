@@ -15,9 +15,13 @@ struct LessonPage: Identifiable {
         case video(String) // Video URL string
     }
     
+    
+    
     enum QuestionType {
         case multipleChoice(question: String, options: [String], correctAnswer: String)
     }
     
     let type: PageType
 }
+
+
