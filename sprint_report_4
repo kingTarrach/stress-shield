@@ -1,0 +1,57 @@
+# Sprint 4 Report (Dates from 1/10 to 2/10)
+
+## https://youtu.be/02avuuknyg8
+
+## What's New (User Facing)
+* Implemented lesson view tool so that we can dynamically render content for the lessons
+* Worked on connetcing lessons to lesson tracker view
+* Replaced calender view for AI coach tab which is a endpoint to a LLM from our client
+* Updated the stress data visual to incorporate handling for missing values
+
+## Work Summary (Developer Facing)
+Ran into communication problems in regards to the AWS server which caused significant delays in implementation for it. Ended up integrating everything on the Firebase server and still need to verify its functionality but for the most part it seems to be working as intended. Added the AI coach page which features a fully functional LLM chatbot powered by an external application. Implemented significant portions of the lesson view which now can dynamically show multiple different types of content and can verify user interaction as false or correct. Got valuable experience creating lessons and deepened knowledge of the swift language.
+
+## Unfinished Work
+Still need to connect lesson tracker to the server to be dynamically updated. Tracking how far a user has gotten through a lesson is not tracked.
+Update the app to meet the clients visual prototype closer than current implementation. 
+Need to test server functionality and expand how much data is on the server.
+
+## Completed Issues/User Stories
+Here are links to the issues that we completed in this sprint:
+
+ * https://github.com/kingTarrach/stress-shield/issues/13
+ * https://github.com/kingTarrach/stress-shield/issues/14
+
+ ## Incomplete Issues/User Stories
+ Here are links to issues we worked on but did not complete in this sprint:
+ 
+ * https://github.com/kingTarrach/stress-shield/issues/15 <<Lesson tracker view still in development>>
+ * https://github.com/kingTarrach/stress-shield/issues/11 <<Server functionality still needs testing>>
+ * https://github.com/kingTarrach/stress-shield/issues/8 <<More graphs need to be added and further testing of edge cases>>
+ 
+## Code Files for Review
+Please review the following code files, which were actively developed during this sprint, for quality:
+ * [AICoachView.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/AICoachView.swift)
+ * [LessonPageView.swfit](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/LessonPageView.swift)
+ * [LessonView.swfit](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/LessonView.swift)
+ * [MainMenuView.swift] (https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/MainMenuView.swift)
+ * [LessonModel.swift] (https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Models/LessonModel.swift)
+ 
+## Retrospective Summary
+Here's what went well:
+  * The team successfully implemented significant client-requested changes, such as the AI coach view and extra functionality.
+  * Integration of Lessons has a solid template for future lesson implementation in the future.
+  * Improved team collaboration and communication when troubleshooting navigation and UI issues.
+ 
+Here's what we'd like to improve:
+  * Time management for feature implementation, particularly for more complex features like server functionality.
+  * Integrate more testing for our files to ensure backend functionality.
+  
+Here are changes we plan to implement in the next sprint:
+  * Ensure code for reading health data is connected to server.
+  * Ensure server is correctly processing health data.
+  * Update lesson tracker to track the state of the users progress.
+  * Updating stress visualization graphics and backend support.
+  * Creating a first time user screen as a tutorial.
+  * Creating a daily check in for daily stress information.
+  * Add in lesson contents.
