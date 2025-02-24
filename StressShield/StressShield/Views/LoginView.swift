@@ -23,7 +23,16 @@ struct LoginView: View {
                         .font(.system(size: 50))
                         .foregroundColor(Color.white)
                         .bold()
-                        .padding(.top, 20)
+                        .offset(y: -10)
+                        
+                    
+                    // Shield Icon
+                    Image(systemName: "shield")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60) // Adjust the size as needed
+                        .foregroundColor(.white)
+                        .offset(y: 60)
                 }
                 .frame(width: UIScreen.main.bounds.width * 3, height: 300)
                 .offset(y: -100)
