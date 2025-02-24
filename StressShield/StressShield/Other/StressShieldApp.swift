@@ -22,9 +22,11 @@ import SwiftUI
 //}
 
 @main
+
 struct StressShieldApp: App {
     init() {
         FirebaseApp.configure()
+        BackgroundTaskManager.shared.startMonitoring()
     }
     
     var body: some Scene {

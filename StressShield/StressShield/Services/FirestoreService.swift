@@ -6,6 +6,8 @@
 //
 
 import FirebaseFirestore
+import FirebaseAuth
+import Foundation
 
 class FirestoreService {
     private let db = Firestore.firestore()
@@ -70,24 +72,43 @@ class FirestoreService {
             completion(progressData)
         }
     }
-
     
-    // Save Health Data to Firestore
-    func saveHealthData(userId: String, heartRateVariability: [String: Double], sleepData: [String: Double]) {
+    
+    // MARK: Save Heart Rate Variability (HRV) Data to Firestore
+    func saveHRVData(userId: String, heartRateVariability: [String: Double]) {
         let userRef = db.collection("users").document(userId)
         
         let data: [String: Any] = [
             "heartRateVariability": heartRateVariability,
+            "timestamp": Timestamp(date: Date())
+        ]
+        
+        userRef.collection("healthData").addDocument(data: data) { error in
+            if let error = error {
+                print("Error saving HRV data: \(error.localizedDescription)")
+            } else {
+                print("HRV data successfully saved for user \(userId)")
+            }
+        }
+    }
+    
+    
+    // MARK: Save Sleep Data to Firestore
+    func saveSleepData(userId: String, sleepData: [String: Double]) {
+        let userRef = db.collection("users").document(userId)
+        
+        let data: [String: Any] = [
             "sleepData": sleepData,
             "timestamp": Timestamp(date: Date())
         ]
         
         userRef.collection("healthData").addDocument(data: data) { error in
             if let error = error {
-                print("Error saving health data: \(error.localizedDescription)")
+                print("Error saving sleep data: \(error.localizedDescription)")
             } else {
-                print("Health data successfully saved for user \(userId)")
+                print("Sleep data successfully saved for user \(userId)")
             }
         }
     }
+
 }

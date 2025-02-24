@@ -11,11 +11,24 @@ import Foundation
 class MainViewVM: ObservableObject {
     @Published var currentUserId: String = ""
     private var handler: AuthStateDidChangeListenerHandle?
+
     
     init() {
         self.handler = Auth.auth().addStateDidChangeListener { [weak self] _, user in
             DispatchQueue.main.async {
                 self?.currentUserId = user?.uid ?? ""
+            }
+        }
+        
+        // Request HealthKit authorization after successful login
+        HealthDataManager.shared.requestAuthorization { success in
+            DispatchQueue.main.async {
+                if success {
+                    print("HealthKit authorization granted.")
+                    HealthDataManager.shared.enableBackgroundDelivery()
+                } else {
+                    print("HealthKit authorization denied.")
+                }
             }
         }
     }
