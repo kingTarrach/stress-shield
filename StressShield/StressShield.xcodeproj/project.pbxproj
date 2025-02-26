@@ -19,6 +19,8 @@
 		03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF62CB0D150004095FB /* RegisterViewVM.swift */; };
 		03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF82CB0D15A004095FB /* LoginViewVM.swift */; };
 		03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BFA2CB0D171004095FB /* MainViewVM.swift */; };
+		0306C4B92D6E3A1C0068052A /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306C4B82D6E3A1C0068052A /* TutorialView.swift */; };
+		0306C4BD2D6E3AB50068052A /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306C4BC2D6E3AB50068052A /* TutorialPage.swift */; };
 		035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */; };
 		035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C62CDAACD900FEFF1C /* LearnView.swift */; };
 		035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C82CDAACE700FEFF1C /* CalendarView.swift */; };
@@ -51,6 +53,8 @@
 		03010BF62CB0D150004095FB /* RegisterViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewVM.swift; sourceTree = "<group>"; };
 		03010BF82CB0D15A004095FB /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
 		03010BFA2CB0D171004095FB /* MainViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewVM.swift; sourceTree = "<group>"; };
+		0306C4B82D6E3A1C0068052A /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		0306C4BC2D6E3AB50068052A /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAnalyticsView.swift; sourceTree = "<group>"; };
 		035615C62CDAACD900FEFF1C /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		035615C82CDAACE700FEFF1C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */,
 				035615C62CDAACD900FEFF1C /* LearnView.swift */,
 				035615C82CDAACE700FEFF1C /* CalendarView.swift */,
+				0306C4B82D6E3A1C0068052A /* TutorialView.swift */,
+				0306C4BC2D6E3AB50068052A /* TutorialPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			files = (
 				03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */,
 				035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */,
+				0306C4BD2D6E3AB50068052A /* TutorialPage.swift in Sources */,
 				03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */,
 				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
@@ -289,6 +296,7 @@
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
 				035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */,
 				D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */,
+				0306C4B92D6E3A1C0068052A /* TutorialView.swift in Sources */,
 				D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */,
 				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,

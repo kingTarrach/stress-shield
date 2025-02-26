@@ -11,10 +11,11 @@ struct MainView: View {
     @StateObject var viewModel = MainViewVM()
     @State private var tutorialStep = 0
     @State private var showTutorial = true
+    @State private var showMain = false
 
     var body: some View {
         ZStack {
-            if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+            if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty, showMain {
                 TabView {
                     MainMenuView()
                         .tabItem {
@@ -46,12 +47,14 @@ struct MainView: View {
                         }
                         .tag(4)
                 }
-            } else {
+            } else if !viewModel.isSignedIn, showMain{
                 LoginView()
+            } else {
+                TutorialView(hasSeenTutorial: $showMain)
             }
             
             // Always Show Tutorial on App Launch
-            if showTutorial, viewModel.isSignedIn {
+            if showTutorial, viewModel.isSignedIn, showMain {
                 TutorialOverlay(step: $tutorialStep, showTutorial: $showTutorial)
             }
         }

@@ -81,3 +81,7 @@ struct LessonView: View {
         }
     }
 }
+
+#Preview {
+    LessonView(lessonNumber: 0)
+}
