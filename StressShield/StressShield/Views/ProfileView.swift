@@ -113,20 +113,21 @@ struct ProfileView: View {
                                                 
                             
                             .padding(.horizontal)
+                            
+                            Button(action: {
+                                viewModel.logOut()
+                            }) {
+                                Text("Log Out")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.red)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         }
                     } else {
                         // Log Out Button at the Bottom
-                        Button(action: {
-                            viewModel.logOut()
-                        }) {
-                            Text("Log Out")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.red)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-
+                        Text("Loading...")
                     }
                 }
                 .padding()
