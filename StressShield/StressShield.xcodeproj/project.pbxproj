@@ -33,6 +33,10 @@
 		D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5E2D507D4000D187D4 /* LessonPageView.swift */; };
 		D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E682D55605E00D187D4 /* AICoachView.swift */; };
 		D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */; };
+		D4185E7E2D6C418300D187D4 /* tempModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E7D2D6C417A00D187D4 /* tempModuleView.swift */; };
+		D4185E802D70202300D187D4 /* FirebaseTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E7F2D70201000D187D4 /* FirebaseTools.swift */; };
+		D4185E822D7107EE00D187D4 /* FirebaseDocumentClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */; };
+		D4185E862D72379D00D187D4 /* FirebaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E852D72379300D187D4 /* FirebaseVM.swift */; };
 		D45E07782CED2CC30088AF4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03010BEA2CB0C875004095FB /* GoogleService-Info.plist */; };
 		D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668262CED1010007FFD5D /* HealthDataManager.swift */; };
 		D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668282CED1073007FFD5D /* HealthViewModel.swift */; };
@@ -67,6 +71,10 @@
 		D4185E5E2D507D4000D187D4 /* LessonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPageView.swift; sourceTree = "<group>"; };
 		D4185E682D55605E00D187D4 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachView.swift; sourceTree = "<group>"; };
 		D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLessonsView.swift; sourceTree = "<group>"; };
+		D4185E7D2D6C417A00D187D4 /* tempModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempModuleView.swift; sourceTree = "<group>"; };
+		D4185E7F2D70201000D187D4 /* FirebaseTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTools.swift; sourceTree = "<group>"; };
+		D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDocumentClasses.swift; sourceTree = "<group>"; };
+		D4185E852D72379300D187D4 /* FirebaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVM.swift; sourceTree = "<group>"; };
 		D45E07722CED232E0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45E07762CED2A0A0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46668262CED1010007FFD5D /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
@@ -154,6 +162,7 @@
 		03010BEC2CB0CCC8004095FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E7D2D6C417A00D187D4 /* tempModuleView.swift */,
 				D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */,
 				D4185E682D55605E00D187D4 /* AICoachView.swift */,
 				D4185E5E2D507D4000D187D4 /* LessonPageView.swift */,
@@ -174,6 +183,7 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E852D72379300D187D4 /* FirebaseVM.swift */,
 				5FC5CE972D59D9900030B692 /* LessonViewModel.swift */,
 				D46668282CED1073007FFD5D /* HealthViewModel.swift */,
 				03010BFA2CB0D171004095FB /* MainViewVM.swift */,
@@ -187,6 +197,8 @@
 		03010BEE2CB0CCF8004095FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */,
+				D4185E7F2D70201000D187D4 /* FirebaseTools.swift */,
 				5FC5CE932D5961690030B692 /* LessonProgress.swift */,
 				D4185E5A2D507BBC00D187D4 /* LessonModel.swift */,
 				D46668262CED1010007FFD5D /* HealthDataManager.swift */,
@@ -289,11 +301,14 @@
 				03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */,
 				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
+				D4185E862D72379D00D187D4 /* FirebaseVM.swift in Sources */,
 				D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */,
+				D4185E7E2D6C418300D187D4 /* tempModuleView.swift in Sources */,
 				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
 				5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */,
 				D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */,
 				5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */,
+				D4185E802D70202300D187D4 /* FirebaseTools.swift in Sources */,
 				D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */,
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
 				D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */,
@@ -306,6 +321,7 @@
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
 				035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */,
 				D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */,
+				D4185E822D7107EE00D187D4 /* FirebaseDocumentClasses.swift in Sources */,
 				D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */,
 				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,
