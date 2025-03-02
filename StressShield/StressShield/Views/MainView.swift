@@ -19,8 +19,6 @@ struct MainView: View {
                 MainMenuView()
                     .tabItem {
                         Label("Home", systemImage: "house")
-                    }.onAppear {
-                        firebaseViewModel.addTest()
                     }
                 
                 // Data Analytics Tab
