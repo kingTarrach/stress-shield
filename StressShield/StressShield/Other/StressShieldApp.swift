@@ -25,8 +25,6 @@ import SwiftUI
 struct StressShieldApp: App {
     init() {
         FirebaseApp.configure()
-        var viewModel = FirebaseVM()
-        viewModel.addTest()
     }
     
     var body: some Scene {

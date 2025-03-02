@@ -1,15 +1,29 @@
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 
 class FirebaseVM: ObservableObject {
     
     let model = FirebaseTools()
-    let test = HRVAverage(name: "Test1", value: 100, date: Date().timeIntervalSince1970, user: "Test User")
-    let test2: [String: Any] = ["name": "Test2", "value": 100, "date": Date().timeIntervalSince1970, "user": "Test User"]
+
     
     func addTest() {
-        model.addDocumentToFirestore(collection: "HRVAverage", document: test)
-        model.addDocumentToFirestore(collection:"HRVAverage", documentFields: test2)
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+        print(userId)
+        Task {
+            let documents = await model.getCollectionFromFirestore(collection: "HRVAverage", as: HRVAverage.self, userID: userId)
+            if let hrvAverages = documents {
+                for hrv in hrvAverages {
+                    print("Name: \(hrv.name), Value: \(hrv.value ?? 0), Date: \(hrv.date ?? 0), User: \(hrv.user ?? "Unknown")")
+                }
+            } else {
+                print("No HRVAverage data available.")
+            }
+        }
     }
 }

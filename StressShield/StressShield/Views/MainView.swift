@@ -10,6 +10,8 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel = MainViewVM()
     
+    var firebaseViewModel = FirebaseVM()
+    
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
@@ -17,6 +19,8 @@ struct MainView: View {
                 MainMenuView()
                     .tabItem {
                         Label("Home", systemImage: "house")
+                    }.onAppear {
+                        firebaseViewModel.addTest()
                     }
                 
                 // Data Analytics Tab
