@@ -8,87 +8,63 @@
 import Foundation
 import SwiftUI
 
+struct LineChartView<T: ChartData>: View {
+    var data: [T]
+    var title: String
+    var scale: String
 
-// This struct will hold the users data
-struct UserStressData: Identifiable {
-    let id = UUID()
-    let date: Date
-    let stressLevel: Int
-}
-
-// Sample view model to provide stress data
-class StressDataViewModel: ObservableObject {
-    @Published var stressData: [UserStressData] = []
-    
-    init() {
-        // Populate with sample data
-        let calendar = Calendar.current
-        for day in 0..<7 {
-            if let date = calendar.date(byAdding: .day, value: -day, to: Date()) {
-                let stressLevel = Int.random(in: 0...100)
-                stressData.append(UserStressData(date: date, stressLevel: stressLevel))
-            }
-        }
-        stressData.sort { $0.date < $1.date } // Ensure data is sorted by date
-    }
-}
-
-// Custom LineChart view
-struct LineChartView: View {
-    var data: [UserStressData]
-    let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    
-    @State private var showTooltip = false
-    @State private var tooltipPosition: CGPoint = .zero
-    @State private var tooltipText: String = ""
-    // Main body
     var body: some View {
-        GeometryReader { geometry in
-            // Step 1: Define ChartWidth and ChartHeight and xStep (based on chartWidth)
-            let chartWidth = geometry.size.width - 80
-            let chartHeight = geometry.size.height - 135
-            let xStep = chartWidth / CGFloat(daysOfWeek.count - 1)
-            ZStack {
-                // Create background color
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.black)
-                VStack {
+        VStack {
+            Text(title)
+                .font(.title)
+                .foregroundColor(.black)
+                .padding()
+            
+            GeometryReader { geometry in
+                let chartWidth = geometry.size.width - 80
+                let chartHeight = geometry.size.height - 135
+                let xStep = chartWidth / CGFloat(max(data.count - 1, 1)) // Avoid division by zero
+                
+                let minY = T.minValue  // Get min from data type
+                let maxY = T.maxValue  // Get max from data type
+
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.black.opacity(0.8))
                     
                     HStack {
-                        // Create y-axis labels
-                        YAxisLabels()
-                        
-                        ZStack {
-                            // Create chart line
-                            LineChartPath(data: data, chartWidth: chartWidth, xStep: xStep, chartHeight: chartHeight) { point, score in
-                                self.showTooltip = true
-                                self.tooltipPosition = point
-                                self.tooltipText = "\(score)"
-                            } onExit: {
-                                self.showTooltip = false
-                            }
-                            // Unused currently
-                            if showTooltip {
-                                TooltipView(text: tooltipText)
-                                    .position(x: tooltipPosition.x, y: tooltipPosition.y - 20) // Position above the point
-                            }
-                            // Create x-axis labels
-                            XAxisLabels(daysOfWeek: daysOfWeek, xStep: xStep)
-                        }
+                        YAxisLabels(minValue: minY, maxValue: maxY)
+                        LineChartPath(
+                            data: data,
+                            chartWidth: chartWidth,
+                            xStep: xStep,
+                            chartHeight: chartHeight,
+                            minY: minY,
+                            maxY: maxY
+                        )
                     }
-                    // Add space
-                    Spacer()
-                    
-                    Text("Day") // X-axis title
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.bottom, 20)
-                        .foregroundColor(.white)
                 }
+                
+                // Add X-Axis Labels
+                XAxisLabels(
+                    data: data,
+                    chartWidth: chartWidth,
+                    xStep: xStep,
+                    scale: scale
+                )
+                .position(x: geometry.size.width / 2.5, y: chartHeight + 103)
             }
-        }
+            .frame(height: 260)
             
+            Text(scale)
+                .font(.title3)
+                .foregroundColor(.black)
+            
+            Spacer()
+        }
     }
 }
+
 
 // Subview for the tooltip - UNUSED CURRENTLY
 struct TooltipView: View {
@@ -105,131 +81,148 @@ struct TooltipView: View {
 
 // Subview for y-axis labels
 struct YAxisLabels: View {
+    let minValue: CGFloat
+    let maxValue: CGFloat
+
     var body: some View {
-        
         VStack(spacing: 12) {
-            // Write text for each y-axis label
             ForEach((0...5).reversed(), id: \.self) { i in
-                Text("\(i * 20)")
+                let value = minValue + (CGFloat(i) * (maxValue - minValue) / 5)
+                Text("\(Int(value))") // Convert to readable number
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 15)
             }
         }
-        // Define the frame size for y-axis labels
         .frame(width: 50)
         .padding(.bottom, 15)
-        
     }
 }
-// Subview for x-axis labels - need to define distance between points (xStep) for accurate point visualization
-struct XAxisLabels: View {
-    let daysOfWeek: [String]
+
+// X-axis labels based on changable chartdata
+struct XAxisLabels<T: ChartData>: View {
+    var data: [T]
+    var chartWidth: CGFloat
     var xStep: CGFloat
-        
+    var offsetX: CGFloat = 50
+    var scale: String  // Scale can be "Hour", "Day", or "Week"
+
     var body: some View {
         HStack {
-            // Write text for each day of the week
-            ForEach(daysOfWeek, id: \.self) { day in
-                Text(day)
+            ForEach(0..<data.count, id: \.self) { index in
+                let reversedIndex = (data.count - 1) - index  // Reverse order
+                let formattedDate = generateDynamicLabel(index: reversedIndex, scale: scale)
+
+                Text(formattedDate)
                     .foregroundColor(.white)
-                    .frame(width: xStep * (3/4))
+                    .font(.caption)
+                    .frame(width: xStep * 0.83, alignment: .center)
+                    .minimumScaleFactor(0.83)
                     .lineLimit(1)
             }
         }
-        // Move x-axis labels down and to the left
-        .offset(x: -xStep / 2, y: 105) // Offset down for x-axis labels
+        .frame(width: chartWidth)
+        .offset(x: offsetX)
+    }
+
+    // Function to dynamically generate X-axis labels
+    func generateDynamicLabel(index: Int, scale: String) -> String {
+        let calendar = Calendar.current
+        let now = Date()  // Get current time
+        let formatter = DateFormatter()
+        var adjustedDate: Date
+
+        switch scale {
+        case "Minute":
+            // Generate minutes going backwards (9:32 PM, 9:31 PM, etc.)
+            adjustedDate = calendar.date(byAdding: .minute, value: -index, to: now) ?? now
+            formatter.dateFormat = "h:mma"  // Example: "9:32 PM"
+        case "Hour":
+            // Generate hours going backwards (9:32 PM, 8:32 PM, etc.)
+            adjustedDate = calendar.date(byAdding: .hour, value: -index, to: now) ?? now
+            formatter.dateFormat = "h:mma"  // Example: "9:32 PM"
+
+        case "Day":
+            // Generate days going backwards (3/3, 3/2, etc.)
+            adjustedDate = calendar.date(byAdding: .day, value: -index, to: now) ?? now
+            formatter.dateFormat = "M/d/yy"  // Example: "3/3"
+
+        case "Week":
+            // Generate weeks going backwards (Week starts on Sunday)
+            adjustedDate = calendar.date(byAdding: .day, value: -(index * 7), to: now) ?? now
+            formatter.dateFormat = "M/d/yy"  // Example: "2/24"
+
+        default:
+            adjustedDate = now
+            formatter.dateFormat = "M/d/yy"  // Default fallback
+        }
+
+        return formatter.string(from: adjustedDate)
     }
 }
 
-// Subview for the chart line path
-struct LineChartPath: View {
-    // Passed in parameters
-    var data: [UserStressData]
+
+
+
+// MARK: - Chart Path
+struct LineChartPath<T: ChartData>: View {
+    var data: [T]
     var chartWidth: CGFloat
     var xStep: CGFloat
     var chartHeight: CGFloat
-    var onHover: (CGPoint, Int) -> Void
-    var onExit: () -> Void
+    var minY: CGFloat
+    var maxY: CGFloat
     
-    // Main body
     var body: some View {
-        // Define key y-level points
-        let maxY = CGFloat(100)
-        let minY = CGFloat(0)
-        let yScale = chartHeight / (maxY - minY)
-        let offsetY: CGFloat = 40
-        // Create guidelines
-        ZStack {
-            // Guide lines at y levels 0, 50, and 100
-            Path { path in
-                let maxY = CGFloat(100)
-                let yLevels: [CGFloat] = [0, 50, 100] // y levels for guide lines
-                let yScale = chartHeight / maxY
-                
-                // Define their path
-                for yLevel in yLevels {
-                    let yPosition = chartHeight - yLevel * yScale + offsetY
-                    path.move(to: CGPoint(x: 0, y: yPosition))
-                    path.addLine(to: CGPoint(x: chartWidth, y: yPosition))
-                }
-            }
-            // Paint the guidelines
-            .stroke(Color.gray.opacity(0.8), style: StrokeStyle(lineWidth: 1, dash: [5])) // Dashed gray line
+        Path { path in
+            guard data.count > 1 else { return }
+            let yScale = chartHeight / (maxY - minY)
+            let offsetX = 8.0
+            let offsetY: CGFloat = 63
             
-            // Main chart Path
-            Path { path in
-                guard data.count > 1 else { return }
-                // OffsetX ensures accurate chart
-                let offsetX = (chartWidth - xStep * CGFloat(data.count - 1)) / 2
-                
-                // Step 1: Define start point
-                let startPoint = CGPoint(x: offsetX, y: chartHeight + offsetY - CGFloat(data[0].stressLevel) * yScale)
-                path.move(to: startPoint)
-                // Step 2: Continue down the data and draw each point
-                for index in 1..<data.count {
-                    // Define previous point x and y values
-                    let prev_x = CGFloat(index - 1) * xStep
-                    let prev_y = chartHeight + offsetY - CGFloat(data[index - 1].stressLevel) * yScale
-                    
-                    // Define current point x and y values
-                    let curr_x = CGFloat(index) * xStep
-                    let curr_y = chartHeight + offsetY - CGFloat(data[index].stressLevel) * yScale
-                    
-                    // Create the actual points
-                    let previousPoint = CGPoint(x: prev_x, y: prev_y)
-                    let currentPoint = CGPoint(x: curr_x, y: curr_y)
-                    
-                    // Necessary for creating the curvature of the line
-                    let midPoint = CGPoint(x: (previousPoint.x + currentPoint.x) / 2, y: (previousPoint.y + currentPoint.y) / 2)
-                    // Create curvature of the line
-                    path.addQuadCurve(to: midPoint, control: previousPoint)
-                    
-                    
-                }
+            let startPoint = CGPoint(
+                x: chartWidth - offsetX,
+                y: (maxY - data[0].value) * yScale + offsetY
+            )
+            path.move(to: startPoint)
+            
+            for index in 1..<data.count {
+                let x = chartWidth - (CGFloat(index) * xStep) - offsetX
+                let y = (maxY - data[index].value) * yScale + offsetY
+                path.addLine(to: CGPoint(x: x, y: y))
             }
-            // Paint the graph line
-            .stroke(Color.purple, lineWidth: 2)
         }
+        .stroke(Color.purple, lineWidth: 2)
     }
 }
 
-// Main view
+// Main Tab View
 struct DataAnalyticsView: View {
-    @ObservedObject var viewModel = StressDataViewModel()
+    @ObservedObject var viewModel = DataViewModel()
     
     var body: some View {
-        VStack {
-            // Header text
-            Text("Daily Stress Levels by Week")
-                .font(.title)
-                .padding()
+        TabView {
+            LineChartView(
+                data: viewModel.stressData,
+                title: "Stress Levels Over Time",
+                scale: "Hour"
+            )
+            .tag(0)
             
-            // Chart creation
-            LineChartView(data: viewModel.stressData)
-                .frame(height: 300)
-                .padding()
+            LineChartView(
+                data: viewModel.hrvData,
+                title: "Heart Rate Over Time",
+                scale: "Minute"
+            )
+            .tag(1)
+            
+            LineChartView(
+                data: viewModel.sleepData,
+                title: "Sleep Duration Over Time",
+                scale: "Week"
+            )
+            .tag(2)
         }
+        .tabViewStyle(PageTabViewStyle()) // Enables swipe navigation
     }
 }
 
