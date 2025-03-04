@@ -153,7 +153,7 @@ struct XAxisLabels<T: ChartData>: View {
 
         default:
             adjustedDate = now
-            formatter.dateFormat = "M/d"  // Default fallback
+            formatter.dateFormat = "M/d/yy"  // Default fallback
         }
 
         return formatter.string(from: adjustedDate)
@@ -176,17 +176,17 @@ struct LineChartPath<T: ChartData>: View {
         Path { path in
             guard data.count > 1 else { return }
             let yScale = chartHeight / (maxY - minY)
-            let offsetX = (chartWidth - xStep * CGFloat(data.count - 1)) / 2
+            let offsetX = 8.0
             let offsetY: CGFloat = 63
             
             let startPoint = CGPoint(
-                x: chartWidth,
+                x: chartWidth - offsetX,
                 y: (maxY - data[0].value) * yScale + offsetY
             )
             path.move(to: startPoint)
             
             for index in 1..<data.count {
-                let x = chartWidth - (CGFloat(index) * xStep)
+                let x = chartWidth - (CGFloat(index) * xStep) - offsetX
                 let y = (maxY - data[index].value) * yScale + offsetY
                 path.addLine(to: CGPoint(x: x, y: y))
             }
