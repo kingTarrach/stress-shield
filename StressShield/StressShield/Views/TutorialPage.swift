@@ -23,7 +23,7 @@ struct TutorialPage: View {
                 if !title.isEmpty {
                     Text(title)
                         .font(.largeTitle).bold()
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.center)
                         .padding(.horizontal)
                 }
                 

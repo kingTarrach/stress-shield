@@ -66,14 +66,14 @@ struct LoginView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.blue)
                                 
-                                Text("Log In")
+                                Text("LOG IN")
                                     .foregroundColor(.white)
                                     .bold()
                                 
                             }
                         }
                     }
-                    .padding(.top, 150)
+                    .padding(.top, 100)
                     .scrollDisabled(true)
                     .scrollContentBackground(.hidden)
                     .background(Color.black)

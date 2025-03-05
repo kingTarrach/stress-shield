@@ -42,10 +42,18 @@ struct TutorialView: View {
                 subtitle: "Try It Free—No Strings Attached",
                 description: "StressShield is built on real science, designed to be lighthearted and fun, and field-tested by real people.\n\n 🟦Grounded in neuroscience, \n       physiology, and \n       educational psychology\n 🟦Designed for busy people\n 🟦Focused on building \n       lasting resilience\n\n Users report:\n 🟦30% more energy\n 🟦40% better focus & productivity\n 🟦50% fewer \n       stress-related symptoms\n\nImagine feeling like yourself again–but even better.",
                 buttonText: "START MY FREE TRIAL",
-                onNext: { hasSeenTutorial = true }
+                onNext: {
+                    UserDefaults.standard.set(true, forKey: "hasSeenPreLoginTutorial") // Persist flag
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        hasSeenTutorial = true
+                    }
+                }
             ).tag(3)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        .onDisappear {
+            UserDefaults.standard.set(true, forKey: "hasSeenPreLoginTutorial")
+        }
     }
 }
 

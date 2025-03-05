@@ -17,21 +17,6 @@ struct RegisterView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    // Header
-    //                ZStack {
-    //                    RoundedRectangle(cornerRadius: 0)
-    //                        .foregroundColor(.green)
-    //                        .offset(y: -50)
-    //
-    //                    Text("Register")
-    //                        .font(.system(size: 50))
-    //                        .foregroundColor(Color.white)
-    //                        .bold()
-    //                        .padding(.top, 20)
-    //                }
-    //                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
-    //                .offset(y: -100)
-                    
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
@@ -71,7 +56,7 @@ struct RegisterView: View {
                             }
                         }
                     }
-                    .padding(.bottom, 50)
+                    .padding(.top, 100)
                     .scrollDisabled(true)
                     .scrollContentBackground(.hidden)
                     .background(Color.black)

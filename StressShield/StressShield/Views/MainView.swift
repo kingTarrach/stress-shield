@@ -10,56 +10,75 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel = MainViewVM()
     @State private var tutorialStep = 0
-    @State private var showTutorial = true
-    @State private var showMain = false
+    @State private var showTutorialOverlay = false
+    @State private var hasSeenPreLoginTutorial: Bool?
+    @State private var hasSeenPostLoginTutorial: Bool?
 
     var body: some View {
         ZStack {
-            if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty, showMain {
-                TabView {
-                    MainMenuView()
-                        .tabItem {
-                            Label("Home", systemImage: "house")
-                        }
-                        .tag(0)
-                    
-                    DataAnalyticsView()
-                        .tabItem {
-                            Label("Data Analytics", systemImage: "chart.bar.fill")
-                        }
-                        .tag(1)
-                    
-                    LearnView()
-                        .tabItem {
-                            Label("Learn", systemImage: "book.fill")
-                        }
-                        .tag(2)
-                    
-                    AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
-                        .tabItem {
-                            Label("AI Coach", systemImage: "brain.head.profile")
-                        }
-                        .tag(3)
+            if let hasSeenPreLogin = hasSeenPreLoginTutorial,
+               let hasSeenPostLogin = hasSeenPostLoginTutorial {
+                
+                if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+                    TabView {
+                        MainMenuView()
+                            .tabItem { Label("Home", systemImage: "house") }
+                            .tag(0)
 
-                    ProfileView()
-                        .tabItem {
-                            Label("My Profile", systemImage: "person.circle")
+                        LearnView()
+                            .tabItem { Label("Learn", systemImage: "book.fill") }
+                            .tag(1)
+
+                        AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
+                            .tabItem { Label("AI Coach", systemImage: "brain.head.profile") }
+                            .tag(2)
+
+                        DataAnalyticsView()
+                            .tabItem { Label("Data Analytics", systemImage: "chart.bar.fill") }
+                            .tag(3)
+
+                        ProfileView()
+                            .tabItem { Label("My Profile", systemImage: "person.circle") }
+                            .tag(4)
+                    }
+                    .onAppear {
+                        if !hasSeenPostLogin {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                showTutorialOverlay = true
+                            }
                         }
-                        .tag(4)
+                    }
+                } else if !viewModel.isSignedIn && hasSeenPreLogin {
+                    LoginView()
+                } else {
+                    TutorialView(hasSeenTutorial: Binding(
+                        get: { hasSeenPreLoginTutorial ?? false },
+                        set: { newValue in
+                            hasSeenPreLoginTutorial = newValue
+                            UserDefaults.standard.set(newValue, forKey: "hasSeenPreLoginTutorial")
+                        }
+                    ))
                 }
-            } else if !viewModel.isSignedIn, showMain{
-                LoginView()
-            } else {
-                TutorialView(hasSeenTutorial: $showMain)
+
+                if showTutorialOverlay {
+                    TutorialOverlay(step: $tutorialStep, showTutorial: $showTutorialOverlay)
+                        .onDisappear {
+                            UserDefaults.standard.set(true, forKey: "hasSeenPostLoginTutorial")
+                            showTutorialOverlay = false
+                        }
+                }
             }
-            
-            // Always Show Tutorial on App Launch
-            if showTutorial, viewModel.isSignedIn, showMain {
-                TutorialOverlay(step: $tutorialStep, showTutorial: $showTutorial)
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                hasSeenPreLoginTutorial = UserDefaults.standard.bool(forKey: "hasSeenPreLoginTutorial")
+                hasSeenPostLoginTutorial = UserDefaults.standard.bool(forKey: "hasSeenPostLoginTutorial")
             }
         }
     }
 }
+
+
 
 struct TutorialOverlay: View {
     @Binding var step: Int
@@ -80,14 +99,21 @@ struct TutorialOverlay: View {
                 .compositingGroup()
 
             VStack(spacing: 20) {
-                Text(tutorialText[step])
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue.opacity(0.9))
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .frame(width: 250)
+                VStack(spacing: 10) {
+                    Text(tutorialTitles[step]) // Title in bold
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .bold()
+
+                    Text(tutorialText[step]) // Description below the title
+                        .font(.body)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(Color.gray.opacity(0.9)) // Dark background for contrast
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .frame(width: 280)
 
                 Button(action: {
                     if step < tutorialText.count - 1 {
@@ -112,25 +138,35 @@ struct TutorialOverlay: View {
     }
 }
 
+// Tutorial Titles
+let tutorialTitles = [
+    "Your Resilience Journey Begins Here!",
+    "Stay on Track",
+    "Learn Stress Resilience",
+    "Meet Your Guide, Axia",
+    "You'll Need a Compass",
+    "Know Where You Are"
+]
 
 // Tutorial Messages
 let tutorialText = [
-    "Welcome! Let's explore the app.",
-    "This is the Home tab. Find your main dashboard with lessons here.",
-    "The Data Analytics tab helps track your progress.",
-    "The Learn tab provides educational resources.",
-    "Meet your AI Coach! Get personalized guidance.",
-    "Manage your profile and settings here."
+    "Every great adventure starts with preparation. Like a knight sharpening their sword, you need the right tools to take on stress and build resilience.\n\nLet's get you set up and ready to go.",
+    "It's easy to get distracted by life's side quests–but constistency is key to building resilience.\n\nEach day, you'll get small, actionable steps, real-time nudges, and guided techniques to help you build resilience.\n\nCheck in often to track your progress and keep pushing forward.",
+    "Access educational resources for growth.",
+    "You won't be on this journey alone.\n\nAxia, your AI-powered resilience mentor, is with you every step of the way. You can chat with Axia any time.\n\nLike a seasoned coach, Axia adapts to your progress, offers real-time advice, and keeps you on track.",
+    "Every explorer needs a way to navigate. StressShield uses data from your wearable device to personalize your daily challenges based on your real-time stress levels.\n\nThis info acts like your own compass, helping you track how your body responds to stress so you can adjust and grow stronger.\n\nTo get the most out of your training, sync your device now.",
+    "StressShield analyzes your real-time wearable data, check-ins, and completed quests to build your Resilience Profile.\n\nYour Resilience Profile will update based on the progress you make in your journey and improve your stress resilience."
 ]
+
 
 // Positions of messages relative to tabs
 let tutorialPositions: [CGPoint] = [
     CGPoint(x: 200, y: 400), // Intro
-    CGPoint(x: 125, y: 600),  // Home
-    CGPoint(x: 163.75 , y: 600), // Data Analytics
-    CGPoint(x: 202.5, y: 600), // Learn
-    CGPoint(x: 241.25, y: 600), // AI Coach
-    CGPoint(x: 280, y: 600)  // Profile
+    CGPoint(x: 200, y: 500),  // Home
+    CGPoint(x: 200, y: 500), // Data Analytics
+    CGPoint(x: 200, y: 500), // Learn
+    CGPoint(x: 200, y: 500), // AI Coach
+    CGPoint(x: 200, y: 500)  // Profile
 ]
 
 // Tab Bar spotlight positions
