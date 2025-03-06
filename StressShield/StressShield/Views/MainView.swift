@@ -20,27 +20,38 @@ struct MainView: View {
                let hasSeenPostLogin = hasSeenPostLoginTutorial {
                 
                 if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-                    TabView {
+                    TabView() {
                         MainMenuView()
-                            .tabItem { Label("Home", systemImage: "house") }
+                            .tabItem {
+                                Image(systemName: "house.fill")
+                            }
                             .tag(0)
 
                         LearnView()
-                            .tabItem { Label("Learn", systemImage: "book.fill") }
+                            .tabItem {
+                                Image(systemName: "play.rectangle.fill")
+                            }
                             .tag(1)
 
                         AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
-                            .tabItem { Label("AI Coach", systemImage: "brain.head.profile") }
+                            .tabItem {
+                                Image(systemName: "ellipsis.bubble.fill")
+                            }
                             .tag(2)
 
                         DataAnalyticsView()
-                            .tabItem { Label("Data Analytics", systemImage: "chart.bar.fill") }
+                            .tabItem {
+                                Image(systemName: "chart.bar.fill")
+                            }
                             .tag(3)
 
                         ProfileView()
-                            .tabItem { Label("My Profile", systemImage: "person.circle") }
+                            .tabItem {
+                                Image(systemName: "person.fill") 
+                            }
                             .tag(4)
                     }
+                    .accentColor(.blue) // Makes the icons match the blue color from your image
                     .onAppear {
                         if !hasSeenPostLogin {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

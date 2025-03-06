@@ -11,88 +11,80 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewVM()
 
     var body: some View {
-       
         NavigationView {
             ZStack {
                 Color.black
                     .ignoresSafeArea()
-                VStack {
-                    // Header
-    //                ZStack {
-    //                    RoundedRectangle(cornerRadius: 0)
-    //                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-    //                        .offset(y: -50)
-    //
-    //                    Text("Stress Shield")
-    //                        .font(.system(size: 50))
-    //                        .foregroundColor(Color.white)
-    //                        .bold()
-    //                        .offset(y: -10)
-    //
-    //
-    //                    // Shield Icon
-    //                    Image(systemName: "shield")
-    //                        .resizable()
-    //                        .scaledToFit()
-    //                        .frame(width: 60, height: 60)
-    //                        .foregroundColor(.white)
-    //                        .offset(y: 60)
-    //                }
-    //                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
-    //                .offset(y: -100)
-                    
+                
+                VStack(spacing: 20) {
+                    // Logo
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
                     
+                    // Error Message
+                    if !viewModel.errorMsg.isEmpty {
+                        Text(viewModel.errorMsg)
+                            .foregroundColor(.red)
+                            .padding(.horizontal)
+                    }
+                    
                     // Login Form
-                    Form {
-                        if !viewModel.errorMsg.isEmpty {
-                            Text(viewModel.errorMsg)
-                                .foregroundColor(.red)
-                        }
-                        TextField("Email Address", text: $viewModel.email)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Email")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.email)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
                             .autocorrectionDisabled()
                             .autocapitalization(.none)
                         
-                        SecureField("Password", text: $viewModel.password)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("Password")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
                         
-                        Button {
-                            viewModel.login()
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.blue)
-                                
-                                Text("LOG IN")
-                                    .foregroundColor(.white)
-                                    .bold()
-                                
-                            }
-                        }
+                        SecureField("", text: $viewModel.password)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
                     }
-                    .padding(.top, 100)
-                    .scrollDisabled(true)
-                    .scrollContentBackground(.hidden)
-                    .background(Color.black)
+                    .padding(.horizontal, 30)
                     
-                    // Create Account
-                    VStack {
+                    // Login Button
+                    Button(action: {
+                        viewModel.login()
+                    }) {
+                        Text("LOG IN")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(30)
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 20)
+
+                    // Create Account Section
+                    HStack {
                         Text("New User?")
+                            .foregroundColor(.white)
                         
                         NavigationLink("Create An Account", destination: RegisterView())
-
+                            .foregroundColor(.blue)
+                            .bold()
                     }
-                    .padding(.bottom, 50)
+                    .padding(.top, 10)
                     
                     Spacer()
                 }
             }
-            
         }
-        
     }
 }
 
