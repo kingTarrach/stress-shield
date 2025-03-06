@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseAuth
 
 class FirestoreService {
     private let db = Firestore.firestore()
@@ -90,4 +91,46 @@ class FirestoreService {
             }
         }
     }
+
+    func addTestHeartRateData() {
+        guard let user = Auth.auth().currentUser else {
+            print("User is not authenticated")
+            return
+        }
+        
+        let userID = user.uid
+        print("Current authenticated user ID: \(userID)")
+        
+        let heartRateCollection = db.collection("HRVAverage")   
+        let currentTime = Date()
+        let calendar = Calendar.current
+        
+        for i in 0..<7 {
+            let timestamp = calendar.date(byAdding: .day, value: -i, to: currentTime)!
+            let startOfDay = calendar.startOfDay(for: timestamp)
+            let firebaseTimestamp = Timestamp(date: startOfDay) // Convert to Firestore Timestamp
+            let heartRate = Int.random(in: 15...100) // Generate random heart rate
+            
+            let heartRateEntry = HRVAverage (
+                name: "Test Heart Rate Data 2",
+                value: heartRate,
+                date: firebaseTimestamp, // Store date as a timestamp (seconds since 1970)
+                user: userID // Change this to the actual user identifier if available
+            )
+            
+            heartRateCollection.addDocument(data: [
+                "name": heartRateEntry.name,
+                "value": heartRateEntry.value ?? NSNull(),
+                "date": Timestamp(date: startOfDay), // Use Firestore Timestamp instead of Double
+                "user": heartRateEntry.user ?? NSNull()
+            ]) { error in
+                if let error = error {
+                    print("Error adding document: \(error)")
+                } else {
+                    print("Heart rate data added successfully")
+                }
+            }
+        }
+    }
+
 }
