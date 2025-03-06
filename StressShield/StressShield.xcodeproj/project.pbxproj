@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,17 +13,31 @@
 		03010BDB2CB0C5D0004095FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03010BDA2CB0C5D0004095FB /* Preview Assets.xcassets */; };
 		03010BE32CB0C741004095FB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 03010BE22CB0C741004095FB /* FirebaseAuth */; };
 		03010BE52CB0C741004095FB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 03010BE42CB0C741004095FB /* FirebaseFirestore */; };
-		03010BEB2CB0C875004095FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03010BEA2CB0C875004095FB /* GoogleService-Info.plist */; };
 		03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF02CB0D0C1004095FB /* LoginView.swift */; };
 		03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF22CB0D0EF004095FB /* RegisterView.swift */; };
 		03010BF52CB0D114004095FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF42CB0D114004095FB /* User.swift */; };
 		03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF62CB0D150004095FB /* RegisterViewVM.swift */; };
 		03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BF82CB0D15A004095FB /* LoginViewVM.swift */; };
 		03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03010BFA2CB0D171004095FB /* MainViewVM.swift */; };
+		0306C4B92D6E3A1C0068052A /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306C4B82D6E3A1C0068052A /* TutorialView.swift */; };
+		0306C4BD2D6E3AB50068052A /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306C4BC2D6E3AB50068052A /* TutorialPage.swift */; };
+		035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */; };
+		035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C62CDAACD900FEFF1C /* LearnView.swift */; };
+		035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615C82CDAACE700FEFF1C /* CalendarView.swift */; };
+		03CFF95E2D6EC0AF00726D3C /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CFF95D2D6EC0AF00726D3C /* Logo.png */; };
 		03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4772CB1B3C900643027 /* Extensions.swift */; };
 		03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C4792CB1B72000643027 /* MainMenuView.swift */; };
 		03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47B2CB1C32500643027 /* ProfileView.swift */; };
 		03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */; };
+		D4185E5B2D507BC900D187D4 /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5A2D507BBC00D187D4 /* LessonModel.swift */; };
+		D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5C2D507CA900D187D4 /* LessonView.swift */; };
+		D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5E2D507D4000D187D4 /* LessonPageView.swift */; };
+		D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E682D55605E00D187D4 /* AICoachView.swift */; };
+		D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */; };
+		D45E07782CED2CC30088AF4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03010BEA2CB0C875004095FB /* GoogleService-Info.plist */; };
+		D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668262CED1010007FFD5D /* HealthDataManager.swift */; };
+		D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668282CED1073007FFD5D /* HealthViewModel.swift */; };
+		D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +54,42 @@
 		03010BF62CB0D150004095FB /* RegisterViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewVM.swift; sourceTree = "<group>"; };
 		03010BF82CB0D15A004095FB /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
 		03010BFA2CB0D171004095FB /* MainViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewVM.swift; sourceTree = "<group>"; };
+		0306C4B82D6E3A1C0068052A /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		0306C4BC2D6E3AB50068052A /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
+		035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAnalyticsView.swift; sourceTree = "<group>"; };
+		035615C62CDAACD900FEFF1C /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		035615C82CDAACE700FEFF1C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		03CFF95D2D6EC0AF00726D3C /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		03E7C4772CB1B3C900643027 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		03E7C4792CB1B72000643027 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		03E7C47B2CB1C32500643027 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03E7C47D2CB1C3AF00643027 /* ProfileViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVM.swift; sourceTree = "<group>"; };
+		D4185E5A2D507BBC00D187D4 /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
+		D4185E5C2D507CA900D187D4 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		D4185E5E2D507D4000D187D4 /* LessonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPageView.swift; sourceTree = "<group>"; };
+		D4185E682D55605E00D187D4 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachView.swift; sourceTree = "<group>"; };
+		D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingLessonsView.swift; sourceTree = "<group>"; };
+		D45E07722CED232E0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D45E07762CED2A0A0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46668262CED1010007FFD5D /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
+		D46668282CED1073007FFD5D /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
+		D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHealthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				brainSample.jpg,
+				sampleVid.mp4,
+			);
+			target = 03010BCE2CB0C5CF004095FB /* StressShield */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D4185E602D516E7700D187D4 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		03010BCC2CB0C5CF004095FB /* Frameworks */ = {
@@ -62,6 +107,7 @@
 		03010BC62CB0C5CF004095FB = {
 			isa = PBXGroup;
 			children = (
+				D45E07762CED2A0A0088AF4C /* Info.plist */,
 				03010BD12CB0C5CF004095FB /* StressShield */,
 				03010BD02CB0C5CF004095FB /* Products */,
 			);
@@ -78,6 +124,8 @@
 		03010BD12CB0C5CF004095FB /* StressShield */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E602D516E7700D187D4 /* Resources */,
+				D45E07722CED232E0088AF4C /* Info.plist */,
 				03010BEF2CB0CD0D004095FB /* Other */,
 				03010BEE2CB0CCF8004095FB /* Models */,
 				03010BED2CB0CCE2004095FB /* ViewModels */,
@@ -99,11 +147,21 @@
 		03010BEC2CB0CCC8004095FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */,
+				D4185E682D55605E00D187D4 /* AICoachView.swift */,
+				D4185E5E2D507D4000D187D4 /* LessonPageView.swift */,
+				D4185E5C2D507CA900D187D4 /* LessonView.swift */,
+				D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */,
 				03010BD42CB0C5CF004095FB /* MainView.swift */,
 				03010BF22CB0D0EF004095FB /* RegisterView.swift */,
 				03010BF02CB0D0C1004095FB /* LoginView.swift */,
 				03E7C4792CB1B72000643027 /* MainMenuView.swift */,
 				03E7C47B2CB1C32500643027 /* ProfileView.swift */,
+				035615C42CDAACD000FEFF1C /* DataAnalyticsView.swift */,
+				035615C62CDAACD900FEFF1C /* LearnView.swift */,
+				035615C82CDAACE700FEFF1C /* CalendarView.swift */,
+				0306C4B82D6E3A1C0068052A /* TutorialView.swift */,
+				0306C4BC2D6E3AB50068052A /* TutorialPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +169,7 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D46668282CED1073007FFD5D /* HealthViewModel.swift */,
 				03010BFA2CB0D171004095FB /* MainViewVM.swift */,
 				03010BF62CB0D150004095FB /* RegisterViewVM.swift */,
 				03010BF82CB0D15A004095FB /* LoginViewVM.swift */,
@@ -122,6 +181,8 @@
 		03010BEE2CB0CCF8004095FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E5A2D507BBC00D187D4 /* LessonModel.swift */,
+				D46668262CED1010007FFD5D /* HealthDataManager.swift */,
 				03010BF42CB0D114004095FB /* User.swift */,
 			);
 			path = Models;
@@ -132,6 +193,7 @@
 			children = (
 				03010BEA2CB0C875004095FB /* GoogleService-Info.plist */,
 				03010BD22CB0C5CF004095FB /* StressShieldApp.swift */,
+				03CFF95D2D6EC0AF00726D3C /* Logo.png */,
 				03010BD62CB0C5D0004095FB /* Assets.xcassets */,
 				03E7C4772CB1B3C900643027 /* Extensions.swift */,
 			);
@@ -205,7 +267,8 @@
 			files = (
 				03010BDB2CB0C5D0004095FB /* Preview Assets.xcassets in Resources */,
 				03010BD72CB0C5D0004095FB /* Assets.xcassets in Resources */,
-				03010BEB2CB0C875004095FB /* GoogleService-Info.plist in Resources */,
+				03CFF95E2D6EC0AF00726D3C /* Logo.png in Resources */,
+				D45E07782CED2CC30088AF4C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,15 +280,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E7C47A2CB1B72000643027 /* MainMenuView.swift in Sources */,
+				035615C72CDAACD900FEFF1C /* LearnView.swift in Sources */,
+				0306C4BD2D6E3AB50068052A /* TutorialPage.swift in Sources */,
 				03010BF72CB0D150004095FB /* RegisterViewVM.swift in Sources */,
 				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
+				D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */,
+				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
+				D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */,
+				D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */,
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
+				D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */,
 				03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */,
 				03010BD52CB0C5CF004095FB /* MainView.swift in Sources */,
+				D4185E5B2D507BC900D187D4 /* LessonModel.swift in Sources */,
 				03010BF52CB0D114004095FB /* User.swift in Sources */,
 				03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */,
+				D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */,
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
+				035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */,
+				D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */,
+				0306C4B92D6E3A1C0068052A /* TutorialView.swift in Sources */,
+				D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */,
 				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,
 			);
@@ -286,6 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/StressShield/Info.plist";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -341,6 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/StressShield/Info.plist";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -357,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StressShield/Preview Content\"";
+				DEVELOPMENT_TEAM = BW8JPX6WWH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Stress Shield";
@@ -373,12 +452,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cam.StressShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StressShield/Preview Content\"";
+				DEVELOPMENT_TEAM = BW8JPX6WWH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Stress Shield";
@@ -410,12 +491,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cam.StressShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

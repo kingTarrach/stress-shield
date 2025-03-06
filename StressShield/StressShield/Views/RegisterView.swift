@@ -9,56 +9,90 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject var viewModel = RegisterViewVM()
-    
+
     var body: some View {
         NavigationView {
-            VStack {
-                // Header
-                ZStack {
-                    RoundedRectangle(cornerRadius: 0)
-                        .foregroundColor(.green)
-                        .offset(y: -50)
-                    
-                    Text("Register")
-                        .font(.system(size: 50))
-                        .foregroundColor(Color.white)
-                        .bold()
-                        .padding(.top, 20)
-                }
-                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
-                .offset(y: -100)
+            ZStack {
+                Color.black
+                    .ignoresSafeArea()
                 
-                // Register Form
-                Form {
-                    TextField("Full Name", text: $viewModel.name)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .autocorrectionDisabled()
+                VStack(spacing: 20) {
+                    // Logo
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
                     
-                    TextField("Email Address", text: $viewModel.email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled()
-                    
-                    SecureField("Password", text: $viewModel.password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    Button {
-                        viewModel.register()
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.green)
-                            
-                            Text("Create Account")
-                                .foregroundColor(.white)
-                                .bold()
-                            
-                        }
+                    // Error Message
+                    if !viewModel.errorMsg.isEmpty {
+                        Text(viewModel.errorMsg)
+                            .foregroundColor(.red)
+                            .padding(.horizontal)
                     }
+                    
+                    // Registration Form
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Full Name")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.name)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .autocorrectionDisabled()
+
+                        Text("Email")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.email)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .autocorrectionDisabled()
+                            .autocapitalization(.none)
+                        
+                        Text("Password")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        SecureField("", text: $viewModel.password)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                        
+                        Text("Confirm Password")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        SecureField("", text: $viewModel.confirmPassword)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.horizontal, 30)
+                    
+                    // Register Button
+                    Button(action: {
+                        viewModel.register()
+                    }) {
+                        Text("CREATE YOUR ACCOUNT")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(30)
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 20)
+                    
+                    Spacer()
                 }
-                .padding(.bottom, 50)
-                
-                Spacer()
             }
         }
     }

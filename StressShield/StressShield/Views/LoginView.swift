@@ -12,61 +12,77 @@ struct LoginView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                // Header
-                ZStack {
-                    RoundedRectangle(cornerRadius: 0)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        .offset(y: -50)
-                    
-                    Text("Stress Shield")
-                        .font(.system(size: 50))
-                        .foregroundColor(Color.white)
-                        .bold()
-                        .padding(.top, 20)
-                }
-                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
-                .offset(y: -100)
+            ZStack {
+                Color.black
+                    .ignoresSafeArea()
                 
-                // Login Form
-                Form {
+                VStack(spacing: 20) {
+                    // Logo
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                    
+                    // Error Message
                     if !viewModel.errorMsg.isEmpty {
                         Text(viewModel.errorMsg)
                             .foregroundColor(.red)
+                            .padding(.horizontal)
                     }
-                    TextField("Email Address", text: $viewModel.email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .autocorrectionDisabled()
-                        .autocapitalization(.none)
                     
-                    SecureField("Password", text: $viewModel.password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    // Login Form
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Email")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.email)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .autocorrectionDisabled()
+                            .autocapitalization(.none)
+                        
+                        Text("Password")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        SecureField("", text: $viewModel.password)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.horizontal, 30)
                     
-                    Button {
+                    // Login Button
+                    Button(action: {
                         viewModel.login()
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.blue)
-                            
-                            Text("Log In")
-                                .foregroundColor(.white)
-                                .bold()
-                            
-                        }
+                    }) {
+                        Text("LOG IN")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(30)
                     }
-                }
-                
-                // Create Account
-                VStack {
-                    Text("New User?")
-                    
-                    NavigationLink("Create An Account", destination: RegisterView())
+                    .padding(.horizontal, 30)
+                    .padding(.top, 20)
 
+                    // Create Account Section
+                    HStack {
+                        Text("New User?")
+                            .foregroundColor(.white)
+                        
+                        NavigationLink("Create An Account", destination: RegisterView())
+                            .foregroundColor(.blue)
+                            .bold()
+                    }
+                    .padding(.top, 10)
+                    
+                    Spacer()
                 }
-                .padding(.bottom, 50)
-                
-                Spacer()
             }
         }
     }
