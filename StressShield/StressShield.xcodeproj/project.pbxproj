@@ -29,7 +29,6 @@
 		5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE932D5961690030B692 /* LessonProgress.swift */; };
 		5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5CE972D59D9900030B692 /* LessonViewModel.swift */; };
 		5FCEFBF32D77A8F100C5EC87 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCEFBF22D77A8EB00C5EC87 /* DataViewModel.swift */; };
-		5FCEFBF52D77A91500C5EC87 /* UserHealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCEFBF42D77A91000C5EC87 /* UserHealthData.swift */; };
 		D4185E5B2D507BC900D187D4 /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5A2D507BBC00D187D4 /* LessonModel.swift */; };
 		D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5C2D507CA900D187D4 /* LessonView.swift */; };
 		D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E5E2D507D4000D187D4 /* LessonPageView.swift */; };
@@ -69,7 +68,6 @@
 		5FC5CE932D5961690030B692 /* LessonProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgress.swift; sourceTree = "<group>"; };
 		5FC5CE972D59D9900030B692 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		5FCEFBF22D77A8EB00C5EC87 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
-		5FCEFBF42D77A91000C5EC87 /* UserHealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHealthData.swift; sourceTree = "<group>"; };
 		D4185E5A2D507BBC00D187D4 /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
 		D4185E5C2D507CA900D187D4 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		D4185E5E2D507D4000D187D4 /* LessonPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPageView.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 		03010BEE2CB0CCF8004095FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5FCEFBF42D77A91000C5EC87 /* UserHealthData.swift */,
 				D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */,
 				D4185E7F2D70201000D187D4 /* FirebaseTools.swift */,
 				5FC5CE932D5961690030B692 /* LessonProgress.swift */,
@@ -331,7 +328,6 @@
 				D4185E822D7107EE00D187D4 /* FirebaseDocumentClasses.swift in Sources */,
 				D4185E692D55606F00D187D4 /* AICoachView.swift in Sources */,
 				03E7C47C2CB1C32500643027 /* ProfileView.swift in Sources */,
-				5FCEFBF52D77A91500C5EC87 /* UserHealthData.swift in Sources */,
 				03010BD32CB0C5CF004095FB /* StressShieldApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

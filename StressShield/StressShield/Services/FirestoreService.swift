@@ -92,7 +92,7 @@ class FirestoreService {
         }
     }
 
-    func addTestHeartRateData() {
+    func addTestHealthData() {
         guard let user = Auth.auth().currentUser else {
             print("User is not authenticated")
             return
@@ -101,7 +101,7 @@ class FirestoreService {
         let userID = user.uid
         print("Current authenticated user ID: \(userID)")
         
-        let heartRateCollection = db.collection("HRVAverage")   
+        let collection = db.collection("SleepTotal")
         let currentTime = Date()
         let calendar = Calendar.current
         
@@ -109,20 +109,20 @@ class FirestoreService {
             let timestamp = calendar.date(byAdding: .day, value: -i, to: currentTime)!
             let startOfDay = calendar.startOfDay(for: timestamp)
             let firebaseTimestamp = Timestamp(date: startOfDay) // Convert to Firestore Timestamp
-            let heartRate = Int.random(in: 15...100) // Generate random heart rate
+            let sleepData = Int.random(in: 0...10) // Generate random heart rate
             
-            let heartRateEntry = HRVAverage (
-                name: "Test Heart Rate Data 2",
-                value: heartRate,
+            let healthEntry = SleepTotal (
+                name: "Test Sleep Data 1",
+                value: sleepData,
                 date: firebaseTimestamp, // Store date as a timestamp (seconds since 1970)
                 user: userID // Change this to the actual user identifier if available
             )
             
-            heartRateCollection.addDocument(data: [
-                "name": heartRateEntry.name,
-                "value": heartRateEntry.value ?? NSNull(),
+            collection.addDocument(data: [
+                "name": healthEntry.name,
+                "value": healthEntry.value ?? NSNull(),
                 "date": Timestamp(date: startOfDay), // Use Firestore Timestamp instead of Double
-                "user": heartRateEntry.user ?? NSNull()
+                "user": healthEntry.user ?? NSNull()
             ]) { error in
                 if let error = error {
                     print("Error adding document: \(error)")

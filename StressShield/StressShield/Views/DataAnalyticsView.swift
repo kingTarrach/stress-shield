@@ -22,12 +22,13 @@ struct LineChartView<T: HealthData>: View {
                 .padding()
             
             GeometryReader { geometry in
-                let chartWidth = geometry.size.width - 80
-                let chartHeight = geometry.size.height - 135
-                let xStep = chartWidth / 6.0 // Calculate xStep (will be used both for data and x-axis labels)
-                
                 let minY = T.minValue  // Get min from data type
                 let maxY = T.maxValue  // Get max from data type
+                let chartWidth = geometry.size.width - 80
+                let chartHeight = geometry.size.height - 115
+                let xStep = chartWidth / 6.0 // Calculate xStep (will be used both for data and x-axis labels)
+                
+                
 
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
@@ -53,7 +54,7 @@ struct LineChartView<T: HealthData>: View {
                     xStep: xStep,
                     scale: scale
                 )
-                .position(x: geometry.size.width / 2.5, y: chartHeight + 103)
+                .position(x: geometry.size.width / 2.5, y: chartHeight + 83)
             }
             .frame(height: 260)
             
@@ -176,7 +177,7 @@ struct LineChartPath<T: HealthData>: View {
         Path { path in
             guard data.count > 1 else { return }
             let yScale = chartHeight / (maxY - minY)
-            let offsetX = 8.0
+            let offsetX: CGFloat = 16
             let offsetY: CGFloat = 60
             
             // Ensure the first data point has a valid value
@@ -235,9 +236,10 @@ struct DataAnalyticsView: View {
             .tag(2)
         }
         .tabViewStyle(PageTabViewStyle()) // Enables swipe navigation
+        // When graphs appear, begin loading the data in for the graphs
         .onAppear {
-            //firestoreService.addTestHeartRateData()
-            //stressViewModel.fetchData(from: "stress")
+            //firestoreService.addTestHealthData()
+            
             let lastFetchDate = UserDefaults.standard.object(forKey: "lastFetchDate") as? Date
             let calendar = Calendar.current
 
@@ -246,9 +248,11 @@ struct DataAnalyticsView: View {
             } else {
                 print("Fetching new data...")
                 hrvViewModel.fetchData(from: "HRVAverage", timeScale: "Day")
+                sleepViewModel.fetchData(from: "SleepTotal", timeScale: "Day")
+                stressViewModel.fetchData(from: "Stress", timeScale: "Day")
             }
             //print("Chart Data:", hrvViewModel.healthData)
-            //sleepViewModel.fetchData(from: "sleep")
+            
         }
     }
 }

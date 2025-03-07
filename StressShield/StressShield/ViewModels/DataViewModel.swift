@@ -69,42 +69,79 @@ class DataViewModel<T: HealthData>: ObservableObject {
                     return
                 }
                 
-                self.healthData = documents.compactMap { document in
-                    do {
-                        return try document.data(as: T.self)
-                    } catch {
-                        print("Error decoding document \(document.documentID): \(error)")
-                        return nil
-                    }
+                var fetchedData = documents.compactMap { document in
+                    try? document.data(as: T.self)
                 }
+                
+                let completeData = self.insertMissingDates(startDates: startDates, data: fetchedData)
+                
+                self.healthData = self.fillMissingValues(completeData)
                 
                 print("Fetched \(self.healthData.count) records from \(collection).")
             }
     }
-
-
-
     
-//    private func generate_random_data() {
-//        // Populate with sample data
-//        let calendar = Calendar.current
-//        for day in 0..<7 {
-//            if let date = calendar.date(byAdding: .day, value: -day, to: Date()) {
-//                
-//                let stressLevel = Int.random(in: 0...100)
-//                let heartRate = Int.random(in: 60...100)
-//                let sleepHours = Double.random(in: 4.0...9.0)
-//                
-//                stressData.append(Stress(date: date, stressLevel: stressLevel))
-//                hrvData.append(UserHRVData(date: date, heartRate: heartRate))
-//                sleepData.append(UserSleepData(date: date, sleepHours: sleepHours))
-//                
-//            }
-//        }
-//        
-//        // Ensure data is sorted by date
-//        stressData.sort { $0.date < $1.date }
-//        hrvData.sort { $0.date < $1.date }
-//        sleepData.sort { $0.date < $1.date }
-//    }
+    
+    private func insertMissingDates(startDates: [Timestamp], data: [T]) -> [T] {
+        var completeData: [T] = []
+
+        for timestamp in startDates {
+            if let existingData = data.first(where: {
+                guard let existingDate = $0.date else { return false }
+                return Calendar.current.isDate(existingDate.dateValue(), inSameDayAs: timestamp.dateValue())
+            }) {
+                completeData.append(existingData) // Use existing data
+            } else {
+                // Insert missing date with nil value
+                let missingData = createMissingDataInstance(for: timestamp)
+                completeData.append(missingData)
+            }
+        }
+
+        return completeData
+    }
+
+    // Create a missing data instance with nil value
+    private func createMissingDataInstance(for date: Timestamp) -> T {
+        // Ensure T can be initialized with default values
+        guard var instance = createInstance(of: T.self) else {
+            fatalError("Could not create missing data instance.")
+        }
+
+        instance.value = nil
+        instance.date = date  // Assign Firestore Timestamp
+
+        return instance
+    }
+
+
+    // Generic function to create a new instance of T dynamically
+    private func createInstance<U: HealthData>(of type: U.Type) -> U? {
+        if type == Stress.self {
+            return Stress(name: "Missing Data", value: nil, date: nil, user: nil) as? U
+        } else if type == HRVAverage.self {
+            return HRVAverage(name: "Missing Data", value: nil, date: nil, user: nil) as? U
+        } else if type == SleepTotal.self {
+            return SleepTotal(name: "Missing Data", value: nil, date: nil, user: nil) as? U
+        }
+        return nil
+    }
+
+    // Function to fill missing values
+    private func fillMissingValues(_ data: [T]) -> [T] {
+        guard !data.isEmpty else { return [] }
+
+        var filledData = data
+        let count = filledData.count
+
+        for i in 0..<count { // Iterate backwards
+            if filledData[i].value == nil { // Check if missing
+                filledData[i].value = 0     // Set to 0
+            }
+        }
+
+        return filledData
+    }
+    
+    
 }
