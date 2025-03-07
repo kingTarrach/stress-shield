@@ -37,6 +37,7 @@
 		D4185E802D70202300D187D4 /* FirebaseTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E7F2D70201000D187D4 /* FirebaseTools.swift */; };
 		D4185E822D7107EE00D187D4 /* FirebaseDocumentClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */; };
 		D4185E862D72379D00D187D4 /* FirebaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E852D72379300D187D4 /* FirebaseVM.swift */; };
+		D4185E8A2D76E25100D187D4 /* ModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4185E892D76E24A00D187D4 /* ModuleViewModel.swift */; };
 		D45E07782CED2CC30088AF4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03010BEA2CB0C875004095FB /* GoogleService-Info.plist */; };
 		D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668262CED1010007FFD5D /* HealthDataManager.swift */; };
 		D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668282CED1073007FFD5D /* HealthViewModel.swift */; };
@@ -75,6 +76,7 @@
 		D4185E7F2D70201000D187D4 /* FirebaseTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTools.swift; sourceTree = "<group>"; };
 		D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDocumentClasses.swift; sourceTree = "<group>"; };
 		D4185E852D72379300D187D4 /* FirebaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVM.swift; sourceTree = "<group>"; };
+		D4185E892D76E24A00D187D4 /* ModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewModel.swift; sourceTree = "<group>"; };
 		D45E07722CED232E0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45E07762CED2A0A0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46668262CED1010007FFD5D /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D4185E892D76E24A00D187D4 /* ModuleViewModel.swift */,
 				D4185E852D72379300D187D4 /* FirebaseVM.swift */,
 				5FC5CE972D59D9900030B692 /* LessonViewModel.swift */,
 				D46668282CED1073007FFD5D /* HealthViewModel.swift */,
@@ -316,6 +319,7 @@
 				03010BD52CB0C5CF004095FB /* MainView.swift in Sources */,
 				D4185E5B2D507BC900D187D4 /* LessonModel.swift in Sources */,
 				03010BF52CB0D114004095FB /* User.swift in Sources */,
+				D4185E8A2D76E25100D187D4 /* ModuleViewModel.swift in Sources */,
 				03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */,
 				D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */,
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
