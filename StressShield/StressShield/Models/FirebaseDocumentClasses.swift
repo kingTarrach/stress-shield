@@ -138,7 +138,7 @@ public struct Lesson: Codable {
     let contents: [String]?
     let contentNames: [String]?
     let length: Int?
-    let module: String?
+    let module: Int?
     
     enum CodingKeys: String, CodingKey {
         case name

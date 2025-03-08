@@ -8,13 +8,13 @@ class ModuleViewModel: ObservableObject {
     
     // function to return modules
     private func fetchModules() async -> [LearnModule]? {
-        return await model.getCollectionFromFirestore(collection: "Modules", as: LearnModule.self)
+        return await model.getCollectionFromFirestore(collection: "LearnModule", as: LearnModule.self)
     }
     
     // function to return lessons
     private func fetchLessons(
     ) async -> [Lesson]? {
-        return await model.getCollectionFromFirestore(collection: "Lessons", as: Lesson.self)
+        return await model.getCollectionFromFirestore(collection: "Lesson", as: Lesson.self)
     }
     
     // function to get user module progress
@@ -51,6 +51,7 @@ class ModuleViewModel: ObservableObject {
                 }
             }
         }
+        dump(viewingLessons)
         return viewingLessons
     }
     
@@ -59,6 +60,7 @@ class ModuleViewModel: ObservableObject {
             print("User not authenticated")
             return []
         }
+        print(userId)
         let modules = await fetchModules()
         guard let modules else {
             return []
@@ -86,7 +88,6 @@ class ModuleViewModel: ObservableObject {
                 viewingModules.append(ViewingModule(name: module.name, progress: 0, length: module.length!, locked: true, lessons: viewingLessons))
             }
         }
-        print(viewingModules)
         return viewingModules
     }
     
