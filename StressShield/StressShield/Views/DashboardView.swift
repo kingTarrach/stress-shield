@@ -101,8 +101,8 @@ struct DashboardView: View {
                 .foregroundColor(.white)
             
             GoalItem(title: "7 hours of sleep", iconName: "zzz")
-            GoalItem(title: "Keep stress response within optimal range", iconName: "heart")
-            GoalItem(title: "Meditate for 20 minutes", iconName: "heart")
+            GoalItem(title: "Go on a 30 minute walk", iconName: "heart")
+            GoalItem(title: "Meditate for 20 minutes", iconName: "brain")
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.3)))

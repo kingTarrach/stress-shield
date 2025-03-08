@@ -14,45 +14,53 @@ struct MainView: View {
     @State private var showTutorialOverlay = false
     @State private var hasSeenPreLoginTutorial: Bool?
     @State private var hasSeenPostLoginTutorial: Bool?
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black // Set tab bar background color
 
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         ZStack {
             if let hasSeenPreLogin = hasSeenPreLoginTutorial,
                let hasSeenPostLogin = hasSeenPostLoginTutorial {
                 
                 if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-                    TabView() {
+                    TabView {
                         DashboardView()
                             .tabItem {
-                                Image(systemName: "house.fill")
+                                customTabItem(imageName: "dashboard")
                             }
                             .tag(0)
 
                         LearnView()
                             .tabItem {
-                                Image(systemName: "play.rectangle.fill")
+                                customTabItem(imageName: "lessons")
                             }
                             .tag(1)
 
                         AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
                             .tabItem {
-                                Image(systemName: "ellipsis.bubble.fill")
+                                customTabItem(imageName: "AICoach")
                             }
                             .tag(2)
 
                         DataAnalyticsView()
                             .tabItem {
-                                Image(systemName: "chart.bar.fill")
+                                customTabItem(imageName: "dataAnalytics")
                             }
                             .tag(3)
 
                         ProfileView()
                             .tabItem {
-                                Image(systemName: "person.fill") 
+                                customTabItem(imageName: "profile")
                             }
                             .tag(4)
                     }
-                    .accentColor(.blue)
                     .onAppear {
                         if !hasSeenPostLogin {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -88,6 +96,16 @@ struct MainView: View {
             }
         }
     }
+    
+    func customTabItem(imageName: String) -> some View {
+        Label {
+            Text("") // Keep the text empty
+        } icon: {
+            Image(imageName)
+                .renderingMode(.template) // Enables color tinting
+        }
+    }
+
 }
 
 struct TutorialOverlay: View {

@@ -80,19 +80,8 @@
 		D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHealthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				brainSample.jpg,
-				sampleVid.mp4,
-			);
-			target = 03010BCE2CB0C5CF004095FB /* StressShield */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D4185E602D516E7700D187D4 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D4185E632D516E9300D187D4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+		D4185E602D516E7700D187D4 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
