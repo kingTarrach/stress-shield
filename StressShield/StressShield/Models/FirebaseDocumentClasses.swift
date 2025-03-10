@@ -138,7 +138,9 @@ public struct Lesson: Codable {
     let contents: [String]?
     let contentNames: [String]?
     let length: Int?
-    let module: Int?
+    let module: String?
+    let image: String?
+    let superName: String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -147,6 +149,8 @@ public struct Lesson: Codable {
         case contentNames
         case length
         case module
+        case image
+        case superName
     }
 }
 
@@ -158,6 +162,8 @@ public struct LessonContent: Codable {
     let file: String?
     let correctAnswer: String?
     let possibleAnswers: [String]?
+    let proceedText: String?
+    let title: String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -167,6 +173,8 @@ public struct LessonContent: Codable {
         case file
         case correctAnswer
         case possibleAnswers
+        case proceedText
+        case title
     }
 }
 

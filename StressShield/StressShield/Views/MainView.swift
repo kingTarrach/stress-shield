@@ -10,19 +10,15 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel = MainViewVM()
     
-    var moduleViewModel = ModuleViewModel()
+    //var moduleViewModel = ModuleViewModel()
     
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
                 // signed in
-                MainMenuView()
+                ModulesView()
                     .tabItem {
                         Label("Home", systemImage: "house")
-                    }.onAppear {
-                        Task {
-                            await moduleViewModel.createViewingModules()
-                        }
                     }
                 
                 // Data Analytics Tab

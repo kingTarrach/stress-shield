@@ -1,67 +1,225 @@
 import SwiftUI
+import FirebaseStorage
+import SDWebImageSwiftUI
+
+// This struct manages the dropdown groupings of modules and their lessons
+struct ModuleView: View {
+    let module: ViewingModule
+    let index: Int
+    @State private var showLessons = false // Toggle lessons visibility
+
+    var body: some View {
+        VStack {
+            // Module Card as Button
+            Button(action: {
+                if module.locked == false {
+                    withAnimation {
+                        showLessons.toggle()
+                    }
+                }
+            }) {
+                ModuleCardView(
+                    title: "Mission \(index)",
+                    description: module.name,
+                    locked: module.locked
+                )
+            }
+            .buttonStyle(PlainButtonStyle()) // Removes button styling
+            
+            // Show lessons when module is clicked
+            if showLessons {
+                VStack(spacing: 8) {
+                    ForEach(module.lessons, id: \.id) { lesson in
+                        LessonCardView(lesson: lesson)
+                    }
+                }
+                .padding(.top, 4) // Space between module and lessons
+            }
+        }
+    }
+}
 
 struct ModuleCardView: View {
     let title: String
     let description: String
-    
+    let locked: Bool
+
     var body: some View {
-        VStack(alignment: .center, spacing: 8) {
-            Text(title)
-                .font(.custom("Jost", size: 20).weight(.heavy))
-                .foregroundColor(.white)
-            
-            Text(description)
-                .font(.custom("Jost", size: 16))
-                .foregroundColor(.white)
+        HStack {
+            Image(locked ? "ModuleLocked" : "ModuleUnlocked") // Custom asset for lock/unlock
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40) // Adjust size as needed
+                // .foregroundColor(locked ? nil : .white) doesn't work for some reason
+                .padding(.leading, 8)
+
+            Spacer(minLength: 8) // Small spacing between the icon and text
+
+            VStack(alignment: .center, spacing: 4) {
+                Text(title)
+                    .font(.custom("Jost", size: 20).weight(.heavy))
+                    .foregroundColor(.white)
+                
+                Text(description)
+                    .font(.custom("Jost", size: 16))
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity, alignment: .center) // Ensure text is centered
+
+            Spacer() // Push content to center
         }
         .padding()
-        .frame(maxWidth: .infinity, minHeight: 74)
-        .background(Color(red: 0.06, green: 0.45, blue: 0.56))
+        .frame(maxWidth: .infinity, minHeight: 74, alignment: .center) // Ensure proper height
+        .background(locked ? Color(red: 91/255, green: 91/255, blue: 91/255) : Color(red: 0.06, green: 0.45, blue: 0.56))
         .cornerRadius(10)
     }
 }
 
-struct Vector: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let width = rect.size.width
-        let height = rect.size.height
-        path.move(to: CGPoint(x: width, y: 0))
-        path.addLine(to: CGPoint(x: 0.0071688035 * width, y: 0.2730672718 * height))
-        path.addLine(to: CGPoint(x: 0.8497784311 * width, y: 0.7000062644 * height))
-        path.addLine(to: CGPoint(x: 0, y: height))
-        return path
-    }
-}
+struct ProgressBarView: View {
+    var progress: Float
 
-struct DecorativeView: View {
     var body: some View {
-        ZStack {
-            Vector()
-                .stroke(Color.primary, lineWidth: 2) // Add stroke with color and width for the solid line
-                .frame(width: 124.15000915527344, height: 481.30999755859375)
+        ZStack(alignment: .leading) {
+            Capsule()
+                .frame(height: 8)
+                .foregroundColor(Color.white.opacity(0.2))
+
+            Capsule()
+                .frame(width: CGFloat(progress) * 100, height: 8) // The width is based on progress
+                .foregroundColor(.green) // You can customize the color
         }
-        .padding(.horizontal)
     }
 }
 
-struct ContentView: View {
+struct LessonCardView: View {
+    let lesson: ViewingLesson
+    @State private var imageUrl: String? // Store the HTTP URL here
+
+    var progressFraction: Float {
+        guard lesson.length > 0 else { return 0 }
+        return Float(lesson.progress) / Float(lesson.length)
+    }
+    
+    // Determine the correct icon based on lesson state
+    var iconName: String {
+        if lesson.locked {
+            return "LessonLocked" // Locked icon
+        } else if lesson.progress == lesson.length {
+            return "LessonComplete" // Completed icon
+        } else {
+            return "LessonNotComplete" // Incomplete icon
+        }
+    }
+
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                ModuleCardView(title: "Module 1 - Backstory", description: "Understand the overwhelming nature of stress")
-                DecorativeView()
-                ModuleCardView(title: "Module 2 - Coping Strategies", description: "Learn methods to manage and reduce stress")
-                DecorativeView()
-                ModuleCardView(title: "Module 3 - Building Resilience", description: "Develop skills to handle stress effectively")
+        VStack {
+            HStack {
+                // Locked/Unlocked Icon (Top Left)
+                Image(iconName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                    .padding(.leading, 8)
+                
+                Spacer()
+                
+                // Progress Bar (Top Right)
+                ProgressBarView(progress: progressFraction)
+                    .frame(width: 100, height: 24) // You can adjust the size here
             }
-            .padding()
+            .padding(.top, 8)
+
+            // Load Image from Firebase Storage if imageUrl is available
+            if let urlString = imageUrl, let url = URL(string: urlString) {
+                WebImage(url: url) // Uses SDWebImage for URL loading
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 180) // Adjust the height of the image
+                    .clipped()
+                    .cornerRadius(10)
+                    //.padding(.top, 8)
+            } else {
+                Text("Loading image...")
+                    .foregroundColor(.white)
+            }
+
+            Spacer()
+
+            // Text below the image (Lesson Name and Super Name)
+            VStack {
+                Text(lesson.superName)
+                    .font(.custom("Jost", size: 18).weight(.bold))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 2)
+                
+                Text(lesson.name)
+                    .font(.custom("Jost", size: 16))
+                    .foregroundColor(.white.opacity(0.8))
+            }
+            .padding(.bottom, 8)
+        }
+        .padding()
+        .background(lesson.locked ? Color(red: 91/255, green: 91/255, blue: 91/255) : Color(red: 0.06, green: 0.45, blue: 0.56))
+        .cornerRadius(10)
+        .onAppear {
+            loadImageUrl() // Load the URL when the view appears
+        }
+    }
+
+    // Fetch the image URL from Firebase Storage
+    func loadImageUrl() {
+        let storage = Storage.storage()
+        let reference = storage.reference(forURL: lesson.image) // Assuming lesson.image is the gs:// URL
+        
+        reference.downloadURL { url, error in
+            if let error = error {
+                print("Error loading image URL: \(error.localizedDescription)")
+            } else if let url = url {
+                // Convert the gs:// URL to a https:// URL
+                self.imageUrl = url.absoluteString
+            }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct ModulesView: View {
+    @StateObject var viewModel = ModuleViewModel()
+
+    var body: some View {
+        ScrollView(.vertical){
+            VStack {
+                if viewModel.loading {
+                    ProgressView("Loading Modules...")
+                } else {
+                    ScrollView {
+                        VStack(spacing: 12) {
+                            ForEach(viewModel.viewingModules.indices, id: \.self) { index in
+                                //                            ModuleCardView(
+                                //                                title: "Module \(index + 1)",
+                                //                                description: viewModel.viewingModules[index].name,
+                                //                                locked: viewModel.viewingModules[index].locked
+                                //                            )
+                                ModuleView(
+                                    module: viewModel.viewingModules[index],
+                                    index: index
+                                )
+                            }
+                        }
+                        .padding()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            Task {
+                await viewModel.createViewingModules()
+            }
+        }
     }
 }
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModulesView()
+//    }
+//}
