@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MainView: View {
     @StateObject var viewModel = MainViewVM()
@@ -13,45 +14,53 @@ struct MainView: View {
     @State private var showTutorialOverlay = false
     @State private var hasSeenPreLoginTutorial: Bool?
     @State private var hasSeenPostLoginTutorial: Bool?
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black // Set tab bar background color
 
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         ZStack {
             if let hasSeenPreLogin = hasSeenPreLoginTutorial,
                let hasSeenPostLogin = hasSeenPostLoginTutorial {
                 
                 if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
-                    TabView() {
-                        MainMenuView()
+                    TabView {
+                        DashboardView()
                             .tabItem {
-                                Image(systemName: "house.fill")
+                                customTabItem(imageName: "dashboard")
                             }
                             .tag(0)
 
                         LearnView()
                             .tabItem {
-                                Image(systemName: "play.rectangle.fill")
+                                customTabItem(imageName: "lessons")
                             }
                             .tag(1)
 
                         AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
                             .tabItem {
-                                Image(systemName: "ellipsis.bubble.fill")
+                                customTabItem(imageName: "AICoach")
                             }
                             .tag(2)
 
                         DataAnalyticsView()
                             .tabItem {
-                                Image(systemName: "chart.bar.fill")
+                                customTabItem(imageName: "dataAnalytics")
                             }
                             .tag(3)
 
                         ProfileView()
                             .tabItem {
-                                Image(systemName: "person.fill") 
+                                customTabItem(imageName: "profile")
                             }
                             .tag(4)
                     }
-                    .accentColor(.blue) // Makes the icons match the blue color from your image
                     .onAppear {
                         if !hasSeenPostLogin {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -87,13 +96,22 @@ struct MainView: View {
             }
         }
     }
+    
+    func customTabItem(imageName: String) -> some View {
+        Label {
+            Text("") // Keep the text empty
+        } icon: {
+            Image(imageName)
+                .renderingMode(.template) // Enables color tinting
+        }
+    }
+
 }
-
-
 
 struct TutorialOverlay: View {
     @Binding var step: Int
     @Binding var showTutorial: Bool  // Controls when to hide the tutorial
+    let videoURL: URL? = Bundle.main.url(forResource: "sampleVid", withExtension: "mp4")
 
     var body: some View {
         ZStack {
@@ -101,27 +119,35 @@ struct TutorialOverlay: View {
             Color.black.opacity(0.7)
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
-                    // Transparent cutout effect
                     Rectangle()
                         .frame(width: 80, height: 50)
-                        .position(tabHighlightPositions[min(step, tabHighlightPositions.count - 1)]) // Moves cutout per step
+                        .position(tabHighlightPositions[min(step, tabHighlightPositions.count - 1)])
                         .blendMode(.destinationOut)
                 )
                 .compositingGroup()
 
             VStack(spacing: 20) {
                 VStack(spacing: 10) {
-                    Text(tutorialTitles[step]) // Title in bold
-                        .font(.headline)
+                    Text(tutorialTitles[step])
+                        .font(.system(size: 25))
                         .foregroundColor(.white)
                         .bold()
+                        .multilineTextAlignment(.center)
 
-                    Text(tutorialText[step]) // Description below the title
+                    Text(tutorialText[step])
                         .font(.body)
                         .foregroundColor(.white)
+                        .multilineTextAlignment(.leading)
+
+                    // Show Video Player for last step
+                    if step == tutorialTitles.count - 1, let videoURL = videoURL {
+                        VideoPlayer(player: AVPlayer(url: videoURL))
+                            .frame(width: 320, height: 180)
+                            .cornerRadius(10)
+                    }
                 }
                 .padding()
-                .background(Color.gray.opacity(0.9)) // Dark background for contrast
+                .background(Color.gray.opacity(0.5))
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .frame(width: 280)
@@ -130,7 +156,7 @@ struct TutorialOverlay: View {
                     if step < tutorialText.count - 1 {
                         step += 1
                     } else {
-                        showTutorial = false  // Hide tutorial when done
+                        showTutorial = false
                         step = 0
                     }
                 }) {
@@ -138,58 +164,61 @@ struct TutorialOverlay: View {
                         .font(.headline)
                         .padding()
                         .frame(maxWidth: 100)
-                        .background(Color.white)
-                        .foregroundColor(.blue)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                 }
             }
-            .position(tutorialPositions[step]) // Moves text above each tab
+            .position(tutorialPositions[step])
         }
-        .animation(.easeInOut(duration: 0.5), value: step) // Smooth transition
     }
 }
 
-// Tutorial Titles
+// Updated Tutorial Data
 let tutorialTitles = [
     "Your Resilience Journey Begins Here!",
     "Stay on Track",
     "Learn Stress Resilience",
     "Meet Your Guide, Axia",
     "You'll Need a Compass",
-    "Know Where You Are"
+    "Know Where You Are",
+    "The Backstory"
 ]
 
-// Tutorial Messages
 let tutorialText = [
     "Every great adventure starts with preparation. Like a knight sharpening their sword, you need the right tools to take on stress and build resilience.\n\nLet's get you set up and ready to go.",
     "It's easy to get distracted by life's side quests–but constistency is key to building resilience.\n\nEach day, you'll get small, actionable steps, real-time nudges, and guided techniques to help you build resilience.\n\nCheck in often to track your progress and keep pushing forward.",
-    "Access educational resources for growth.",
+    "Your training ground for resilience starts here.\n\nEach mission is a guided lesson designed to help you build mental strength, manage stress, and grow stronger over time. \n\nComplete missions at your own pace and track your progress as you level up on your journey.",
     "You won't be on this journey alone.\n\nAxia, your AI-powered resilience mentor, is with you every step of the way. You can chat with Axia any time.\n\nLike a seasoned coach, Axia adapts to your progress, offers real-time advice, and keeps you on track.",
     "Every explorer needs a way to navigate. StressShield uses data from your wearable device to personalize your daily challenges based on your real-time stress levels.\n\nThis info acts like your own compass, helping you track how your body responds to stress so you can adjust and grow stronger.\n\nTo get the most out of your training, sync your device now.",
-    "StressShield analyzes your real-time wearable data, check-ins, and completed quests to build your Resilience Profile.\n\nYour Resilience Profile will update based on the progress you make in your journey and improve your stress resilience."
+    "StressShield analyzes your real-time wearable data, check-ins, and completed quests to build your Resilience Profile.\n\nYour Resilience Profile will update based on the progress you make in your journey and improve your stress resilience.",
+    "Last but not least, you need the quest backstory! (StressShield is designed to be fun, remember!?)\n\nLet's set the stage..."
 ]
 
 
 // Positions of messages relative to tabs
 let tutorialPositions: [CGPoint] = [
-    CGPoint(x: 200, y: 400), // Intro
-    CGPoint(x: 200, y: 500),  // Home
-    CGPoint(x: 200, y: 500), // Data Analytics
-    CGPoint(x: 200, y: 500), // Learn
-    CGPoint(x: 200, y: 500), // AI Coach
-    CGPoint(x: 200, y: 500)  // Profile
+    CGPoint(x: 200, y: 400),
+    CGPoint(x: 200, y: 500),
+    CGPoint(x: 200, y: 500),
+    CGPoint(x: 200, y: 500),
+    CGPoint(x: 200, y: 500),
+    CGPoint(x: 200, y: 500),
+    CGPoint(x: 200, y: 400)
 ]
 
 // Tab Bar spotlight positions
 let tabHighlightPositions: [CGPoint] = [
-    CGPoint(x: UIScreen.main.bounds.width, y: UIScreen.main.bounds.height),  // Intro
-    CGPoint(x: 40, y: UIScreen.main.bounds.height - 120),  // Home
-    CGPoint(x: 120, y: UIScreen.main.bounds.height - 120), // Data Analytics
-    CGPoint(x: 200, y: UIScreen.main.bounds.height - 120), // Learn
-    CGPoint(x: 280, y: UIScreen.main.bounds.height - 120), // AI Coach
-    CGPoint(x: 360, y: UIScreen.main.bounds.height - 120)  // Profile
+    CGPoint(x: UIScreen.main.bounds.width, y: UIScreen.main.bounds.height),
+    CGPoint(x: 40, y: UIScreen.main.bounds.height - 120),
+    CGPoint(x: 120, y: UIScreen.main.bounds.height - 120),
+    CGPoint(x: 200, y: UIScreen.main.bounds.height - 120),
+    CGPoint(x: 280, y: UIScreen.main.bounds.height - 120),
+    CGPoint(x: 360, y: UIScreen.main.bounds.height - 120),
+    CGPoint(x: UIScreen.main.bounds.width, y: UIScreen.main.bounds.height)
 ]
 
 #Preview {
-    MainView()
+//    MainView()
+    TutorialOverlay(step: .constant(6), showTutorial: .constant(false))
 }
