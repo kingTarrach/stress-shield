@@ -13,6 +13,11 @@ struct FirebaseLessonView: View {
     @State private var imageUrl: String? // Store the HTTP URL here
     @Environment(\.colorScheme) var colorScheme  // Detect system theme
     
+    var progressFraction: Float {
+        guard viewModel.currentLesson!.length! > 0 else { return 0 }
+        return Float(viewModel.currentContentIndex) / Float(viewModel.currentLesson!.length!)
+    }
+    
     var body: some View {
         VStack {
             if viewModel.loading {
@@ -27,14 +32,19 @@ struct FirebaseLessonView: View {
                     VStack {
                         HStack {
                             Button(action: {
-                                // Close action
+                                viewModel.endLessonEarly()
                             }) {
                                 Image(systemName: "xmark")
                                     .font(.title2)
                                     .foregroundColor(.primary) // Adjusts automatically
                             }
                             .padding()
+                            
                             Spacer()
+                                .frame(maxWidth: 200)
+                            
+                            ProgressBarView(progress: progressFraction)
+                                .frame(width: 100, height: 24)
                         }
                         
                         Text(content.title ?? "")

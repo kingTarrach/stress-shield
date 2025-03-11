@@ -128,7 +128,7 @@ struct LessonCardView: View {
                 
                 // Progress Bar (Top Right)
                 ProgressBarView(progress: progressFraction)
-                    .frame(width: 100, height: 24) // You can adjust the size here
+                    .frame(width: 100, height: 24)
             }
             .padding(.top, 8)
 
