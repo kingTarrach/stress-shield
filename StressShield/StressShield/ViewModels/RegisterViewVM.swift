@@ -16,6 +16,8 @@ class RegisterViewVM: ObservableObject {
     @Published var confirmPassword = ""
     @Published var errorMsg = ""
     
+    private let model = FirebaseTools()
+    
     init() {}
     
     func register() {
@@ -30,6 +32,9 @@ class RegisterViewVM: ObservableObject {
             }
             
             self?.insertUserRecord(id: userId)
+            Task {
+                await self?.createFirstLessonAndModule(id: userId)
+            }
         }
     }
     
@@ -40,6 +45,21 @@ class RegisterViewVM: ObservableObject {
         db.collection("users")
             .document(id)
             .setData(newUser.asDictionary())
+    }
+    
+    private func createFirstLessonAndModule(id: String) async {
+        let modules = await model.getCollectionFromFirestore(collection: "LearnModule", as: LearnModule.self)
+        guard let modules else {
+            return
+        }
+        let sortedModules = modules.sorted { $0.order! < $1.order!}
+        let firstModule = sortedModules[0]
+        let firstLesson = firstModule.lessons![0]
+        let firstLessonName = firstModule.lessonNames![0]
+        let tempLesson = UserLessonProgress(name: "user's first lesson", lastFinished: 0, lessonComplete: false, user: id, lesson: firstLesson, lessonName: firstLessonName)
+        let tempModule = UserModuleProgress(name: "user's first module", lastFinished: 0, moduleComplete: false, user: id, module: "I think this value should be removed later", moduleName: firstModule.name)
+        await model.addDocumentToFirestore(collection: "UserLessonProgress", document: tempLesson)
+        await model.addDocumentToFirestore(collection: "UserModuleProgress", document: tempModule)
     }
     
     private func validate() -> Bool {

@@ -167,32 +167,32 @@ struct ProfileStat: View {
 }
 
 // Subview for statistics cards in the grid layout
-struct StatCard: View {
-    let icon: String
-    let color: Color
-    let number: String
-    let label: String
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 30))
-                .foregroundColor(color)
-            Text(number)
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(.brown)
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.black)
-        .cornerRadius(10)
-        .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 5)
-    }
-}
+//struct StatCard: View {
+//    let icon: String
+//    let color: Color
+//    let number: String
+//    let label: String
+//    
+//    var body: some View {
+//        VStack(spacing: 8) {
+//            Image(systemName: icon)
+//                .font(.system(size: 30))
+//                .foregroundColor(color)
+//            Text(number)
+//                .font(.title3)
+//                .fontWeight(.bold)
+//                .foregroundColor(.brown)
+//            Text(label)
+//                .font(.caption)
+//                .foregroundColor(.gray)
+//        }
+//        .frame(maxWidth: .infinity)
+//        .padding()
+//        .background(Color.black)
+//        .cornerRadius(10)
+//        .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 5)
+//    }
+//}
 
 #Preview {
     ProfileView()

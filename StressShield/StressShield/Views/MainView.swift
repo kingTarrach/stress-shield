@@ -39,7 +39,7 @@ struct MainView: View {
                             }
                             .tag(0)
 
-                        LearnView()
+                        ModulesView()
                             .tabItem {
                                 customTabItem(imageName: "lessons")
                             }
