@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseStorage
+import Foundation
 import SDWebImageSwiftUI
 
 // This struct manages the dropdown groupings of modules and their lessons
@@ -7,20 +8,20 @@ struct ModuleView: View {
     let module: ViewingModule
     let index: Int
     @State private var showLessons = false // Toggle lessons visibility
+    @ObservedObject var viewModel: ModuleViewModel // Pass the viewModel down
 
     var body: some View {
         VStack {
             // Module Card as Button
             Button(action: {
-                if module.locked == false {
-                    withAnimation {
-                        showLessons.toggle()
-                    }
+                withAnimation {
+                    showLessons.toggle()
                 }
             }) {
+                let moduleName = module.name
                 ModuleCardView(
                     title: "Mission \(index)",
-                    description: module.name,
+                    description: moduleName,
                     locked: module.locked
                 )
             }
@@ -30,7 +31,7 @@ struct ModuleView: View {
             if showLessons {
                 VStack(spacing: 8) {
                     ForEach(module.lessons, id: \.id) { lesson in
-                        LessonCardView(lesson: lesson)
+                        LessonCardView(lesson: lesson, viewModel: viewModel) // Pass the viewModel here
                     }
                 }
                 .padding(.top, 4) // Space between module and lessons
@@ -94,6 +95,8 @@ struct ProgressBarView: View {
 struct LessonCardView: View {
     let lesson: ViewingLesson
     @State private var imageUrl: String? // Store the HTTP URL here
+    @State private var isLessonPresented = false
+    @ObservedObject var viewModel: ModuleViewModel // Add a reference to the ViewModel
 
     var progressFraction: Float {
         guard lesson.length > 0 else { return 0 }
@@ -137,7 +140,6 @@ struct LessonCardView: View {
                     .frame(height: 180) // Adjust the height of the image
                     .clipped()
                     .cornerRadius(10)
-                    //.padding(.top, 8)
             } else {
                 Text("Loading image...")
                     .foregroundColor(.white)
@@ -164,6 +166,21 @@ struct LessonCardView: View {
         .onAppear {
             loadImageUrl() // Load the URL when the view appears
         }
+        .onTapGesture {
+            isLessonPresented = true // Show the lesson when tapped
+        }
+        .fullScreenCover(isPresented: $isLessonPresented) {
+            FirebaseLessonView(inputLessonID: lesson.id)
+                .onAppear {
+                    print("Loading attempt")
+                }
+                .onDisappear {
+                    Task {
+                        // Call the createViewingModules function when the lesson view disappears
+                        await viewModel.createViewingModules()
+                    }
+                }
+        }
     }
 
     // Fetch the image URL from Firebase Storage
@@ -182,6 +199,7 @@ struct LessonCardView: View {
     }
 }
 
+
 struct ModulesView: View {
     @StateObject var viewModel = ModuleViewModel()
 
@@ -194,14 +212,10 @@ struct ModulesView: View {
                     ScrollView {
                         VStack(spacing: 12) {
                             ForEach(viewModel.viewingModules.indices, id: \.self) { index in
-                                //                            ModuleCardView(
-                                //                                title: "Module \(index + 1)",
-                                //                                description: viewModel.viewingModules[index].name,
-                                //                                locked: viewModel.viewingModules[index].locked
-                                //                            )
                                 ModuleView(
                                     module: viewModel.viewingModules[index],
-                                    index: index
+                                    index: index,
+                                    viewModel: viewModel // Pass the viewModel here
                                 )
                             }
                         }

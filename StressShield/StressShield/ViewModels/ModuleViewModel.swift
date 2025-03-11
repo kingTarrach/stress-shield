@@ -54,7 +54,7 @@ class ModuleViewModel: ObservableObject {
                 }
             }
         }
-        dump(viewingLessons)
+        //dump(viewingLessons)
         return viewingLessons
     }
     
