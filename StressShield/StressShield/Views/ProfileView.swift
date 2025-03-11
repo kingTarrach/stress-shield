@@ -8,135 +8,143 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var viewModel = ProfileViewVM()
+    @StateObject var viewModel = ProfileViewVM() // ViewModel for user data
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    if let user = viewModel.user {
-                        // Account Title and Icons
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all) // Background color
+            
+            if let user = viewModel.user {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        // Level and progress
                         HStack {
+                            Text("Lvl 1")
+                                .foregroundColor(.white)
+                                .font(.title2)
                             Spacer()
-                            Image(systemName: "bell")
-                                .font(.title2)
-                                .foregroundColor(.brown)
-                            Image(systemName: "gearshape")
-                                .font(.title2)
-                                .foregroundColor(.brown)
+                            ProgressView(value: 0.2)
+                                .progressViewStyle(LinearProgressViewStyle())
+                                .frame(width: 200)
+                            Spacer()
+                            Image(systemName: "shield.fill")
+                                .foregroundColor(.white)
                         }
                         .padding(.horizontal)
                         
-                        // Avatar and Account Information
-                        VStack(spacing: 8) {
-                            Image(systemName: "person.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(.gray)
-                                .frame(width: 100, height: 100)
-                            
+                        // Profile Image and Name
+                        VStack {
+                            // Dynamic User Name
                             Text(user.name)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.brown)
+                                .font(.title)
+                                .foregroundColor(.white)
                             
-                            Text("Joined since 2/6/24")
-                                .font(.subheadline)
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .frame(width: 120, height: 120)
                                 .foregroundColor(.gray)
-                        }
-                        .padding(.top, 10)
-                        
-                        // Follower, Following, Words Stats
-                        HStack(spacing: 40) {
-                            ProfileStat(number: "1,092", label: "Followers")
-                            ProfileStat(number: "392", label: "Following")
-                            ProfileStat(number: "292", label: "Words")
-                        }
-                        
-                        // Action Buttons
-                        HStack(spacing: 20) {
+                            
                             Button(action: {
-                                // Edit profile action
+                                // Edit action
                             }) {
-                                HStack {
-                                    Image(systemName: "pencil")
-                                    Text("Edit Profile")
-                                }
+                                Text("EDIT")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(width: 75, height: 37.5)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .font(.system(size: 12))
+                                    
+                            }
+                        }
+                        
+                        // Goals Section
+                        VStack(alignment: .leading) {
+                            Text("Goals")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            HStack {
+                                StatCard(icon: "target", value: "5", label: "Completed Goals")
+                                StatCard(icon: "bolt.fill", value: "1879", label: "Total Lifetime XP")
+                            }
+                        }
+                        
+                        // Learning Section
+                        VStack(alignment: .leading) {
+                            Text("Learning")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            HStack {
+                                StatCard(icon: "square.stack.3d.up.fill", value: "2", label: "Completed Sections")
+                                StatCard(icon: "text.alignleft", value: "0", label: "Completed Lessons")
+                            }
+                            HStack {
+                                StatCard(icon: "square.grid.2x2.fill", value: "0", label: "Completed Modules")
+                            }
+                        }
+                        
+                        // Log Out Button
+                        Button(action: {
+                            viewModel.logOut()
+                        }) {
+                            Text("LOG OUT")
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.green)
+                                .background(Color.red)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
-                            }
-                            
-                            Button(action: {
-                                // Message action
-                            }) {
-                                HStack {
-                                    Image(systemName: "message")
-                                    Text("Message")
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.green, lineWidth: 2)
-                                )
-                                .foregroundColor(Color.green)
-                            }
                         }
-                        .padding(.horizontal)
+                        .padding(.top, 20)
                         
-                        // Statistics Section
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("📊 Statistics")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.brown)
-                            
-                            Grid {
-                                GridRow {
-                                    StatCard(icon: "diamond.fill", color: .blue, number: "176", label: "Total Diamonds")
-                                    StatCard(icon: "target", color: .red, number: "11", label: "Total Challenges")
-                                }
-                                
-                                GridRow {
-                                    StatCard(icon: "graduationcap.fill", color: .green, number: "576", label: "Lessons Passed")
-                                    StatCard(icon: "bolt.fill", color: .yellow, number: "1879", label: "Total Lifetime XP")
-                                }
-                                
-                                GridRow {
-                                    StatCard(icon: "brain.head.profile", color: .pink, number: "+5", label: "Stress Score")
-                                    StatCard(icon: "star.fill", color: .yellow, number: "55", label: "Top 3 Position")
-                                }
-                            }
-                            Spacer() // Pushes content to the top, making space for the logout button
-                                                
-                            // Log Out Button at the Bottom
-                            Button(action: {
-                                viewModel.logOut()
-                            }) {
-                                Text("Log Out")
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.red)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-
-                            .padding(.horizontal)
-                        }
-                    } else {
-                        Text("Loading Profile...")
+                        Spacer()
                     }
+                    .padding()
+                }
+
+            } else {
+                // Loading Screen
+                VStack {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(1.5)
+                    Text("Loading...")
+                        .foregroundColor(.white)
+                        .font(.headline)
                 }
                 .padding()
             }
-            .navigationTitle("Profile")
-            .onAppear {
-                viewModel.fetchUser()
-            }
         }
+        .onAppear {
+            viewModel.fetchUser()
+        }
+    }
+    
+}
+
+struct StatCard: View {
+    let icon: String
+    let value: String
+    let label: String
+    
+    var body: some View {
+        VStack {
+            Image(systemName: icon)
+                .foregroundColor(.orange)
+                .font(.largeTitle)
+            
+            Text(value)
+                .font(.title)
+                .foregroundColor(.white)
+            
+            Text(label)
+                .font(.footnote)
+                .foregroundColor(.gray)
+        }
+        .frame(width: 150, height: 100)
+        .background(Color.gray.opacity(0.3))
+        .cornerRadius(10)
     }
 }
 

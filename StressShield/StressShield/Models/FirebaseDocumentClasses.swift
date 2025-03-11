@@ -1,3 +1,6 @@
+import Foundation
+import FirebaseFirestore
+
 public struct FirebaseUser: Codable {
     let name: String
     //let id: String?
@@ -39,12 +42,47 @@ public struct Goal: Codable {
     }
 }
 
-public struct HRVAverage: Codable {
+protocol HealthData: Codable, Identifiable {
+    var id: UUID { get }
+    var date: Timestamp? { get set }  // Stored as a Firestore timestamp (epoch time)
+    var value: Int? { get set }  // Common value field for metrics
+    static var minValue: CGFloat { get }
+    static var maxValue: CGFloat { get }
+    
+}
+
+public struct HRVAverage: HealthData {
+    public let id = UUID()
     let name: String
     //let id: String?
-    let value: Int?
-    let date: Double?
-    let user: String?
+    var value: Int?
+    var date: Timestamp?
+    var user: String?
+
+    // Min/Max for data visualization
+    static let minValue: CGFloat = 0
+    static let maxValue: CGFloat = 110
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        //case id
+        case value
+        case date
+        case user
+    }
+}
+
+public struct SleepTotal: HealthData {
+    public let id = UUID()
+    let name: String
+    //let id: String?
+    var value: Int?
+    var date: Timestamp?
+    var user: String?
+    
+    // Min/Max for data visualization
+    static let minValue: CGFloat = 0
+    static let maxValue: CGFloat = 10
 
     
     enum CodingKeys: String, CodingKey {
@@ -56,30 +94,18 @@ public struct HRVAverage: Codable {
     }
 }
 
-public struct SleepTotal: Codable {
+public struct Stress: HealthData {
+    public let id = UUID()
     let name: String
     //let id: String?
-    let value: Int?
-    let date: Double?
-    let user: String?
+    var value: Int?
+    var date: Timestamp?
+    var user: String?
 
     
-    enum CodingKeys: String, CodingKey {
-        case name
-        //case id
-        case value
-        case date
-        case user
-    }
-}
-
-public struct Stress: Codable {
-    let name: String
-    //let id: String?
-    let value: Int?
-    let date: Double?
-    let user: String?
-
+    // Min/Max for data visualization
+    static let minValue: CGFloat = 0
+    static let maxValue: CGFloat = 100
     
     enum CodingKeys: String, CodingKey {
         case name
