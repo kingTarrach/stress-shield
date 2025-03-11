@@ -14,8 +14,10 @@ struct ModuleView: View {
         VStack {
             // Module Card as Button
             Button(action: {
-                withAnimation {
-                    showLessons.toggle()
+                if module.locked == false {
+                    withAnimation {
+                        showLessons.toggle()
+                    }
                 }
             }) {
                 let moduleName = module.name
@@ -167,7 +169,9 @@ struct LessonCardView: View {
             loadImageUrl() // Load the URL when the view appears
         }
         .onTapGesture {
-            isLessonPresented = true // Show the lesson when tapped
+            if lesson.locked == false {
+                isLessonPresented = true // Show the lesson when tapped
+            }
         }
         .fullScreenCover(isPresented: $isLessonPresented) {
             FirebaseLessonView(inputLessonID: lesson.id)
