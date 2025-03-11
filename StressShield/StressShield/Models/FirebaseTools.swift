@@ -236,4 +236,32 @@ class FirebaseTools {
         }
         return nil
     }
+    
+    func updateFullDocumentInFirestore<T: Encodable>(
+        collection: String,
+        field: String,
+        value: String,
+        userID: String,
+        data: T
+    ) async {
+        let db = Firestore.firestore()
+        // Step 1: Query for the document using the field and value
+        let docRef = db.collection(collection).whereField(field, isEqualTo: value).whereField("user", isEqualTo: userID)
+        
+        do {
+            let querySnapshot = try await docRef.getDocuments()
+            let document = querySnapshot.documents.first
+            guard let document else {
+                print("No document found")
+                return
+            }
+            let docID = document.documentID
+            
+            await updateFullDocumentInFirestore(collection: collection, documentID: docID, document: data)
+        } catch {
+            print("Error writing document: \(error)")
+        }
+    }
 }
+
+

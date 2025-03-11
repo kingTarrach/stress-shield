@@ -24,6 +24,8 @@ struct MainView: View {
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
+    //var moduleViewModel = ModuleViewModel()
+    
     var body: some View {
         ZStack {
             if let hasSeenPreLogin = hasSeenPreLoginTutorial,

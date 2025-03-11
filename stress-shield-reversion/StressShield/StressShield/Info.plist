@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>This app requires access to your health data to monitor and analyze your health metrics.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app needs permission to update your health metrics based on your activity.</string>
 </dict>
 </plist>

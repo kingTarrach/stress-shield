@@ -123,6 +123,7 @@ public struct UserLessonProgress: Codable {
     let lessonComplete: Bool?
     let user: String?
     let lesson: String?
+    let lessonName: String?
 
     
     enum CodingKeys: String, CodingKey {
@@ -132,20 +133,28 @@ public struct UserLessonProgress: Codable {
         case lessonComplete
         case user
         case lesson
+        case lessonName
     }
 }
 
-public struct LearnModule: Codable {
+public struct UserModuleProgress: Codable {
     let name: String
     //let id: String?
-    let lessons: [String]?
-    let length: Int?
+    let lastFinished: Int?
+    let moduleComplete: Bool?
+    let user: String?
+    let module: String?
+    let moduleName: String?
+
     
     enum CodingKeys: String, CodingKey {
         case name
         //case id
-        case lessons
-        case length
+        case lastFinished
+        case moduleComplete
+        case user
+        case module
+        case moduleName
     }
 }
 
@@ -153,15 +162,21 @@ public struct Lesson: Codable {
     let name: String
     //let id: String?
     let contents: [String]?
+    let contentNames: [String]?
     let length: Int?
     let module: String?
+    let image: String?
+    let superName: String?
     
     enum CodingKeys: String, CodingKey {
         case name
         //case id
         case contents
+        case contentNames
         case length
         case module
+        case image
+        case superName
     }
 }
 
@@ -173,6 +188,8 @@ public struct LessonContent: Codable {
     let file: String?
     let correctAnswer: String?
     let possibleAnswers: [String]?
+    let proceedText: String?
+    let title: String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -182,5 +199,25 @@ public struct LessonContent: Codable {
         case file
         case correctAnswer
         case possibleAnswers
+        case proceedText
+        case title
+    }
+}
+
+public struct LearnModule: Codable {
+    let name: String
+    //let id: String?
+    let lessons: [String]?
+    let lessonNames: [String]?
+    let length: Int?
+    let order: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        //case id
+        case lessons
+        case lessonNames
+        case length
+        case order
     }
 }
