@@ -1,0 +1,49 @@
+# Sprint 5 Report (Dates from 2/10 to 3/17)
+
+## https://youtu.be/02avuuknyg8
+
+## What's New (User Facing)
+* Finished Data Visualization Tab with robust code to handle different input data
+* 
+
+## Work Summary (Developer Facing)
+
+
+## Unfinished Work
+
+
+## Completed Issues/User Stories
+Here are links to the issues that we completed in this sprint:
+
+ * https://github.com/kingTarrach/stress-shield/issues/8
+ * https://github.com/kingTarrach/stress-shield/issues/14
+
+ ## Incomplete Issues/User Stories
+ Here are links to issues we worked on but did not complete in this sprint:
+ 
+ * https://github.com/kingTarrach/stress-shield/issues/# <<Description of what needs to be changed>>
+ 
+## Code Files for Review
+Please review the following code files, which were actively developed during this sprint, for quality:
+ * [FirebaseDocumentClasses.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Models/FirebaseDocumentClasses.swift)
+ * [DataViewModel.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/ViewModels/DataViewModel.swift)
+ * [DataAnalyticsView.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/DataAnalyticsView.swift)
+ * [FirestoreService.swift] (https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Services/FirestoreService.swift)
+ 
+## Retrospective Summary
+Here's what went well:
+  * The team successfully implemented significant client-requested changes, such as the data visualization view and implementation with the server.
+  * Integration of Lessons has a solid template for future lesson implementation in the future.
+  * Improved team collaboration and communication when troubleshooting server and UI issues.
+ 
+Here's what we'd like to improve:
+  * Time management for feature implementation, particularly for more complex features like individual lesson progress.
+  * Integrate more testing for our files to ensure backend functionality.
+  
+Here are changes we plan to implement in the next sprint:
+  * Ensure code for reading health data is connected to server.
+  * Ensure server is correctly processing health data.
+  * Update lesson tracker to track the state of the users progress.
+  * Creating a daily check in for daily stress information.
+  * Add in lesson contents.
+  * Make changes in accordance to test user feedback.
