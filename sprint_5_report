@@ -4,24 +4,36 @@
 
 ## What's New (User Facing)
 * Finished Data Visualization Tab with robust code to handle different input data
-* 
+* Finished implementation to communicate to and from server
+* Implemented lesson module visuals and logic
+* Refined login/registratrion page
+* Completed user tutorial
+* Template profile view
+* Dashboard view/Daily check in
+* Changed tab view with extra features
 
 ## Work Summary (Developer Facing)
-
+This sprint we completed a lot of features and developed a testable product for potential clients. We finished the data visualization tab and associated data colection code. We changed lots of the UI elements to reflect the desired UI from our clients. We implemented the lesson content and lesson tracker to make that functional. We know there is still lots of work ahead of us but are proud of the contributions we made in this sprint. 
 
 ## Unfinished Work
-
+* Need to add more lesson content types
+* Need to health data collection into the daily check in
+* Replace placeholders for profile view
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
 
  * https://github.com/kingTarrach/stress-shield/issues/8
  * https://github.com/kingTarrach/stress-shield/issues/14
+ * https://github.com/kingTarrach/stress-shield/issues/17
+ * https://github.com/kingTarrach/stress-shield/issues/15
+ * https://github.com/kingTarrach/stress-shield/issues/16
+ * https://github.com/kingTarrach/stress-shield/issues/18
 
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
  
- * https://github.com/kingTarrach/stress-shield/issues/# <<Description of what needs to be changed>>
+ * https://github.com/kingTarrach/stress-shield/issues/7 <<Have not completed this feature>>
  
 ## Code Files for Review
 Please review the following code files, which were actively developed during this sprint, for quality:
@@ -29,11 +41,21 @@ Please review the following code files, which were actively developed during thi
  * [DataViewModel.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/ViewModels/DataViewModel.swift)
  * [DataAnalyticsView.swift](https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Views/DataAnalyticsView.swift)
  * [FirestoreService.swift] (https://github.com/kingTarrach/stress-shield/blob/healthkit/StressShield/StressShield/Services/FirestoreService.swift)
+ * [CheckInView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/CheckInView.swift)
+ * [DashboardView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/DashboardView.swift)
+ * [LoginView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/LoginView.swift)
+ * [MainView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/MainView.swift)
+ * [ProfileView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/ProfileView.swift)
+ * [RegisterView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/RegisterView.swift)
+ * [TutorialPage.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/TutorialPage.swift)
+ 
  
 ## Retrospective Summary
 Here's what went well:
   * The team successfully implemented significant client-requested changes, such as the data visualization view and implementation with the server.
   * Integration of Lessons has a solid template for future lesson implementation in the future.
+  * We were able to get through larg chunk of the project and is deployable to potential clients.
+  * Got through more work than previous sprints.
   * Improved team collaboration and communication when troubleshooting server and UI issues.
  
 Here's what we'd like to improve:
@@ -43,7 +65,6 @@ Here's what we'd like to improve:
 Here are changes we plan to implement in the next sprint:
   * Ensure code for reading health data is connected to server.
   * Ensure server is correctly processing health data.
-  * Update lesson tracker to track the state of the users progress.
-  * Creating a daily check in for daily stress information.
-  * Add in lesson contents.
-  * Make changes in accordance to test user feedback.
+  * Add in lesson contents and content types.
+  * Need to add a lot more testing for the product all across the application.
+  * Monitoring the end user progress.
