@@ -24,6 +24,8 @@ struct MainView: View {
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
+    //var moduleViewModel = ModuleViewModel()
+    
     var body: some View {
         ZStack {
             if let hasSeenPreLogin = hasSeenPreLoginTutorial,
@@ -37,7 +39,7 @@ struct MainView: View {
                             }
                             .tag(0)
 
-                        LearnView()
+                        ModulesView()
                             .tabItem {
                                 customTabItem(imageName: "lessons")
                             }
