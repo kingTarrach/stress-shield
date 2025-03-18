@@ -29,6 +29,7 @@ Here are links to the issues that we completed in this sprint:
  * https://github.com/kingTarrach/stress-shield/issues/15
  * https://github.com/kingTarrach/stress-shield/issues/16
  * https://github.com/kingTarrach/stress-shield/issues/18
+ * https://github.com/kingTarrach/stress-shield/issues/22
 
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
@@ -48,7 +49,13 @@ Please review the following code files, which were actively developed during thi
  * [ProfileView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/ProfileView.swift)
  * [RegisterView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/RegisterView.swift)
  * [TutorialPage.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/TutorialPage.swift)
- 
+ * [TutorialView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/TutorialView.swift)
+ * [FirebaseLessonView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/FirebaseLessonView.swift)
+ * [FirebaseModuleView.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Views/FirebaseModuleView.swift)
+ * [FirebaseLessonViewModel.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/ViewModels/FirebaseLessonViewModel.swift)
+ * [ModuleViewModel.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/ViewModels/ModuleViewModel.swift)
+ * [FirebaseTools.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/Models/FirebaseTools.swift)
+ * [RegisterViewVM.swift] (https://github.com/kingTarrach/stress-shield/blob/main/StressShield/StressShield/ViewModels/RegisterViewVM.swift)
  
 ## Retrospective Summary
 Here's what went well:
