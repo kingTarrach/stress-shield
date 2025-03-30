@@ -114,6 +114,9 @@ struct FirebaseLessonView: View {
         .onChange(of: viewModel.endEarly) {
             dismiss()
         }
+        .onChange(of: viewModel.changeImage) {
+            loadImageUrl()
+        }
     }
     
     // Fetch the image URL from Firebase Storage

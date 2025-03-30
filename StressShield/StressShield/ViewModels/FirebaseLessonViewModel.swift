@@ -12,6 +12,7 @@ class FirebaseLessonViewModel: ObservableObject {
     @Published var currentContentIndex:Int = 0
     @Published var endOfLesson:Bool = false
     @Published var endEarly:Bool = false
+    @Published var changeImage:Int = 0
     
     private let model = FirebaseTools()
     private var lessonContents: [LessonContent] = []
@@ -166,6 +167,7 @@ class FirebaseLessonViewModel: ObservableObject {
                         self.currentLessonProgress = currentLessonProgress
                         self.currentModuleProgress = currentModuleProgress
                         self.currentContentIndex = 0
+                        self.changeImage = 0
                         self.firstTime = !self.checkIfCompletedContent(currentModuleProgress: self.currentModuleProgress!, currentLessonProgress: self.currentLessonProgress!)
                     }
                     print(self.firstTime)
@@ -219,6 +221,7 @@ class FirebaseLessonViewModel: ObservableObject {
                 self.currentContent = self.lessonContents.first(where: {
                     $0.name == self.currentLesson!.contentNames![self.currentContentIndex]
                 })
+                self.changeImage += 1
             } else {
                 print("Reached end of lesson content")
             }
