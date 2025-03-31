@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewVM()
+    @State private var isPasswordVisible = false
 
     var body: some View {
         NavigationView {
@@ -40,11 +41,29 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        SecureField("", text: $viewModel.password)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .foregroundColor(.black)
+                        ZStack(alignment: .trailing) {
+                            if isPasswordVisible {
+                                TextField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            } else {
+                                SecureField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            }
+
+                            Button(action: {
+                                isPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                     }
                     .padding(.horizontal, 30)
                     
