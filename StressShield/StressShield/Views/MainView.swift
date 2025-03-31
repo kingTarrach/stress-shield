@@ -35,31 +35,31 @@ struct MainView: View {
                     TabView {
                         DashboardView()
                             .tabItem {
-                                customTabItem(imageName: "dashboard")
+                                customTabItem(imageName: "HomeSVG")
                             }
                             .tag(0)
 
                         ModulesView()
                             .tabItem {
-                                customTabItem(imageName: "lessons")
+                                customTabItem(imageName: "LessonsSVG")
                             }
                             .tag(1)
 
                         AICoachView(url: URL(string: "https://app.coachvox.ai/avatar/HhVpxzXud6ZD3Yiw9AQf/fullscreen")!)
                             .tabItem {
-                                customTabItem(imageName: "AICoach")
+                                customTabItem(imageName: "ChatSVG")
                             }
                             .tag(2)
 
                         DataAnalyticsView()
                             .tabItem {
-                                customTabItem(imageName: "dataAnalytics")
+                                customTabItem(imageName: "StatsSVG")
                             }
                             .tag(3)
 
                         ProfileView()
                             .tabItem {
-                                customTabItem(imageName: "profile")
+                                customTabItem(imageName: "ProfileSVG")
                             }
                             .tag(4)
                     }
