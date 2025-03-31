@@ -249,10 +249,6 @@ class FirebaseLessonViewModel: ObservableObject {
     }
     
     func continueLesson() async {
-        DispatchQueue.main.async {
-            self.firstTime = !self.checkIfCompletedContent(currentModuleProgress: self.currentModuleProgress!, currentLessonProgress: self.currentLessonProgress!)
-        }
-        print(self.firstTime)
         // Update the lesson progress
         print("Updating Lesson Progress")
         let moduleUpdate = await incrementLessonProgress()
@@ -306,6 +302,10 @@ class FirebaseLessonViewModel: ObservableObject {
                 self.endOfLesson = true
             }
         }
+        DispatchQueue.main.async {
+            self.firstTime = !self.checkIfCompletedContent(currentModuleProgress: self.currentModuleProgress!, currentLessonProgress: self.currentLessonProgress!)
+        }
+        print(self.firstTime)
     }
     
     func endLessonEarly() {
