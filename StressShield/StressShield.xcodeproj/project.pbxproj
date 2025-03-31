@@ -52,6 +52,8 @@
 		D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668262CED1010007FFD5D /* HealthDataManager.swift */; };
 		D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668282CED1073007FFD5D /* HealthViewModel.swift */; };
 		D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */; };
+		D4FC65CE2D9B0F8B003C9E47 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */; };
+		D4FC65D02D9B0FB6003C9E47 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		D46668262CED1010007FFD5D /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		D46668282CED1073007FFD5D /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
 		D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHealthView.swift; sourceTree = "<group>"; };
+		D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
+		D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -184,6 +188,7 @@
 		03010BEC2CB0CCC8004095FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */,
 				D4185E922D7FB95E00D187D4 /* FirebaseLessonView.swift */,
 				D4185E7D2D6C417A00D187D4 /* FirebaseModuleView.swift */,
 				D4185E6B2D5561D900D187D4 /* UpcomingLessonsView.swift */,
@@ -210,6 +215,7 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */,
 				D411E8472D80F07F00FAFDF7 /* DataViewModel.swift */,
 				D4185E902D7F610400D187D4 /* FirebaseLessonViewModel.swift */,
 				D4185E892D76E24A00D187D4 /* ModuleViewModel.swift */,
@@ -342,6 +348,7 @@
 				D4185E7E2D6C418300D187D4 /* FirebaseModuleView.swift in Sources */,
 				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
 				5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */,
+				D4FC65D02D9B0FB6003C9E47 /* PasswordResetView.swift in Sources */,
 				D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */,
 				5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */,
 				D4185E802D70202300D187D4 /* FirebaseTools.swift in Sources */,
@@ -350,6 +357,7 @@
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
 				D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */,
 				03E7C47E2CB1C3AF00643027 /* ProfileViewVM.swift in Sources */,
+				D4FC65CE2D9B0F8B003C9E47 /* PasswordResetViewModel.swift in Sources */,
 				D4185E912D7F612500D187D4 /* FirebaseLessonViewModel.swift in Sources */,
 				03010BD52CB0C5CF004095FB /* MainView.swift in Sources */,
 				D411E8482D80F07F00FAFDF7 /* DataViewModel.swift in Sources */,
