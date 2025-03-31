@@ -31,11 +31,22 @@ struct RegisterView: View {
                     
                     // Registration Form
                     VStack(alignment: .leading, spacing: 15) {
-                        Text("Full Name")
+                        Text("First Name")
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        TextField("", text: $viewModel.name)
+                        TextField("", text: $viewModel.firstName)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .autocorrectionDisabled()
+                        
+                        Text("Last Name")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.lastName)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)

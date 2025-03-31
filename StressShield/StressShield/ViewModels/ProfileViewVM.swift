@@ -27,7 +27,8 @@ class ProfileViewVM: ObservableObject {
             DispatchQueue.main.async {
                 self?.user = User(
                     id: data["id"] as? String ?? "",
-                    name: data["name"] as? String ?? "",
+                    firstName: data["firstName"] as? String ?? "",
+                    lastName: data["lastName"] as? String ?? "",
                     email: data["email"] as? String ?? "",
                     joined: data["joined"] as? TimeInterval ?? 0)
             }

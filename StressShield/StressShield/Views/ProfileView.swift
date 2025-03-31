@@ -35,7 +35,7 @@ struct ProfileView: View {
                         // Profile Image and Name
                         VStack {
                             // Dynamic User Name
-                            Text(user.name)
+                            Text(user.firstName)
                                 .font(.title)
                                 .foregroundColor(.white)
                             

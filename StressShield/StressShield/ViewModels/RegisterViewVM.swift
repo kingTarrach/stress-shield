@@ -10,11 +10,12 @@ import FirebaseAuth
 import Foundation
 
 class RegisterViewVM: ObservableObject {
-    @Published var name = ""
+    @Published var firstName = ""
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
     @Published var errorMsg = ""
+    @Published var lastName = ""
     
     private let model = FirebaseTools()
     
@@ -39,7 +40,7 @@ class RegisterViewVM: ObservableObject {
     }
     
     private func insertUserRecord(id: String) {
-        let newUser = User(id: id, name: name, email: email, joined: Date().timeIntervalSince1970)
+        let newUser = User(id: id, firstName: firstName, lastName: lastName, email: email, joined: Date().timeIntervalSince1970)
         let db = Firestore.firestore()
         
         db.collection("users")
@@ -63,7 +64,8 @@ class RegisterViewVM: ObservableObject {
     }
     
     private func validate() -> Bool {
-        guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
+        guard !firstName.trimmingCharacters(in: .whitespaces).isEmpty,
+              !lastName.trimmingCharacters(in: .whitespaces).isEmpty,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             errorMsg = "Please fill in all fields."

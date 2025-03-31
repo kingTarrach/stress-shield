@@ -2,7 +2,8 @@ import Foundation
 import FirebaseFirestore
 
 public struct FirebaseUser: Codable {
-    let name: String
+    let firstName: String
+    let lastName: String
     //let id: String?
     let email: String?
     let joined: Double?
@@ -12,7 +13,8 @@ public struct FirebaseUser: Codable {
     let firstTime: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case name
+        case firstName
+        case lastName
         //case id
         case email
         case joined
