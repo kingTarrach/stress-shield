@@ -1,0 +1,329 @@
+ZStack() {
+    ZStack() {
+        ZStack() {
+            ZStack() {
+                Group {
+                    ZStack() { }
+                    .frame(width: 46.21, height: 49.87)
+                    .offset(x: -37, y: 11.20)
+                    ZStack() { }
+                    .frame(width: 86.42, height: 65.74)
+                    .offset(x: 12.42, y: -28.65)
+                    ZStack() { }
+                    .frame(width: 59.91, height: 45.31)
+                    .offset(x: 30.07, y: -8.05)
+                    ZStack() { }
+                    .frame(width: 59.72, height: 27.06)
+                    .offset(x: 30.25, y: -17.40)
+                    ZStack() { }
+                    .frame(width: 54.59, height: 27.49)
+                    .offset(x: 26.96, y: 0.34)                    ZStack() { }
+                    .frame(width: 9.51, height: 9.67)
+                    .offset(x: -9.04, y: -18.98)
+                    ZStack() { }
+                    .frame(width: 52.22, height: 37.55)
+                    .offset(x: 18.16, y: 3.05)
+                    ZStack() { }
+                    .frame(width: 4.49, height: 4.66)
+                    .offset(x: -9.04, y: -18.98)
+                    ZStack() { }
+                    .frame(width: 47.19, height: 87.67)
+                    .offset(x: 9.60, y: 27.83)
+                    ZStack() { }
+                    .frame(width: 40.23, height: 73.24)
+                    .offset(x: 9.20, y: 26.35)
+                }Group {
+                    ZStack() { }
+                    .frame(width: 30.26, height: 66.91)
+                    .offset(x: 37.40, y: 43.87)
+                    ZStack() { }
+                    .frame(width: 5.22, height: 5.39)
+                    .offset(x: 13.17, y: -12.89)
+                    ZStack() { }
+                    .frame(width: 5.22, height: 5.39)
+                    .offset(x: 23.96, y: -8.47)
+                    ZStack() { }
+                    .frame(width: 33.90, height: 60.61)
+                    .offset(x: 35.36, y: -40.61)
+                    ZStack() { }
+                    .frame(width: 9.40, height: 22.03)
+                    .offset(x: 48.25, y: -1.69)
+                    ZStack() { }
+                    .frame(width: 6.43, height: 17.46)
+                    .offset(x: 45.06, y: 11.45)
+                }
+            }
+            .frame(width: 120.21, height: 154.65)
+            .offset(x: 5.90, y: 8.96)
+            .opacity(0.28)
+            ZStack() {
+                Group {
+
+                }Group {
+
+                }
+            }
+            .frame(width: 73.56, height: 190.07)
+            .offset(x: -29.23, y: 0)
+            .opacity(0.23)
+        }
+        .frame(width: 132.01, height: 190.07)
+        .offset(x: 80.18, y: -48.21)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.49, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.86)
+            .offset(x: 0.34, y: -11.47)
+        }
+        .frame(width: 78.49, height: 76.80)
+        .offset(x: 11.60, y: 111.01)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.49, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.86)
+            .offset(x: 0.34, y: -11.47)
+        }
+        .frame(width: 78.49, height: 76.80)
+        .offset(x: -98.56, y: 243.10)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.50, height: 45.73)
+            .offset(x: 0, y: 20.27)
+            ZStack() {
+                Group {
+
+                }
+            }
+            .frame(width: 60.73, height: 70.46)
+            .offset(x: -0.34, y: -7.90)
+        }
+        .frame(width: 78.50, height: 86.27)
+        .offset(x: -91.22, y: -98.30)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.50, height: 45.74)
+            .offset(x: -3.11, y: 18.89)
+            ZStack() { }
+            .frame(width: 71.69, height: 61.61)
+            .offset(x: 6.51, y: -10.95)
+        }
+        .frame(width: 84.71, height: 83.51)
+        .offset(x: 23.19, y: -233.29)
+    }
+    .frame(width: 363.63, height: 633.14)
+    .offset(x: 3.82, y: -376.43)
+    VStack(alignment: .leading, spacing: 3) {
+        Text("Module 1 - Backstory")
+            .font(Font.custom("Jost", size: 20).weight(.heavy))
+            .foregroundColor(.white)
+        Text("Understand the overwhelming nature of stress")
+            .font(Font.custom("Jost", size: 16))
+            .lineSpacing(22.30)
+            .foregroundColor(.white)
+    }
+    .padding(10)
+    .frame(height: 74)
+    .background(Color(red: 0.06, green: 0.45, blue: 0.56))
+    .cornerRadius(10)
+    .offset(x: 0, y: -724)
+    VStack(alignment: .leading, spacing: 3) {
+        Text("Module 1 Lesson 1")
+            .font(Font.custom("Jost", size: 20).weight(.heavy))
+            .foregroundColor(.white)
+        Text("Understand the overwhelming nature of stress")
+            .font(Font.custom("Jost", size: 16))
+            .lineSpacing(22.30)
+            .foregroundColor(.white)
+    }
+    .padding(10)
+    .frame(height: 74)
+    .background(Color(red: 0.05, green: 0.37, blue: 0.73))
+    .cornerRadius(10)
+    .offset(x: 0, y: 59)
+    ZStack() {
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.50, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.86)
+            .offset(x: 0.34, y: -11.47)
+        }
+        .frame(width: 78.50, height: 76.80)
+        .offset(x: 13.41, y: 63.45)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.49, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.86)
+            .offset(x: 0.35, y: -11.47)
+        }
+        .frame(width: 78.49, height: 76.80)
+        .offset(x: 101.58, y: -67.80)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.50, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.85)
+            .offset(x: 0.34, y: -11.47)
+        }
+        .frame(width: 78.50, height: 76.80)
+        .offset(x: 32.96, y: -261.16)
+        ZStack() {
+            ZStack() { }
+            .frame(width: 78.49, height: 45.73)
+            .offset(x: 0, y: 15.54)
+            ZStack() { }
+            .frame(width: 39.77, height: 53.86)
+            .offset(x: 0.35, y: -11.47)
+        }
+        .frame(width: 78.49, height: 76.80)
+        .offset(x: 7.72, y: 258.55)
+        ZStack() {
+            ZStack() {
+                Group {
+
+                }Group {
+
+                }
+            }
+            .frame(width: 109.25, height: 227.60)
+            .offset(x: 18.58, y: -10.86)
+            ZStack() { }
+            .frame(width: 132.21, height: 127.80)
+            .offset(x: -7.10, y: 60.76)
+        }
+        .frame(width: 146.41, height: 249.33)
+        .offset(x: -69.20, y: -75.40)
+        .opacity(0.51)
+    }
+    .frame(width: 363.63, height: 633.14)
+    .offset(x: -5.18, y: 432.57)
+    ZStack() {
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(width: 402, height: 32.13)
+            .offset(x: 0.19, y: -7.50)
+        HStack(spacing: 4.28) {
+            ZStack() {
+
+            }
+            .frame(width: 21.42, height: 14.99)
+            ZStack() {
+
+            }
+            .frame(width: 17.14, height: 14.99)
+            ZStack() {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 20.35, height: 8.57)
+                    .background(.white)
+                    .cornerRadius(1.07)
+                    .offset(x: -1.07, y: -0.43)
+            }
+            .frame(width: 26.77, height: 12.85)
+        }
+        .offset(x: 149.25, y: 1.07)
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(width: 6.43, height: 6.43)
+            .offset(x: 121.94, y: -11.78)
+        HStack(spacing: 0) {
+            ZStack() {
+
+            }
+            .frame(width: 35.34, height: 16.06)
+        }
+        .padding(
+            EdgeInsets(top: 2.43, leading: 11.86, bottom: 3.99, trailing: 10.63)
+        )
+        .frame(width: 57.83, height: 22.49)
+        .cornerRadius(21.42)
+        .offset(x: -149.40, y: 0.54)
+    }
+    .frame(width: 401.61, height: 47.12)
+    .offset(x: -0.19, y: -784.44)
+    VStack(alignment: .leading, spacing: 0) {
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(width: 402, height: 1)
+            .background(Color(red: 0.62, green: 0.62, blue: 0.62))
+        HStack(spacing: 12) {
+            HStack(alignment: .top, spacing: 0) {
+                HStack(spacing: 10) {
+                    ZStack() {
+
+                    }
+                    .frame(width: 38.25, height: 40.72)
+                }
+                .padding(EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5))
+                .frame(width: 48.25, height: 46.72)
+            }
+            .padding(8)
+            .background(.black)
+            .cornerRadius(4)
+            HStack(alignment: .top, spacing: 0) {
+                HStack(spacing: 10) {
+                    ZStack() {
+
+                    }
+                    .frame(width: 38.25, height: 40.72)
+                }
+                .padding(EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5))
+                .frame(width: 48.25, height: 46.72)
+            }
+            .padding(8)
+            .background(Color(red: 0.23, green: 0.23, blue: 0.23))
+            .cornerRadius(4)
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .inset(by: 0.75)
+                    .stroke(Color(red: 0.66, green: 0.66, blue: 0.66), lineWidth: 0.75)
+            )
+            HStack(alignment: .top, spacing: 0) {
+                HStack(spacing: 10) {
+
+                }
+                .padding(3)
+                .frame(width: 48.25, height: 46.72)
+            }
+            .padding(8)
+            .background(.black)
+            .cornerRadius(4)
+            HStack(alignment: .top, spacing: 0) {
+                HStack(spacing: 10) {
+                    ZStack() {
+
+                    }
+                    .frame(width: 38.25, height: 40.72)
+                }
+                .padding(EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5))
+                .frame(width: 48.25, height: 46.72)
+            }
+            .padding(8)
+            .background(.black)
+            .cornerRadius(4)
+            HStack(alignment: .top, spacing: 0) {
+                HStack(spacing: 10) {
+
+                }
+                .padding(EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5))
+                .frame(width: 48.25, height: 46.72)
+            }
+            .padding(8)
+            .background(.black)
+            .cornerRadius(4)
+        }
+        .padding(EdgeInsets(top: 30, leading: 16, bottom: 30, trailing: 16))
+    }
+    .background(.black)
+    .offset(x: 1, y: 3.86)
+}
+.frame(width: 402, height: 1616)
+.background(.black)
