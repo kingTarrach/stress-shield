@@ -21,9 +21,10 @@ struct ModuleView: View {
                 }
             }) {
                 let moduleName = module.name
+                let moduleNames = splitString(moduleName)
                 ModuleCardView(
-                    title: "Mission \(index)",
-                    description: moduleName,
+                    title: moduleNames.0,
+                    description: moduleNames.1,
                     locked: module.locked
                 )
             }
@@ -241,3 +242,12 @@ struct ModulesView: View {
 //        ModulesView()
 //    }
 //}
+
+func splitString(_ input: String) -> (String, String) {
+    if let range = input.range(of: " - ") ?? input.range(of: ": ") {
+        let firstPart = String(input[..<range.lowerBound])
+        let secondPart = String(input[range.upperBound...])
+        return (firstPart, secondPart)
+    }
+    return ("", "")
+}

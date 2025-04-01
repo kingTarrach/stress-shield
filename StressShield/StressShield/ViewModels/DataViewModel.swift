@@ -128,15 +128,51 @@ class DataViewModel<T: HealthData>: ObservableObject {
     }
 
     // Function to fill missing values
+//    private func fillMissingValues(_ data: [T]) -> [T] {
+//        guard !data.isEmpty else { return [] }
+//
+//        var filledData = data
+//        let count = filledData.count
+//
+//        for i in 0..<count { // Iterate backwards
+//            if filledData[i].value == nil { // Check if missing
+//                filledData[i].value = 0     // Set to 0
+//            }
+//        }
+//
+//        return filledData
+//    }
     private func fillMissingValues(_ data: [T]) -> [T] {
         guard !data.isEmpty else { return [] }
 
         var filledData = data
         let count = filledData.count
 
-        for i in 0..<count { // Iterate backwards
+        for i in 0..<count {
             if filledData[i].value == nil { // Check if missing
-                filledData[i].value = 0     // Set to 0
+                if i == 0 {
+                    // If it's the first element, take the first non-nil value
+                    if let firstValid = filledData.first(where: { $0.value != nil })?.value {
+                        filledData[i].value = firstValid
+                    }
+                } else if i == count - 1 {
+                    // If it's the last element, take the last non-nil value
+                    if let lastValid = filledData.last(where: { $0.value != nil })?.value {
+                        filledData[i].value = lastValid
+                    }
+                } else {
+                    // Find the nearest non-nil values before and after
+                    let prevValue = filledData[i - 1].value
+                    let nextValue = filledData[(i + 1)...].first(where: { $0.value != nil })?.value
+
+                    if let prev = prevValue, let next = nextValue {
+                        filledData[i].value = (prev + next) / 2 // Average of neighbors
+                    } else if let prev = prevValue {
+                        filledData[i].value = prev // Only previous value exists
+                    } else if let next = nextValue {
+                        filledData[i].value = next // Only next value exists
+                    }
+                }
             }
         }
 

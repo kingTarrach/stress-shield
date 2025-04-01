@@ -14,6 +14,7 @@ struct MainView: View {
     @State private var showTutorialOverlay = false
     @State private var hasSeenPreLoginTutorial: Bool?
     @State private var hasSeenPostLoginTutorial: Bool?
+    //private var testVM = FirebaseVM()
     
     init() {
         let appearance = UITabBarAppearance()

@@ -47,7 +47,7 @@ public struct Goal: Codable {
 protocol HealthData: Codable, Identifiable {
     var id: UUID { get }
     var date: Timestamp? { get set }  // Stored as a Firestore timestamp (epoch time)
-    var value: Int? { get set }  // Common value field for metrics
+    var value: Double? { get set }  // Common value field for metrics
     static var minValue: CGFloat { get }
     static var maxValue: CGFloat { get }
     
@@ -57,7 +57,7 @@ public struct HRVAverage: HealthData {
     public let id = UUID()
     let name: String
     //let id: String?
-    var value: Int?
+    var value: Double?
     var date: Timestamp?
     var user: String?
 
@@ -78,7 +78,7 @@ public struct SleepTotal: HealthData {
     public let id = UUID()
     let name: String
     //let id: String?
-    var value: Int?
+    var value: Double?
     var date: Timestamp?
     var user: String?
     
@@ -100,7 +100,7 @@ public struct Stress: HealthData {
     public let id = UUID()
     let name: String
     //let id: String?
-    var value: Int?
+    var value: Double?
     var date: Timestamp?
     var user: String?
 
