@@ -1,14 +1,8 @@
-//
-//  LogInView.swift
-//  StressShield
-//
-//  Created by Camden Dowhaniuk on 10/4/24.
-//
-
 import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewVM()
+    @State private var isPasswordVisible = false
 
     var body: some View {
         NavigationView {
@@ -47,14 +41,40 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        SecureField("", text: $viewModel.password)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .foregroundColor(.black)
+                        ZStack(alignment: .trailing) {
+                            if isPasswordVisible {
+                                TextField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            } else {
+                                SecureField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            }
+
+                            Button(action: {
+                                isPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                     }
                     .padding(.horizontal, 30)
                     
+                    // Forgot Password Button
+                    NavigationLink(destination: PasswordResetView()) {
+                        Text("Forgot Password?")
+                            .foregroundColor(.blue)
+                            .bold()
+                    }
+                    .padding(.top, 5)
+
                     // Login Button
                     Button(action: {
                         viewModel.login()
@@ -68,7 +88,7 @@ struct LoginView: View {
                             .cornerRadius(30)
                     }
                     .padding(.horizontal, 30)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
 
                     // Create Account Section
                     HStack {
@@ -86,8 +106,4 @@ struct LoginView: View {
             }
         }
     }
-}
-
-#Preview {
-    LoginView()
 }

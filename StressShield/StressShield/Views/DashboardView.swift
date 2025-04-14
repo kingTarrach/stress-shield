@@ -23,7 +23,7 @@ struct DashboardView: View {
                         VStack(alignment: .leading, spacing: 30) {
                             
                             // Dynamic Greeting Text
-                            Text("Good \(timeOfDay), \(user.name)!")
+                            Text("Good \(timeOfDay), \(user.firstName)!")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)

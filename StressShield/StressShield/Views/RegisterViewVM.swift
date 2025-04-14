@@ -73,12 +73,36 @@ class RegisterViewVM: ObservableObject {
         }
         
         guard email.contains("@") && email.contains(".") else {
-            errorMsg = "Please enter valid email."
+            errorMsg = "Please enter a valid email."
             return false
         }
         
-        guard password.count >= 6 else {
-            errorMsg = "Password must be at least 6 characters long."
+        guard password.count >= 12 else {
+            errorMsg = "Password must be at least 12 characters long."
+            return false
+        }
+        
+        let uppercaseLetter = NSPredicate(format:"SELF MATCHES %@", ".*[A-Z]+.*")
+        guard uppercaseLetter.evaluate(with: password) else {
+            errorMsg = "Password must contain at least one uppercase letter."
+            return false
+        }
+        
+        let lowercaseLetter = NSPredicate(format:"SELF MATCHES %@", ".*[a-z]+.*")
+        guard lowercaseLetter.evaluate(with: password) else {
+            errorMsg = "Password must contain at least one lowercase letter."
+            return false
+        }
+        
+        let digit = NSPredicate(format:"SELF MATCHES %@", ".*[0-9]+.*")
+        guard digit.evaluate(with: password) else {
+            errorMsg = "Password must contain at least one digit."
+            return false
+        }
+        
+        let specialCharacter = NSPredicate(format:"SELF MATCHES %@", ".*[!@#$%^&*(),.?\":{}|<>]+.*")
+        guard specialCharacter.evaluate(with: password) else {
+            errorMsg = "Password must contain at least one special character."
             return false
         }
         

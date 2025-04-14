@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject var viewModel = RegisterViewVM()
+    @State private var isPasswordVisible = false
+    @State private var isConfirmPasswordVisible = false
 
     var body: some View {
         NavigationView {
@@ -26,16 +28,29 @@ struct RegisterView: View {
                     if !viewModel.errorMsg.isEmpty {
                         Text(viewModel.errorMsg)
                             .foregroundColor(.red)
-                            .padding(.horizontal)
+                            .padding()
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     
                     // Registration Form
                     VStack(alignment: .leading, spacing: 15) {
-                        Text("Full Name")
+                        Text("First Name")
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        TextField("", text: $viewModel.name)
+                        TextField("", text: $viewModel.firstName)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .autocorrectionDisabled()
+                        
+                        Text("Last Name")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        
+                        TextField("", text: $viewModel.lastName)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
@@ -58,21 +73,57 @@ struct RegisterView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        SecureField("", text: $viewModel.password)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .foregroundColor(.black)
+                        ZStack(alignment: .trailing) {
+                            if isPasswordVisible {
+                                TextField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            } else {
+                                SecureField("", text: $viewModel.password)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            }
+
+                            Button(action: {
+                                isPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                         
                         Text("Confirm Password")
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .medium))
                         
-                        SecureField("", text: $viewModel.confirmPassword)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .foregroundColor(.black)
+                        ZStack(alignment: .trailing) {
+                            if isConfirmPasswordVisible {
+                                TextField("", text: $viewModel.confirmPassword)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            } else {
+                                SecureField("", text: $viewModel.confirmPassword)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.black)
+                            }
+
+                            Button(action: {
+                                isConfirmPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isConfirmPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                     }
                     .padding(.horizontal, 30)
                     

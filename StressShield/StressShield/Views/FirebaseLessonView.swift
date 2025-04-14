@@ -114,6 +114,9 @@ struct FirebaseLessonView: View {
         .onChange(of: viewModel.endEarly) {
             dismiss()
         }
+        .onChange(of: viewModel.changeImage) {
+            loadImageUrl()
+        }
     }
     
     // Fetch the image URL from Firebase Storage
@@ -135,17 +138,38 @@ struct FirebaseLessonView: View {
 struct VideoPlayerView: View {
     let storagePath: String
     @State private var videoURL: URL?
-
+    var player = AVPlayer()
+    @State private var isPlaying = false
+    @State var showFullscreen = false
+    
     var body: some View {
-        VStack {
+        ZStack {
             if let url = videoURL {
-                VideoPlayer(player: AVPlayer(url: url))
+                VideoPlayer(player: player)
+                    .onAppear {
+                        player.replaceCurrentItem(with: AVPlayerItem(url: url))
+                    }
             } else {
                 Text("Loading video...")
                     .foregroundColor(.primary)
                     .onAppear {
                         fetchVideoUrl()
                     }
+            }
+            
+            if !isPlaying {
+                Button(action: {
+                    player.play()
+                    isPlaying = true
+                }) {
+                    Image(systemName: "play.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(.white)
+                        .background(Color.black.opacity(0.6))
+                        .clipShape(Circle())
+                }
             }
         }
     }
