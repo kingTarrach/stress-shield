@@ -201,58 +201,78 @@ struct LineChartPath<T: HealthData>: View {
     }
 }
 
-
-// Main Tab View
 struct DataAnalyticsView: View {
-    //Potentially Useless
-    //@ObservedObject var viewModel = DataViewModel()
-    
     let firestoreService = FirestoreService()
     @StateObject var stressViewModel = DataViewModel<Stress>()
-       @StateObject var hrvViewModel = DataViewModel<HRVAverage>()
-       @StateObject var sleepViewModel = DataViewModel<SleepTotal>()
+    @StateObject var hrvViewModel = DataViewModel<HRVAverage>()
+    @StateObject var sleepViewModel = DataViewModel<SleepTotal>()
     
+    @State private var showTutorial = false
+
     var body: some View {
-        TabView {
-            LineChartView(
-                data: stressViewModel.healthData,
-                title: "Stress Levels Over Time",
-                scale: "Day"
-            )
-            .tag(0)
-            
-            LineChartView(
-                data: hrvViewModel.healthData,
-                title: "Heart Rate Variability Over Time",
-                scale: "Day"
-            )
-            .tag(1)
-            
-            LineChartView(
-                data: sleepViewModel.healthData,
-                title: "Sleep Duration Over Time",
-                scale: "Day"
-            )
-            .tag(2)
+        ZStack {
+            TabView {
+                LineChartView(
+                    data: stressViewModel.healthData,
+                    title: "Stress Levels Over Time",
+                    scale: "Day"
+                )
+                .tag(0)
+                
+                LineChartView(
+                    data: hrvViewModel.healthData,
+                    title: "Heart Rate Variability Over Time",
+                    scale: "Day"
+                )
+                .tag(1)
+                
+                LineChartView(
+                    data: sleepViewModel.healthData,
+                    title: "Sleep Duration Over Time",
+                    scale: "Day"
+                )
+                .tag(2)
+            }
+            .tabViewStyle(PageTabViewStyle())
+
+            // Overlay tutorial on top if needed
+            if showTutorial {
+                VStack(spacing: 20) {
+                    Text("📊 Welcome to Your Analytics!")
+                        .font(.title)
+                        .bold()
+                    Text("Swipe left or right to view different health metrics.\nTap data points to get exact values.")
+                        .multilineTextAlignment(.center)
+                    Button("Got it!") {
+                        showTutorial = false
+                        UserDefaults.standard.set(true, forKey: "hasSeenAnalyticsTutorial")
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                }
+                .padding()
+                .background(Color.black.opacity(1.0))
+                .cornerRadius(15)
+                .padding()
+            }
         }
-        .tabViewStyle(PageTabViewStyle()) // Enables swipe navigation
-        // When graphs appear, begin loading the data in for the graphs
         .onAppear {
-            //firestoreService.addTestHealthData()
-            
+            let hasSeenTutorial = UserDefaults.standard.bool(forKey: "hasSeenAnalyticsTutorial")
+            showTutorial = !hasSeenTutorial
+
             let lastFetchDate = UserDefaults.standard.object(forKey: "lastFetchDate") as? Date
             let calendar = Calendar.current
 
             if let lastDate = lastFetchDate, calendar.isDateInToday(lastDate) {
-                    print("Data already fetched today. Skipping API call.")
+                print("Data already fetched today. Skipping API call.")
             } else {
                 print("Fetching new data...")
                 hrvViewModel.fetchData(from: "HRVAverage", timeScale: "Day")
                 sleepViewModel.fetchData(from: "SleepTotal", timeScale: "Day")
                 stressViewModel.fetchData(from: "Stress", timeScale: "Day")
             }
-            //print("Chart Data:", hrvViewModel.healthData)
-            
         }
     }
 }

@@ -82,7 +82,7 @@ class DataViewModel<T: HealthData>: ObservableObject {
     }
     
     
-    private func insertMissingDates(startDates: [Timestamp], data: [T]) -> [T] {
+    func insertMissingDates(startDates: [Timestamp], data: [T]) -> [T] {
         var completeData: [T] = []
 
         for timestamp in startDates {
@@ -102,7 +102,7 @@ class DataViewModel<T: HealthData>: ObservableObject {
     }
 
     // Create a missing data instance with nil value
-    private func createMissingDataInstance(for date: Timestamp) -> T {
+    func createMissingDataInstance(for date: Timestamp) -> T {
         // Ensure T can be initialized with default values
         guard var instance = createInstance(of: T.self) else {
             fatalError("Could not create missing data instance.")
@@ -116,7 +116,7 @@ class DataViewModel<T: HealthData>: ObservableObject {
 
 
     // Generic function to create a new instance of T dynamically
-    private func createInstance<U: HealthData>(of type: U.Type) -> U? {
+    func createInstance<U: HealthData>(of type: U.Type) -> U? {
         if type == Stress.self {
             return Stress(name: "Missing Data", value: nil, date: nil, user: nil) as? U
         } else if type == HRVAverage.self {
@@ -142,7 +142,7 @@ class DataViewModel<T: HealthData>: ObservableObject {
 //
 //        return filledData
 //    }
-    private func fillMissingValues(_ data: [T]) -> [T] {
+    func fillMissingValues(_ data: [T]) -> [T] {
         guard !data.isEmpty else { return [] }
 
         var filledData = data

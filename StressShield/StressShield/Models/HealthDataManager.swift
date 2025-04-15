@@ -24,8 +24,8 @@ class HealthDataManager {
         
         // Define the time range (last week)
         let calendar = Calendar.current
-        let endDate = Date()
-        let startDate = calendar.date(byAdding: .day, value: -14, to: endDate)!
+        let endDate = calendar.startOfDay(for: Date())
+        let startDate = calendar.date(byAdding: .day, value: -1, to: endDate)!
         
         // Create a predicate to query samples within the time range
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
@@ -73,10 +73,10 @@ class HealthDataManager {
             return
         }
 
-        // Define the time range (last week)
+        // Define the time range (yesterday)
         let calendar = Calendar.current
-        let endDate = Date()
-        let startDate = calendar.date(byAdding: .day, value: -14, to: endDate)!
+        let endDate = calendar.startOfDay(for: Date())
+        let startDate = calendar.date(byAdding: .day, value: -1, to: endDate)!
 
         // Create a predicate to query samples within the time range
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)

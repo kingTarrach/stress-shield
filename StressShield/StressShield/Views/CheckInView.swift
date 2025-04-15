@@ -14,6 +14,7 @@ struct CheckInView: View {
     @State private var responses: [String: String] = [:] // Stores user responses
     @Environment(\.dismiss) var dismiss // For navigating back
     @Binding var hasCheckedInToday: Bool
+    @StateObject private var viewModel = HealthViewModel()
     
     private var currentDate: String {
         let formatter = DateFormatter()
@@ -34,6 +35,7 @@ struct CheckInView: View {
     
     var body: some View {
         VStack {
+            
             // Top Header Section
             VStack(alignment: .leading) {
                 HStack {
@@ -124,6 +126,9 @@ struct CheckInView: View {
             .padding()
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
+        .onAppear {
+            viewModel.checkAuthorizationAndFetchData()
+        }
     }
     
     // Function to Save Data to Firestore

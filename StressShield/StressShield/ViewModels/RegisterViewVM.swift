@@ -63,7 +63,7 @@ class RegisterViewVM: ObservableObject {
         await model.addDocumentToFirestore(collection: "UserModuleProgress", document: tempModule)
     }
     
-    private func validate() -> Bool {
+    func validate() -> Bool {
         guard !firstName.trimmingCharacters(in: .whitespaces).isEmpty,
               !lastName.trimmingCharacters(in: .whitespaces).isEmpty,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
