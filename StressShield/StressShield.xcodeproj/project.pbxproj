@@ -51,9 +51,12 @@
 		D45E07782CED2CC30088AF4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03010BEA2CB0C875004095FB /* GoogleService-Info.plist */; };
 		D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668262CED1010007FFD5D /* HealthDataManager.swift */; };
 		D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46668282CED1073007FFD5D /* HealthViewModel.swift */; };
-		D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */; };
 		D4FC65CE2D9B0F8B003C9E47 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */; };
 		D4FC65D02D9B0FB6003C9E47 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */; };
+		D4FC65DD2DAD998D003C9E47 /* HealthDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65DC2DAD998D003C9E47 /* HealthDataCollectionView.swift */; };
+		D4FC65DF2DAD9ACA003C9E47 /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65DE2DAD9AC0003C9E47 /* CheckInViewModel.swift */; };
+		D4FC65E32DADAFD7003C9E47 /* GoalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65E22DADAFBF003C9E47 /* GoalTypes.swift */; };
+		D4FC65E52DAE042C003C9E47 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC65E42DAE0426003C9E47 /* DashboardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,9 +104,15 @@
 		D45E07762CED2A0A0088AF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46668262CED1010007FFD5D /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		D46668282CED1073007FFD5D /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
-		D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryHealthView.swift; sourceTree = "<group>"; };
 		D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		D4FC65D12DAD93CE003C9E47 /* DataVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVMTests.swift; sourceTree = "<group>"; };
+		D4FC65D22DAD93CE003C9E47 /* HealthVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthVMTests.swift; sourceTree = "<group>"; };
+		D4FC65D32DAD93CE003C9E47 /* StressShieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressShieldTests.swift; sourceTree = "<group>"; };
+		D4FC65DC2DAD998D003C9E47 /* HealthDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataCollectionView.swift; sourceTree = "<group>"; };
+		D4FC65DE2DAD9AC0003C9E47 /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
+		D4FC65E22DADAFBF003C9E47 /* GoalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypes.swift; sourceTree = "<group>"; };
+		D4FC65E42DAE0426003C9E47 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -147,6 +156,7 @@
 		03010BC62CB0C5CF004095FB = {
 			isa = PBXGroup;
 			children = (
+				D4FC65D42DAD93CE003C9E47 /* StressShieldTests */,
 				D45E07762CED2A0A0088AF4C /* Info.plist */,
 				03010BD12CB0C5CF004095FB /* StressShield */,
 				03010BD02CB0C5CF004095FB /* Products */,
@@ -188,6 +198,7 @@
 		03010BEC2CB0CCC8004095FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC65DC2DAD998D003C9E47 /* HealthDataCollectionView.swift */,
 				D4FC65CF2D9B0FB1003C9E47 /* PasswordResetView.swift */,
 				D4185E922D7FB95E00D187D4 /* FirebaseLessonView.swift */,
 				D4185E7D2D6C417A00D187D4 /* FirebaseModuleView.swift */,
@@ -195,7 +206,6 @@
 				D4185E682D55605E00D187D4 /* AICoachView.swift */,
 				D4185E5E2D507D4000D187D4 /* LessonPageView.swift */,
 				D4185E5C2D507CA900D187D4 /* LessonView.swift */,
-				D466682A2CED1083007FFD5D /* TemporaryHealthView.swift */,
 				03010BD42CB0C5CF004095FB /* MainView.swift */,
 				03010BF22CB0D0EF004095FB /* RegisterView.swift */,
 				03010BF02CB0D0C1004095FB /* LoginView.swift */,
@@ -215,6 +225,8 @@
 		03010BED2CB0CCE2004095FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC65E42DAE0426003C9E47 /* DashboardViewModel.swift */,
+				D4FC65DE2DAD9AC0003C9E47 /* CheckInViewModel.swift */,
 				D4FC65CD2D9B0F83003C9E47 /* PasswordResetViewModel.swift */,
 				D411E8472D80F07F00FAFDF7 /* DataViewModel.swift */,
 				D4185E902D7F610400D187D4 /* FirebaseLessonViewModel.swift */,
@@ -233,6 +245,7 @@
 		03010BEE2CB0CCF8004095FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC65E22DADAFBF003C9E47 /* GoalTypes.swift */,
 				D4185E812D7107DD00D187D4 /* FirebaseDocumentClasses.swift */,
 				D4185E7F2D70201000D187D4 /* FirebaseTools.swift */,
 				5FC5CE932D5961690030B692 /* LessonProgress.swift */,
@@ -253,6 +266,16 @@
 				03E7C4772CB1B3C900643027 /* Extensions.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		D4FC65D42DAD93CE003C9E47 /* StressShieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC65D12DAD93CE003C9E47 /* DataVMTests.swift */,
+				D4FC65D22DAD93CE003C9E47 /* HealthVMTests.swift */,
+				D4FC65D32DAD93CE003C9E47 /* StressShieldTests.swift */,
+			);
+			path = StressShieldTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,16 +366,20 @@
 				03E7C4782CB1B3C900643027 /* Extensions.swift in Sources */,
 				03010BF12CB0D0C1004095FB /* LoginView.swift in Sources */,
 				D4185E862D72379D00D187D4 /* FirebaseVM.swift in Sources */,
+				D4FC65DD2DAD998D003C9E47 /* HealthDataCollectionView.swift in Sources */,
 				D46668292CED1073007FFD5D /* HealthViewModel.swift in Sources */,
 				D4185E932D7FB96F00D187D4 /* FirebaseLessonView.swift in Sources */,
 				D4185E7E2D6C418300D187D4 /* FirebaseModuleView.swift in Sources */,
 				035615C92CDAACE700FEFF1C /* CalendarView.swift in Sources */,
 				5FC5CE982D59D99D0030B692 /* LessonViewModel.swift in Sources */,
+				D4FC65E32DADAFD7003C9E47 /* GoalTypes.swift in Sources */,
 				D4FC65D02D9B0FB6003C9E47 /* PasswordResetView.swift in Sources */,
+				D4FC65E52DAE042C003C9E47 /* DashboardViewModel.swift in Sources */,
 				D4185E5F2D507D5B00D187D4 /* LessonPageView.swift in Sources */,
 				5FC5CE942D5961700030B692 /* LessonProgress.swift in Sources */,
 				D4185E802D70202300D187D4 /* FirebaseTools.swift in Sources */,
 				0306C4BD2D6E3AB50068052A /* TutorialPage.swift in Sources */,
+				D4FC65DF2DAD9ACA003C9E47 /* CheckInViewModel.swift in Sources */,
 				D4185E6C2D5561E100D187D4 /* UpcomingLessonsView.swift in Sources */,
 				03010BF32CB0D0EF004095FB /* RegisterView.swift in Sources */,
 				D4185E5D2D507CAF00D187D4 /* LessonView.swift in Sources */,
@@ -367,7 +394,6 @@
 				037762C62D7A00CA00AA4FCE /* DashboardView.swift in Sources */,
 				037762D42D7A5BFF00AA4FCE /* CheckInView.swift in Sources */,
 				03010BF92CB0D15A004095FB /* LoginViewVM.swift in Sources */,
-				D466682B2CED1083007FFD5D /* TemporaryHealthView.swift in Sources */,
 				03010BFB2CB0D171004095FB /* MainViewVM.swift in Sources */,
 				035615C52CDAACD000FEFF1C /* DataAnalyticsView.swift in Sources */,
 				D46668272CED1010007FFD5D /* HealthDataManager.swift in Sources */,

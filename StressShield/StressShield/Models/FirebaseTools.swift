@@ -262,6 +262,24 @@ class FirebaseTools {
             print("Error writing document: \(error)")
         }
     }
+    
+    func getCollectionIDs(
+        collection: String,
+        userID: String
+    ) async -> [String] {
+        let db = Firestore.firestore()
+        let collectionRef = db.collection(collection).whereField("user", isEqualTo: userID)
+        
+        do {
+            let querySnapshot = try await collectionRef.getDocuments()
+            let ids = querySnapshot.documents.map { $0.documentID }
+            print("Successfully fetched \(ids.count) documents")
+            return ids
+        } catch {
+            print("Found no documents")
+            return []
+        }
+    }
 }
 
 
