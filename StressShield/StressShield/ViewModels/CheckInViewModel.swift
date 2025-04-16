@@ -149,13 +149,9 @@ class CheckInViewModel: ObservableObject {
         if input > 75 {
             return 1
         }
-        // Healthy hrv
-        else if input > 50 {
-            return 1 + 0.1*(input - 50)
-        }
-        // Unhealthy hrv
-        else if input > 30 {
-            return input / 20 - 1.5
+        // Healthy to slowly healthy
+        else if input > 30.4 {
+            return (1 - ((pow((input - 75), 2))/2000))
         }
         // Bad bad bad
         else {
