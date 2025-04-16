@@ -30,7 +30,8 @@ class ProfileViewVM: ObservableObject {
                     firstName: data["firstName"] as? String ?? "",
                     lastName: data["lastName"] as? String ?? "",
                     email: data["email"] as? String ?? "",
-                    joined: data["joined"] as? TimeInterval ?? 0)
+                    joined: data["joined"] as? TimeInterval ?? 0
+                )
             }
         }
     }

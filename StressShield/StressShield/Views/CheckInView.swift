@@ -22,18 +22,36 @@ struct CheckInView: View {
         return formatter.string(from: Date())
     }
 
-    let questions: [(question: String, options: [String])] = [
-        ("How did you sleep last night?", ["Poor", "Fair", "Good", "Excellent"]),
-        ("What’s your energy level right now?", ["Low", "Moderate", "High"]),
-        ("How are you feeling emotionally?", ["Stressed", "Neutral", "Calm", "Excited"]),
-        ("How is your physical tension or discomfort?", ["High", "Moderate", "Low", "None"]),
-        ("How would you rate your focus and mental clarity?", ["Foggy", "Distracted", "Clear", "Sharp"]),
-        ("How is your breathing right now?", ["Shallow", "Normal", "Deep and steady"]),
-        ("Have you connected with anyone socially today?", ["Yes", "No"]),
-        ("Have you taken a mindful pause or break today?", ["Yes", "No"])
+    let questions: [(question: String, options: [String], scores: [Int])] = [
+        // Sleep level (low = 0, high = 14)
+        ("How did you sleep last night?", ["Poor", "Fair", "Good", "Excellent"], [0, 5, 10, 14]),
+
+        // Energy level (low = 0, high = 14)
+        ("What’s your energy level right now?", ["Low", "Moderate", "High"], [0, 7, 14]),
+
+        // Emotional state (0 to 14)
+        ("How are you feeling emotionally?", ["Stressed", "Neutral", "Calm", "Excited"], [0, 5, 10, 14]),
+
+        // Physical tension (0 to 14)
+        ("How is your physical tension or discomfort?", ["High", "Moderate", "Low", "None"], [0, 5, 10, 14]),
+
+        // Mental clarity (0 to 14)
+        ("How would you rate your focus and mental clarity?", ["Foggy", "Distracted", "Clear", "Sharp"], [0, 5, 10, 14]),
+
+        // Breathing (0 to 10)
+        ("How is your breathing right now?", ["Shallow", "Normal", "Deep and steady"], [0, 5, 10]),
+
+        // Social connection (binary, 0 or 10)
+        ("Have you connected with anyone socially today?", ["No", "Yes"], [0, 10]),
+
+        // Mindful break (binary, 0 or 10)
+        ("Have you taken a mindful pause or break today?", ["No", "Yes"], [0, 10])
     ]
     
+    @State private var totalScore: Int = 0
+    
     var body: some View {
+        
         VStack {
             
             // Top Header Section
@@ -85,7 +103,10 @@ struct CheckInView: View {
                 options: questions[stepIndex].options,
                 selectedOption: Binding(
                     get: { responses["\(stepIndex)"] ?? "" },
-                    set: { responses["\(stepIndex)"] = $0 }
+                    set: { newValue in
+                        responses["\(stepIndex)"] = newValue
+                        updateScore(for: stepIndex, selected: newValue)
+                    }
                 )
             )
             
@@ -131,6 +152,20 @@ struct CheckInView: View {
         }
     }
     
+    // Function to update the score
+    private func updateScore(for index: Int, selected: String) {
+        var newTotal = 0
+        
+        for (key, selectedOption) in responses {
+            if let questionIndex = Int(key),
+               let optionIndex = questions[questionIndex].options.firstIndex(of: selectedOption) {
+                newTotal += questions[questionIndex].scores[optionIndex]
+            }
+        }
+
+        totalScore = newTotal
+    }
+    
     // Function to Save Data to Firestore
     private func saveCheckInData() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -139,7 +174,8 @@ struct CheckInView: View {
         let checkInData: [String: Any] = [
             "userId": userId,
             "date": currentDate,
-            "responses": responses
+            "responses": responses,
+            "score": totalScore
         ]
         
         db.collection("checkIns").addDocument(data: checkInData) { error in
